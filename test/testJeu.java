@@ -1,5 +1,7 @@
 package test;
 
+import java.io.File;
+
 import affichage.Clavier;
 import protagonistes.Personnage;
 import terrain.Donjon;
@@ -7,7 +9,10 @@ import terrain.Donjon;
 public class testJeu {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		String chemin = "sauvegarde//";
+		File repertoire = new File(chemin);
+        String liste[] = repertoire.list();  
+        
 		while(true) {
 			System.out.println("\n---------MENU PRINCIPAL---------");
             System.out.println("\n1 --> Creer une nouvelle Partie");
@@ -28,8 +33,38 @@ public class testJeu {
             		
             	case 2:
             		
-            		Personnage persoCharger = Personnage.charger("LilianLaFripouille");
-            		testLab.main(persoCharger,persoCharger.getDonjon());
+            		int nbPartie = 0;
+                    if (liste != null) {         
+                        for (int i = 0; i < liste.length; i++) {
+                        	
+	                     	if (liste[i].contains("Partie De")) {
+	                       		nbPartie++;
+                        	}
+                        }
+                    } 
+                 
+                    if (liste == null || nbPartie == 0){
+                        System.out.println("Pas de Partie a charger");
+                        break;
+                    }
+                    
+                    System.out.println("Choisir une partie a charger:");
+                    
+                    for (int i = 0; i < liste.length; i++) {
+                    	if (liste[i].contains("Partie De")) {
+                    		System.out.println((i+1)+" --> "+liste[i]);
+                    	}
+                    }
+                    
+                    int choixPartie = Clavier.entrerClavierInt();
+                    choixPartie--;
+                    
+                    if (liste[choixPartie].contains("Partie De")) {
+                    	System.out.println(liste[choixPartie]);
+                    	Personnage persoCharger = Personnage.charger(liste[choixPartie]);
+                    	testLab.main(persoCharger,persoCharger.getDonjon());
+                    }
+                    
             		break;
             		
             	case 3:
@@ -40,5 +75,4 @@ public class testJeu {
             }
 		}
 	}
-
 }

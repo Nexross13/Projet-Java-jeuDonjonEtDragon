@@ -55,6 +55,8 @@ public class Donjon implements Serializable{
         return anciennePosition;
     }
 
+    
+
     // Autres méthodes
     public String creerLabyrinthe(){
         String[] preLabyrintheAleatoire = labyrintheModele;
@@ -80,7 +82,7 @@ public class Donjon implements Serializable{
                     labyrintheActuel[i] = marchant;
                     break;
                 case "F":
-                    Piece forge = new Piece(i, cardinaliteImpossiblesLab[i], TypePiece.FORGE);
+                    Forge forge = new Forge(i, cardinaliteImpossiblesLab[i]);
                     labyrintheActuel[i] = forge;
                     break;
                 case "HB":

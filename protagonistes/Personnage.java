@@ -17,6 +17,7 @@ import item.TypeArmure;
 import item.TypePotion;
 import terrain.Cardinalite;
 import terrain.Donjon;
+import terrain.Forge;
 import terrain.Piece;
 
 public class Personnage extends EtreVivant implements Serializable{
@@ -29,7 +30,7 @@ public class Personnage extends EtreVivant implements Serializable{
     private int degatReduit;
     private boolean cleSortie = false;
     private boolean joueurMort = false;
-    private static String cheminStockage = "sauvegarde\\Partie De ";
+    private static String cheminStockage = "sauvegarde//";
     
     public Personnage(String nom){
         super(100, 20);
@@ -171,6 +172,7 @@ public class Personnage extends EtreVivant implements Serializable{
                 break;
                 
             case FORGE:
+                
             	System.out.println("Je suis trop fatigue pour travailler, revenez plus tard!");
             	break;
             	
@@ -186,7 +188,7 @@ public class Personnage extends EtreVivant implements Serializable{
                 } else {
                     System.out.println("Trouve le boss d'abord");
                 }
-     
+                break;
         }
         return "";
     }
