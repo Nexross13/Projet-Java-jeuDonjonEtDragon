@@ -14,22 +14,22 @@ public class Forgeron extends PersonnageNonJoueur implements Serializable{
     }
 
     public String reparerArmure(TypeArmure armure){
-
+        System.out.println("Réparation d'une armure");
         return "";
     }
 
     public String reparerArme(TypeArme arme){
-        
+        System.out.println("Réparation d'une arme");
         return "";
     }
 
     public String ameliorerArmure(TypeArmure armure){
-
+        System.out.println("Amélioration d'une armure");
         return "";
     }
 
     public String ameliorerArme(TypeArme arme){
-        
+        System.out.println("Amélioration d'une armure");
         return "";
     }
 

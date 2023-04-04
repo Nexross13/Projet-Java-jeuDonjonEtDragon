@@ -1,5 +1,6 @@
 package affichage;
 
+import item.TypeArme;
 import item.TypeArmure;
 import pnj.Forgeron;
 import pnj.PersonnageNonJoueur;
@@ -34,6 +35,7 @@ public class AffichageForge {
     }
 
     public static void choixEquipement(String type, Donjon donjon, Forgeron forgeron){
+        System.out.println("-----------Choix-----------");
         System.out.println("0 - Retour en arrière");
         System.out.println("1 - "+type+" une arme");
         System.out.println("2 - "+type+" une armure");
@@ -44,24 +46,31 @@ public class AffichageForge {
                 break;
             
             case "1":
-                if (type == "améliorer") {
-                    forgeron.ameliorerArme(donjon.getJoueur().getInventaire().getArme());
-                } else {
-                    forgeron.reparerArme(donjon.getJoueur().getInventaire().getArme());
+                TypeArme arme = donjon.getJoueur().getInventaire().getArme();
+                if (arme != null) {
+                    if (type == "améliorer") {
+                        forgeron.ameliorerArme(donjon.getJoueur().getInventaire().getArme());
+                    } else {
+                        forgeron.reparerArme(donjon.getJoueur().getInventaire().getArme());
+                    }
+                    break;
                 }
-                break;
             
             case "2":
                 System.out.println("Quelle armure vous voulez " + type + " ?");
                 TypeArmure[] tabArmure = donjon.getJoueur().getInventaire().getArmuresStock();
                 for (int i = 0; i < donjon.getJoueur().getInventaire().getArmuresStock().length; i++) {
-                    System.out.println(i + " - " + tabArmure[i]);
+                    if (tabArmure[i] == null) {
+                        System.out.println(i + " - Rien");
+                    } else {
+                        System.out.println(i + " - " + tabArmure[i].getNomArmure()); 
+                    }
                 }
                 int choixInt = Clavier.entrerClavierInt();
                 if (type == "améliorer") {
-                    forgeron.ameliorerArmure(donjon.getJoueur().getInventaire().getArmuresStock()[choixInt]);
+                    forgeron.ameliorerArmure(tabArmure[choixInt]);
                 } else {
-                    forgeron.reparerArmure(donjon.getJoueur().getInventaire().getArmuresStock()[choixInt]);
+                    forgeron.reparerArmure(tabArmure[choixInt]);
                 }
                 break;
         }
