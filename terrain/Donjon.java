@@ -32,10 +32,12 @@ public class Donjon implements Serializable{
     private int positionJoueur;
     private int anciennePosition;
     private int etage = 0;
+    private Personnage joueur;
 
     // Constructeur
-    public Donjon(){
+    public Donjon(Personnage joueur){
         creerLabyrinthe();
+        this.joueur = joueur;
     }
 
     // Getteur
@@ -55,7 +57,9 @@ public class Donjon implements Serializable{
         return anciennePosition;
     }
 
-    
+    public Personnage getJoueur() {
+        return joueur;
+    }
 
     // Autres méthodes
     public String creerLabyrinthe(){
@@ -82,7 +86,7 @@ public class Donjon implements Serializable{
                     labyrintheActuel[i] = marchant;
                     break;
                 case "F":
-                    Forge forge = new Forge(i, cardinaliteImpossiblesLab[i]);
+                    Piece forge = new Piece(i, cardinaliteImpossiblesLab[i], TypePiece.FORGE);
                     labyrintheActuel[i] = forge;
                     break;
                 case "HB":

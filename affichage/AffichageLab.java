@@ -24,7 +24,7 @@ public class AffichageLab {
         String cellule = "";
         int j = 0; // Compteur pour trouver les bords à l'ouest et l'est
         for (int i = 0; i < donjon.getLabyrintheActuel().length ; i++) {
-            if(donjon.getLabyrintheActuel()[i].getEstDecouverte()){ // Vérifie si la pièce est découverte
+            if(donjon.getLabyrintheActuel()[i].getEstDecouverte() == false){ // Vérifie si la pièce est découverte
                 switch (donjon.getLabyrintheActuel()[i].getType()) {
                     case HOSTILE_FACILE:
                         cellule = " hf |";
@@ -54,7 +54,7 @@ public class AffichageLab {
                         cellule = " tr |";
                         break;
                     case FORGE:
-                        cellule = " fo |";
+                        cellule = "#FO#|";
                         break;
                 }
             } else { // Si elle est as découverte on affiche une celulle vide

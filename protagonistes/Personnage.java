@@ -7,6 +7,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
+import affichage.AffichageForge;
 import affichage.AffichagePerso;
 import affichage.Clavier;
 import item.Tresor;
@@ -15,9 +16,10 @@ import inventaire.Inventaire;
 import item.TypeArme;
 import item.TypeArmure;
 import item.TypePotion;
+import pnj.Forgeron;
+import pnj.PersonnageNonJoueur;
 import terrain.Cardinalite;
 import terrain.Donjon;
-import terrain.Forge;
 import terrain.Piece;
 
 public class Personnage extends EtreVivant implements Serializable{
@@ -33,7 +35,7 @@ public class Personnage extends EtreVivant implements Serializable{
     private static String cheminStockage = "sauvegarde//";
     
     public Personnage(String nom){
-        super(100, 20);
+        super(100, 2000);
         this.nom = nom;
         inventaire = new Inventaire(this);
     }
@@ -172,8 +174,14 @@ public class Personnage extends EtreVivant implements Serializable{
                 break;
                 
             case FORGE:
-                
-            	System.out.println("Je suis trop fatigue pour travailler, revenez plus tard!");
+                Forgeron forgeron;
+
+                if(donjon.getLabyrintheActuel()[donjon.getPositionJoueur()].getForgeron() == null){
+                    forgeron = new Forgeron(donjon.getPositionJoueur(), donjon);
+                } else {
+                    forgeron = donjon.getLabyrintheActuel()[donjon.getPositionJoueur()].getForgeron();
+                }
+                AffichageForge.actionEntrer(donjon, forgeron);
             	break;
             	
             case MARCHANT:
@@ -183,7 +191,7 @@ public class Personnage extends EtreVivant implements Serializable{
             case SORTIE:
                 if (cleSortie) {
                     System.out.println("On passe à l'étage sup");
-                    Donjon etageSup = new Donjon();
+                    Donjon etageSup = new Donjon(this);
                     this.rejointDonjon(etageSup);
                 } else {
                     System.out.println("Trouve le boss d'abord");

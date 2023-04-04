@@ -31,7 +31,7 @@ public class testLab {
             
             switch(choix_action) {
             case 1:
-            	menuDeplacer();
+            	AffichagePerso.afficherDeplacement(personnage, donjon);
             	break;
             
             case 2:

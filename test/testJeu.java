@@ -22,11 +22,11 @@ public class testJeu {
             int choix_action = Clavier.entrerClavierInt();
             
             switch(choix_action) {
-            	case 1:
-            		Donjon donjon = new Donjon(); 					// Création du donjon
+            	case 1: 					
             		System.out.print("Entrer le nom du Heros:");
             		String nomPersonnage = Clavier.entrerClavierString();
-            		Personnage personnage = new Personnage(nomPersonnage); // Création du personnage
+            		Personnage personnage = new Personnage(nomPersonnage);// Création du personnage
+					Donjon donjon = new Donjon(personnage); 
             		System.out.println();
             		testLab.main(personnage,donjon);			// Lancement de la Partie du personnage
             		break;

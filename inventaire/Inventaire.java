@@ -18,6 +18,30 @@ public class Inventaire implements Serializable{
 	public Inventaire(Personnage joueur){
 		proprietaire = joueur;
 	}
+
+	public TypeArmure getArmures(int i) {
+		return armuresStock[i];
+	}
+
+	public TypeArmure[] getArmuresStock() {
+		return armuresStock;
+	}
+	
+	public TypeArme getArme() {
+		return arme;
+	}
+
+	public ArrayList<TypePotion> getPotions() {
+		return potionsStock;
+	}
+	
+	public int[][] getSauvegardeArmure(){
+		return sauvegardeStatsArmure;
+	}
+	
+	public int getSauvegardeArme(){
+		return sauvegardeStatsArme;
+	}
 		
 	public void ajouterArmure(TypeArmure typeArmure, int position) {
 		typeArmure.setStats();
@@ -40,26 +64,6 @@ public class Inventaire implements Serializable{
 		else {
 			System.out.println("Operation impossible : ajouterPotion dans inventaire");
 		}
-	}
-	
-	public TypeArmure getArmures(int i) {
-		return armuresStock[i];
-	}
-	
-	public TypeArme getArme() {
-		return arme;
-	}
-	
-	public ArrayList<TypePotion> getPotions() {
-		return potionsStock;
-	}
-	
-	public int[][] getSauvegardeArmure(){
-		return sauvegardeStatsArmure;
-	}
-	
-	public int getSauvegardeArme(){
-		return sauvegardeStatsArme;
 	}
 	
 	// Permet de définir le drop de la rareté en fonction de l'armure

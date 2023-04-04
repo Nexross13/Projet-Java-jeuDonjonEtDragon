@@ -1,6 +1,10 @@
 package terrain;
 import java.io.Serializable;
 
+import javax.swing.text.StyledEditorKit.ForegroundAction;
+
+import pnj.Forgeron;
+import pnj.PersonnageNonJoueur;
 import protagonistes.Monstre;
 
 public class Piece implements Serializable{
@@ -12,6 +16,7 @@ public class Piece implements Serializable{
     private Cardinalite cardinalitesImpossibles;
     private TypePiece type;
     private Monstre monstre;
+    private Forgeron forgeron;
 
     // Constructeur
     public Piece(int idPiece, Cardinalite cardinalitesImpossibles, TypePiece type){
@@ -19,6 +24,7 @@ public class Piece implements Serializable{
         this.cardinalitesImpossibles = cardinalitesImpossibles;
         this.type = type;
         this.monstre = null;
+        this.forgeron = null;
     }
 
     // Guetteur
@@ -46,6 +52,10 @@ public class Piece implements Serializable{
         return monstre;
     }
 
+    public Forgeron getForgeron() {
+        return forgeron;
+    }
+
     // Setteur
     public void setType(TypePiece type) {
         this.type = type;
@@ -62,5 +72,9 @@ public class Piece implements Serializable{
 
     public void setMonstre(Monstre monstre){
         this.monstre = monstre;
+    }
+
+    public void setForgeron(Forgeron forgeron) {
+        this.forgeron = forgeron;
     }
 }

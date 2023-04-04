@@ -1,6 +1,7 @@
 package affichage;
 
 import protagonistes.Personnage;
+import terrain.Donjon;
 
 public class AffichagePerso {
 
@@ -43,4 +44,17 @@ public class AffichagePerso {
         System.out.println("Stats de "+joueur.getNom()+": DMG: "+joueur.getForce()+" | PV: "+joueur.getPvActuel()+"/"+joueur.getPvMax()+" | PA: "+joueur.getProtection());
        
     }
+
+	public static void afficherDeplacement(Personnage joueur, Donjon donjon){
+		System.out.println("Votre cardinalite: ");
+		System.out.println("N - nord ");
+		System.out.println("S - sud ");
+		System.out.println("O - ouest ");
+		System.out.println("E - est ");
+	
+		String cardinalite = Clavier.entrerClavierString();
+		System.out.println(joueur.deplacer(cardinalite));
+		AffichageLab.AffichageLaby(donjon);
+		System.out.println("Le joueur est dans la salle numero: " + donjon.getPositionJoueur() + ", cette salle est de type: " + donjon.getLabyrintheActuel()[donjon.getPositionJoueur()].getType());
+	}
 }
