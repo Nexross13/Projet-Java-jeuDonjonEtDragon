@@ -70,11 +70,22 @@ public class Bataille implements Serializable{
                 personnageGagner = true;
                 personnage.getInventaire().Tresor();
                 personnage.getDonjon().getLabyrintheActuel()[personnage.getDonjon().getPositionJoueur()].setEstFinie(true);
+                try {
+                    Thread.sleep(3000); // Pause le programme pendant 3 secondes
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             } else {
                 // Le Monstre est mort
                 personnageGagner = true;
                 personnage.getInventaire().Tresor();
+                personnage.gagnerPO(this.monstre);
                 personnage.getDonjon().getLabyrintheActuel()[personnage.getDonjon().getPositionJoueur()].setEstFinie(true); // Permet de rendre la piece en type NEUTRE quand le bataille est gagnée
+                try {
+                    Thread.sleep(3000); // Pause le programme pendant 3 secondes
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
         else if (personnage.getPvActuel() == 0){

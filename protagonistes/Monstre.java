@@ -6,15 +6,21 @@ public class Monstre extends EtreVivant implements Serializable{
 
     // Attribut
     protected TypeMonstre type;
+    protected int gainPO;
   
     //Constructeur
-    Monstre(int pvMax, int force){
+    Monstre(int pvMax, int force, int gainPO){
         super(pvMax,force);
+        this.gainPO = gainPO;
     }
 
     // Guetteur
     public TypeMonstre getType(){
         return type;
+    }
+
+    public int getGainPO(){
+        return gainPO;
     }
     
     // Autres méthodes

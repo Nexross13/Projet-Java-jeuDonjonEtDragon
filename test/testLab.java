@@ -16,17 +16,17 @@ public class testLab {
     	donjon = donjonChoix;
         personnage.rejointDonjon(donjon);
         AffichageLab.AffichageLaby(donjon);
-        System.out.println("Partie de "+personnage.getNom());
         
         while (99999 == 99999 && !personnage.getJoueurMort()) {
             AffichagePerso.afficherStatsPersonnage(personnage);
-            System.out.println("----------Choisir Action------------");
-            System.out.println("1 --> Se Deplacer");
-            System.out.println("2 --> Consulter Inventaire");
-            System.out.println("3 --> Boire Potion");
-            System.out.println("4 --> Sauvegarder");
-            System.out.println("5 --> Quitter la partie");
-            
+            System.out.println("+----------Choisir Action------------+");
+            System.out.println("|1 --> Se Deplacer                   |");
+            System.out.println("|2 --> Consulter Inventaire          |");
+            System.out.println("|3 --> Boire Potion                  |");
+            System.out.println("|4 --> Sauvegarder                   |");
+            System.out.println("|5 --> Quitter la partie             |");
+            System.out.println("+------------------------------------+");
+            System.out.print("Votre choix: ");
             int choix_action = Clavier.entrerClavierInt();
             
             switch(choix_action) {

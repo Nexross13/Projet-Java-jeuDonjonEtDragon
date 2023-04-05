@@ -14,17 +14,24 @@ public class testJeu {
         String liste[] = repertoire.list();  
         
 		while(true) {
-			System.out.println("\n---------MENU PRINCIPAL---------");
-            System.out.println("\n1 --> Creer une nouvelle Partie");
-            System.out.println("2 --> Charger une Partie");
-            System.out.println("3 --> Quitter le Jeu");
-            
-            int choix_action = Clavier.entrerClavierInt();
-            
+			System.out.println("+---------MENU PRINCIPAL---------+");
+            System.out.println("|1 --> Creer une nouvelle Partie |");
+            System.out.println("|2 --> Charger une Partie        |");
+            System.out.println("|3 --> Quitter le Jeu            |");
+			System.out.println("+--------------------------------+");
+			System.out.print("Votre choix: ");
+			int choix_action = Clavier.entrerClavierInt();
+    
             switch(choix_action) {
             	case 1: 					
-            		System.out.print("Entrer le nom du Heros:");
+            		System.out.print("Entrer le nom du Heros: ");
             		String nomPersonnage = Clavier.entrerClavierString();
+					System.out.println("Bienvenue dans le donjon " + nomPersonnage);
+					try {
+						Thread.sleep(1000);
+					} catch (Exception e) {
+						
+					}
             		Personnage personnage = new Personnage(nomPersonnage);// Création du personnage
 					Donjon donjon = new Donjon(personnage); 
             		System.out.println();
@@ -55,7 +62,7 @@ public class testJeu {
                     		System.out.println((i+1)+" --> "+liste[i]);
                     	}
                     }
-                    
+                    System.out.print("Votre choix: ");
                     int choixPartie = Clavier.entrerClavierInt();
                     choixPartie--;
                     
@@ -69,9 +76,7 @@ public class testJeu {
             		
             	case 3:
             		System.exit(0);
-            		
-            	default:
-            		break;
+					break;
             }
 		}
 	}

@@ -48,22 +48,12 @@ public class Personnage extends EtreVivant implements Serializable{
         return nom;
     }
 
+    public int getNbrPO(){
+        return nbrPO;
+    }
+
     public int getProtection(){
         return degatReduit;
-    }
-
-    public void setDegaReduit(int protection){
-        degatReduit = protection;
-    }
-
-    public String rejointDonjon(Donjon donjon){
-        this.donjon = donjon;
-        return "";
-    }
-
-    public String rejointBataille(Bataille bataille){
-        this.bataille = bataille;
-        return "";
     }
 
     public Bataille getBataille() {
@@ -80,6 +70,20 @@ public class Personnage extends EtreVivant implements Serializable{
 
     public void setCleSortie(boolean cleSortie) {
         this.cleSortie = cleSortie;
+    }
+
+    public void setDegaReduit(int protection){
+        degatReduit = protection;
+    }
+
+    public String rejointDonjon(Donjon donjon){
+        this.donjon = donjon;
+        return "";
+    }
+
+    public String rejointBataille(Bataille bataille){
+        this.bataille = bataille;
+        return "";
     }
 
     public String deplacer(String cardinalite){
@@ -430,18 +434,18 @@ public class Personnage extends EtreVivant implements Serializable{
 	}
 
     public void majStatJoueur(){
+        double ratioPV_PVmax =  ((double) pvActuel / (double)pvMax);    // Mise à jour des stats PV, PVMAX et PAactuel
+        int pvBonus = 0;
+        int paBonus = 0;
     	
     	if (pvActuel == 0) {
             mourir();
     	}
     	
         if (inventaire.getArme() != null) {
-	        	force = inventaire.getArme().getDMG(); // Mise à jour des dégats d'attaque en fonction de l'épée
-	        }
+	        force = inventaire.getArme().getDMG(); // Mise à jour des dégats d'attaque en fonction de l'épée
+	    }
         
-        double ratioPV_PVmax =  ((double) pvActuel / (double)pvMax);    // Mise à jour des stats PV, PVMAX et PAactuel
-        int pvBonus = 0;
-        int paBonus = 0;
         for (int i=0; i<4; i++){
             if (inventaire.getArmures(i) != null){
                 pvBonus = pvBonus + inventaire.getArmures(i).getPV();
@@ -501,6 +505,11 @@ public class Personnage extends EtreVivant implements Serializable{
 				inventaire.getArmures(i).setPA(inventaire.getSauvegardeArmure()[i][1]);		
 			}
 		}
+    }
+
+    public String gagnerPO(Monstre monstre){
+        this.nbrPO = this.nbrPO + monstre.getGainPO();
+        return "";
     }
     
 }

@@ -41,8 +41,7 @@ public class AffichagePerso {
 
     public static void afficherStatsPersonnage(Personnage joueur) {
         joueur.majStatJoueur();
-        System.out.println("Stats de "+joueur.getNom()+": DMG: "+joueur.getForce()+" | PV: "+joueur.getPvActuel()+"/"+joueur.getPvMax()+" | PA: "+joueur.getProtection());
-       
+        System.out.println("Stats de "+joueur.getNom()+": DMG: "+joueur.getForce()+" | PV: "+joueur.getPvActuel()+"/"+joueur.getPvMax()+" | PA: "+joueur.getProtection() + " | PO: "+ joueur.getNbrPO());
     }
 
 	public static void afficherDeplacement(Personnage joueur, Donjon donjon){
@@ -53,8 +52,27 @@ public class AffichagePerso {
 		System.out.println("E - est ");
 	
 		String cardinalite = Clavier.entrerClavierString();
-		System.out.println(joueur.deplacer(cardinalite));
+		joueur.deplacer(cardinalite);
+		System.out.print("Vous entrez dans une pièce");
+
+		try {
+			Thread.sleep(500); // Pause le programme pendant 1 seconde
+			System.out.print(" .");
+			Thread.sleep(500); 
+			System.out.print(".");
+			Thread.sleep(500); 
+			System.out.print(".");
+			Thread.sleep(1000); 
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+		System.out.println(" qui contient un "+ donjon.getLabyrintheActuel()[donjon.getPositionJoueur()].getType() + "!");
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			
+		}
 		AffichageLab.AffichageLaby(donjon);
-		System.out.println("Le joueur est dans la salle numero: " + donjon.getPositionJoueur() + ", cette salle est de type: " + donjon.getLabyrintheActuel()[donjon.getPositionJoueur()].getType());
 	}
 }
