@@ -12,10 +12,9 @@ public enum TypeArme {
 	private int tempDmg;
 	private String nomArme;
 	
-	TypeArme(int DMG_min, int dmgMax , int DMG, int temp, String nomArme){
+	TypeArme(int dmgMin, int dmgMax , int dmg, int tempDmg, String nomArme){
 		this.dmgMax = dmgMax;
-		this.dmgMin = DMG_min;
-		this.dmg = 55;
+		this.dmgMin = dmgMin;
 		this.nomArme = nomArme;
 	}
 	
@@ -32,8 +31,8 @@ public enum TypeArme {
 		this.dmg = tempDmg;
 	}
 	
-	public void setDMG(int DMG) {
-		this.dmg = DMG;
+	public void setDMG(int dmg) {
+		this.dmg = dmg;
 	}
 	
 	public String getNomArme() {

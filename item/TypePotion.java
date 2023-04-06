@@ -7,8 +7,8 @@ public enum TypePotion {
 	private int pourcentSoin;
 	private String nomPotion;
 	
-	TypePotion(int Pourcent_Soin, String nomPotion) {
-        this.pourcentSoin = Pourcent_Soin;	
+	TypePotion(int pourcent_Soin, String nomPotion) {
+        this.pourcentSoin = pourcent_Soin;	
 		this.nomPotion = nomPotion;	
 	}
 	

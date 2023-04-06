@@ -45,14 +45,29 @@ public class AffichagePerso {
     }
 
 	public static void afficherDeplacement(Personnage joueur, Donjon donjon){
-		System.out.println("Votre cardinalite: ");
-		System.out.println("N - nord ");
-		System.out.println("S - sud ");
-		System.out.println("O - ouest ");
-		System.out.println("E - est ");
-	
+		System.out.println("+---Votre cardinalite---+");
+		System.out.println("|N - nord               |");
+		System.out.println("|S - sud                |");
+		System.out.println("|O - ouest              |");
+		System.out.println("|E - est                |");
+		System.out.println("+-----------------------+");
+		System.out.print("Votre choix: ");
 		String cardinalite = Clavier.entrerClavierString();
-		joueur.deplacer(cardinalite);
+		if(!joueur.deplacer(cardinalite)){
+			try {
+				System.out.println("Vous ne pouvez pas vous déplacer ici car il y a un mur");
+				Thread.sleep(2000);
+			} catch (Exception e) {
+			}
+		}
+		AffichageLab.AffichageLaby(donjon);
+		try {
+			Thread.sleep(3500);
+		} catch (Exception e) {
+		}
+	}
+
+	public static void phrasePiece(Donjon donjon){
 		System.out.print("Vous entrez dans une pièce");
 
 		try {
@@ -69,10 +84,9 @@ public class AffichagePerso {
 
 		System.out.println(" qui contient un "+ donjon.getLabyrintheActuel()[donjon.getPositionJoueur()].getType() + "!");
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			
 		}
-		AffichageLab.AffichageLaby(donjon);
 	}
 }

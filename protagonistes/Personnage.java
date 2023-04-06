@@ -17,7 +17,6 @@ import item.TypeArme;
 import item.TypeArmure;
 import item.TypePotion;
 import pnj.Forgeron;
-import pnj.PersonnageNonJoueur;
 import terrain.Cardinalite;
 import terrain.Donjon;
 import terrain.Piece;
@@ -86,24 +85,24 @@ public class Personnage extends EtreVivant implements Serializable{
         return "";
     }
 
-    public String deplacer(String cardinalite){
-        String texte = "";
+    public boolean deplacer(String cardinalite){
+        boolean possible = true;
         switch (cardinalite) {
             case "N":
-                texte = donjon.changerPositionJoueur(Cardinalite.NORD);
+                possible = donjon.changerPositionJoueur(Cardinalite.NORD);
                 break;
             case "O":
-                texte = donjon.changerPositionJoueur(Cardinalite.OUEST);
+                possible = donjon.changerPositionJoueur(Cardinalite.OUEST);
                 break;
             case "E":
-                texte = donjon.changerPositionJoueur(Cardinalite.EST);
+                possible = donjon.changerPositionJoueur(Cardinalite.EST);
                 break;
             case "S":
-                texte = donjon.changerPositionJoueur(Cardinalite.SUD);
+                possible = donjon.changerPositionJoueur(Cardinalite.SUD);
                 break;
         }
         entreePiece(donjon.getLabyrintheActuel()[donjon.getPositionJoueur()]);
-        return texte;
+        return possible;
     }
 
     public String entreePiece(Piece piece){
@@ -266,7 +265,7 @@ public class Personnage extends EtreVivant implements Serializable{
     
 
     
-    public void sEquiperArmure(TypeArmure armure) {
+    public String sEquiperArmure(TypeArmure armure) {
     		String nomArmure = armure.getNomArmure();
 			
 						
@@ -286,7 +285,7 @@ public class Personnage extends EtreVivant implements Serializable{
 						inventaire.ajouterArmure(armure,position); // On remplace les anciennes bottes par les nouvelles
 					}
 				}
-				return;	
+				return"";	
 			}
 				
 			if(nomArmure.contains("Jambiere")) {
@@ -305,7 +304,7 @@ public class Personnage extends EtreVivant implements Serializable{
 						inventaire.ajouterArmure(armure,position); 		
 					}
 				}
-				return;		
+				return"";		
 			}
 			
 			if(nomArmure.contains("Plastron")) {			
@@ -324,7 +323,7 @@ public class Personnage extends EtreVivant implements Serializable{
 						inventaire.ajouterArmure(armure,position); 		
 					}
 				}
-				return;		
+				return"";		
 			}
 						
 			if(nomArmure.contains("Casque")) {
@@ -343,38 +342,38 @@ public class Personnage extends EtreVivant implements Serializable{
 						inventaire.ajouterArmure(armure,position); 		
 					}
 				}
-				return;		
+				return"";		
 			}
 				
 			else {
 				System.out.println("Erreur, le joueur ne peut pas s'equiper");
-				return;	
+				return"";	
 			}
 		}
 	
 
 	
-	public void sEquiperArme(TypeArme arme_tresor) {
+	public String sEquiperArme(TypeArme arme) {
 		
 		if (inventaire.getArme() == null) { 	// Si l'utilisateur ne possede pas d'épee, on l'equipe automatiquement
-			inventaire.ajouterArme(arme_tresor);
-			System.out.println("Le joueur s'arme avec une "+arme_tresor.getNomArme()); 
-			return;
+			inventaire.ajouterArme(arme);
+			System.out.println("Le joueur s'arme avec une "+arme.getNomArme()); 
 		}
 		else {
-			System.out.println("Remplacer "+arme_tresor.getNomArme()+" (DMG:"+arme_tresor.getDMGTemp()+") ==> "+inventaire.getArme().getNomArme()+" (DMG:"+inventaire.getArme().getDMG()+")? Oui(O) ou Non(N)"); // On demande à l'utilisateur s'il veut remplacer la nouvelle Epée par une autre
+			System.out.println("Remplacer "+arme.getNomArme()+" (DMG:"+arme.getDMGTemp()+") ==> "+inventaire.getArme().getNomArme()+" (DMG:"+inventaire.getArme().getDMG()+")? Oui(O) ou Non(N)"); // On demande à l'utilisateur s'il veut remplacer la nouvelle Epée par une autre
 		
 			String choix = Clavier.entrerClavierString();		
 			if(choix.equalsIgnoreCase("Oui") || choix.equalsIgnoreCase("O")) {
 				
 				System.out.println("Remplacement effectue");
-				inventaire.ajouterArme(arme_tresor); // On remplace l'anciennce potion par la nouvelle		
+				inventaire.ajouterArme(arme); // On remplace l'anciennce potion par la nouvelle		
 				
 			}
 		}
+        return"";
 	}
 	
-	public void sEquiperPotion(TypePotion potion) {
+	public String sEquiperPotion(TypePotion potion) {
 		if (inventaire.getPotions().size() < 10) {  // Si le nombre de potion stocket est inferieur à 10, on stock directement la potion dans l'inventaire
 			inventaire.ajouterPotion(potion);
 			System.out.println("Recu: "+potion.getNomPotion());
@@ -396,9 +395,10 @@ public class Personnage extends EtreVivant implements Serializable{
 				inventaire.getPotions().set(choix_potion-1, potion); // On remplace l'anciennce potion par la nouvelle		
 			}
 		}	
+        return"";
 	}
 	
-	public void boirePotion() {
+	public String boirePotion() {
 		
 		if (inventaire.getPotions().size() !=0 || pvActuel != pvMax) {
 			System.out.println("Quelle potion souhaitez vous boire?");
@@ -430,6 +430,7 @@ public class Personnage extends EtreVivant implements Serializable{
 		else {
 			System.out.println("Impossible d'utiliser de Potion");
 		}
+        return"";
         
 	}
 
@@ -459,7 +460,7 @@ public class Personnage extends EtreVivant implements Serializable{
     }
     
     public void sauvegarder(String s) {
-    	String chemin = cheminStockage+s;
+    	String chemin = cheminStockage+"Partie de "+s;
         try {
             ObjectOutputStream save = new ObjectOutputStream(new FileOutputStream(chemin));
             save.writeObject(this); //Où "this" est l'objet donjon
@@ -509,6 +510,11 @@ public class Personnage extends EtreVivant implements Serializable{
 
     public String gagnerPO(Monstre monstre){
         this.nbrPO = this.nbrPO + monstre.getGainPO();
+        return "";
+    }
+
+    public String achatItem(int cout){
+        this.nbrPO = this.nbrPO - cout;
         return "";
     }
     

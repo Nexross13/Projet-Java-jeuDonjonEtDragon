@@ -1,0 +1,381 @@
+<diagram program="umletino" version="15.1"><zoom_level>6</zoom_level><help_text></help_text><element><id>UMLClass</id><coordinates><x>708</x><y>492</y><w>168</w><h>378</h></coordinates><panel_attributes>Package: protagoniste
+PERSONNAGE extends ETRE VIVANT
+--
+-nom: String
+-nbrPO: int
+-bataille Bataille
+-donjon Donjon
+-inventaire Inventaire
+-degatReduit: int 
+-cleSortie: boolean 
+-joueurMort: boolean
+-cheminStockage: String 
+--
++Personnage(nom: String )
++getNom(): String
++getNbrPO(): int
++getBataille(): Bataille
++getDonjon(): Donjon
++getInventaire(): Inventaire
++getProtection(): int 
++getJoueurMort(): boolean
++setDegaReduit(protection: int): void
++setCleSortie(boolean cleSortie): void
++rejointDonjon(Donjon donjon): String
++rejointBataille(Bataille bataille): String
++deplacer(cardinalite: String): boolean
++entreePiece(piece: Piece): String
++attaquer(monstre: Monstre): String
++actionCombat(numAction: int): String
++fuir(): String
++subirAttaque(degat: int): String
++mourir(): void
++sEquiperArmure(armure: TypeArmure): String
++sEquiperArme(arme: TypeArme): String
++sEquiperPotion(potion: TypePotion): String
++boirePotion(): String
++majStatJoueur(): void
++sauvegarder(s: String): void
++charger(s: String): Personnage
++chargerStats(): void
++gagnerPO(monstre: Monstre): String
++achatItem(cout: int ): String
+
+
+
+
+
+
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>894</x><y>630</y><w>126</w><h>90</h></coordinates><panel_attributes>&lt;&lt;EtreVivant&gt;&gt;
+Package::protagonistes
+--
+#pvMax: int
+#pvActuel: int
+#force: int
+--
++EtreVivant(pvMax: int, force: int): 
++getPvMax(): int
++getPvActuel(): int
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>942</x><y>762</y><w>162</w><h>120</h></coordinates><panel_attributes>&lt;&lt;Monstre&gt;&gt;
+Package::protagonistes
+extends EtreVIvant
+--
+#type: TypeMonstre
+#gainPO: int
+--
++Monstre(pvMax: int, force: int, gainPO: int): 
++getType(): TypeMonstre
++getGainPO(): int
++attaquer(personnage: Personnage): String
++subirAttaque(degat: int): String
++mourir(): String
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>762</x><y>888</y><w>162</w><h>108</h></coordinates><panel_attributes>&lt;&lt;MonstreFacile&gt;&gt;
+Package::protagonistes
+extends Monstre
+--
+-poBorne: int[] 
+-pvBorne: int[] 
+-forceBorne: int[] 
+-type: TypeMonstre 
+--
++MonstreFacile(etage: int): 
++getType(): TypeMonstre
++attaquer(personnage: Personnage): String
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>864</x><y>1014</y><w>156</w><h>108</h></coordinates><panel_attributes>&lt;&lt;MonstreIntermediaire&gt;&gt;
+Package::protagonistes
+extends Monstre
+--
+-poBorne: int[] 
+-pvBorne: int[] 
+-forceBorne: int[] 
+-type: TypeMonstre 
+--
++MonstreIntermediaire(etage: int): 
++getType(): TypeMonstre
++attaquer(personnage: Personnage): String
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1140</x><y>894</y><w>156</w><h>108</h></coordinates><panel_attributes>&lt;&lt;MonstreBoss&gt;&gt;
+Package::protagonistes
+extends Monstre
+--
+-type: TypeMonstre 
+--
++MonstreBoss(etage: int): 
++getType(): TypeMonstre
++attaquer(personnage: Personnage): String
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1026</x><y>1014</y><w>156</w><h>108</h></coordinates><panel_attributes>&lt;&lt;MonstreDifficile&gt;&gt;
+Package::protagonistes
+extends Monstre
+--
+-poBorne: int[] 
+-pvBorne: int[] 
+-forceBorne: int[] 
+-type: TypeMonstre 
+--
++MonstreDifficile(etage: int): 
++getType(): TypeMonstre
++attaquer(personnage: Personnage): String
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>540</x><y>6</y><w>84</w><h>96</h></coordinates><panel_attributes>&lt;&lt;enum: Cardinalite&gt;&gt;
+Package::terrain
+--
++NORD,
++NORD_EST,
++EST,
++SUD_EST,
++SUD,
++SUD_OUEST,
++OUEST,
++NORD_OUEST
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>684</x><y>258</y><w>216</w><h>192</h></coordinates><panel_attributes>&lt;&lt;Donjon&gt;&gt;
+Package::terrain
+--
+-labyrintheActuel: Piece[] 
+-labyrintheModele: String[] 
+-cardinaliteImpossiblesLab: Cardinalite[] 
+-etageTermine: boolean 
+-positionJoueur: int 
+-anciennePosition: int 
+-etage: int 
+-joueur: Personnage
+--
++Donjon(personnage: Personnage)
++getEtage(): int 
++getLabyrintheActuel(): Piece[] 
++getPositionJoueur(): int
++getAnciennePosition(): int 
++getJoueur(): Personnage 
++creerLabyrinthe(): String 
++changerPositionJoueur(deplacement: Cardinalite): boolean 
++personnageFuit(): String 
++enregistrerPiece(monstre: Monstre): String 
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>660</x><y>0</y><w>258</w><h>210</h></coordinates><panel_attributes>&lt;&lt;Piece&gt;&gt;
+Package::terrain
+--
+-idPiece: int
+-estDecouverte: boolean 
+-estFinie: boolean 
+-cardinalitesImpossibles: Cardinalite 
+-type: TypePiece 
+-monstre: Monstre 
+-forgeron: Forgeron 
+--
++Piece(idPiece: int , cardinalitesImpossibles: Cardinalite , +getIdPiece(): int
++getEstDecouverte(): boolean 
++getEstFinie(): boolean 
++getCardinalitesImpossibles(): Cardinalite 
++getType(): TypePiece
++getMonstre(): Monstre 
++getForgeron(): Forgeron
++setType(type: TypePiece ): void 
++setEstDecouverte(estDecouverte: boolean ): void 
++setEstFinie(estFinie: boolean ): void 
++setMonstre(monstre: Monstre): void
++setForgeron(forgeron: Forgeron ): void 
+ </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>948</x><y>54</y><w>102</w><h>114</h></coordinates><panel_attributes>&lt;&lt;enum: TypePiece&gt;&gt;
+Package::terrain
+--
++HOSTILE_FACILE,
++HOSTILE_INTERMEDIAIRE,
++HOSTILE_DIFFICILE,
++HOSTILE_BOSS,
++MARCHANT,
++TRESOR,
++FORGE,
++ENTREE,
++SORTIE,
++NEUTRE
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>390</x><y>666</y><w>222</w><h>180</h></coordinates><panel_attributes>&lt;&lt;Inventaire&gt;&gt;
+Package::inventaire
+--
+-armuresStock: TypeArmure[] 
+-sauvegardeStatsArmure: int[][] 
+-arme: TypeArme 
+-sauvegardeStatsArme: int 
+-potionsStock: ArrayList&lt;TypePotion&gt; 
+-proprietaire: Personnage
+--
++Inventaire(personnage: Personnage)
++getArmures(i: int ): TypeArmure 
++getArmuresStock(): TypeArmure[] 
++getArme(): TypeArme 
++getPotions(): ArrayList&lt;TypePotion&gt; 
++getSauvegardeArmure(): int[][] 
++getSauvegardeArme(): int 
++ajouterArmure(typeArmure: TypeArmure, position: int ): void 
++ajouterArme(typeArme: TypeArme ): void 
++ajouterPotion(typePotion: TypePotion ): void 
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>246</x><y>906</y><w>402</w><h>78</h></coordinates><panel_attributes>&lt;&lt;Tresor&gt;&gt;
+Package::item
+--
++armureRareteAleatoire(): TypeArmure 
++armureTypeAleatoire(casque: TypeArmure , plastron: TypeArmure , jambiere: TypeArmure , botte: ): TypeArmure 
++armeAleatoire(): TypeArme 
++potionAleatoire(): TypePotion 
++Tresor(proprietaire: Personnage): void 
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>72</x><y>1014</y><w>282</w><h>168</h></coordinates><panel_attributes>&lt;&lt;enum: TypeArme&gt;&gt;
+Package::item
+--
+EPEE_COMMUN
+EPEE_RARE
+EPEE_LEGENDAIRE
+-dmgMin: int 
+-dmgMax: int 
+-dmg: int 
+-tempDmg: int 
+-nomArme: String 
+--
+TypeArme(dmgMin: int , dmgMax: int  , dmg:, tempDmg: int  ,  nomArme: String)
++randomDMG(): TypeArme 
++getDMG(): int 
++setDMG(): void 
++setDMG(int dmg): void 
++getNomArme(): String 
++getDMGTemp(): int 
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>384</x><y>1014</y><w>312</w><h>294</h></coordinates><panel_attributes>&lt;&lt;enum: TypeArmure&gt;&gt;
+Package::item
+--
+CASQUE_COMMUN
+CASQUE_RARE
+CASQUE_LEGENDAIRE
+PLASTRON_COMMUN
+PLASTRON_RARE
+PLASTRON_LEGENDAIRE
+JAMBIERE_COMMUN
+JAMBIERE_RARE
+JAMBIERE_LEGENDAIRE
+BOTTE_COMMUN
+BOTTE_RARE
+BOTTE_LEGENDAIRE
+-rangePV: int 
+-rangePA: int 
+-tempPV: int 
+-tempPA: int 
+-nomArmure: String 
+-PV: int 
+-PA: int 
+--
+TypeArmure(rangePV: int , rangePA: int , tempPV: int , tempPA: int , nomArmure: String )
++getPV(): int 
++getPA(): int 
++getTempPV(): int 
++getTempPA(): int 
++getNomArmure(): String 
++setStats(): void
++setPV(PV: int): void 
++setPA(PA: int): void 
++randomStats(): TypeArmure
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>12</x><y>894</y><w>180</w><h>96</h></coordinates><panel_attributes>&lt;&lt;enum: TypePotion&gt;&gt;
+Package::item
+--
+PETITE_POTION
+MAX_POTION
+-pourcentSoin: int 
+-nomPotion: String 
+--
+TypePotion(Pourcent_Soin: int , nomPotion: String )
++getPourcent_Soin(): int 
++getPourcent_Soin(): int
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>942</x><y>486</y><w>198</w><h>126</h></coordinates><panel_attributes>&lt;&lt;Bataille&gt;&gt;
+Package::affrontement
+--
+-personnage: Personnage 
+-monstre: Monstre
+-tour: int 
+-personnageContinuer: boolean 
+-personnageGagner: 
+--
++Bataille(personnage: Personnage, monstre: Monstre )
++getPersonnage(): Personnage 
++getMonstre(): Monstre 
++combat(): String 
++fuir(): void 
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>42</x><y>336</y><w>282</w><h>54</h></coordinates><panel_attributes>&lt;&lt;AffichageForge&gt;&gt;
+Package::affichage
+--
++actionEntrer(donjon: Donjon, forgeron: Forgeron): void
++choixEquipement(type: String , donjon: Donjon ,  forgeron: Forgeron): void 
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>42</x><y>486</y><w>144</w><h>42</h></coordinates><panel_attributes>&lt;&lt;AffichageLab&gt;&gt;
+Package::affichage
+--
++AffichageLaby(donjon: Donjon): void
+
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>42</x><y>402</y><w>234</w><h>66</h></coordinates><panel_attributes>&lt;&lt;AffichagePerso&gt;&gt;
+Package::affichage
+--
++afficherInventairePersonnage(joueur: Personnage): void
++afficherStatsPersonnage(joueur: Personnage ): void 
++afficherDeplacement(joueur: Personnage, donjon: Donjon): void
++phrasePiece(donjon: Donjon): void
+
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>42</x><y>540</y><w>120</w><h>48</h></coordinates><panel_attributes>&lt;&lt;Clavier&gt;&gt;
+Package::affichage
+--
++entrerClavierInt(): int 
++entrerClavierString(): String 
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>66</x><y>708</y><w>84</w><h>42</h></coordinates><panel_attributes>&lt;&lt;testJeu&gt;&gt;
+Package::test
+--
++main(String[] args)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>630</y><w>222</w><h>66</h></coordinates><panel_attributes>&lt;&lt;testLab&gt;&gt;
+Package::test
+--
+donjon: Donjon 
+personnage: Personnage 
+--
++main(personnageChoix: Personnage, donjonChoix: Donjon)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>372</x><y>138</y><w>180</w><h>96</h></coordinates><panel_attributes>&lt;&lt;Forgeron&gt;&gt;
+Package::pnj
+--
+-type: TypePersonnageNonJoueur 
+--
++Forgeron(position: int, donjon: Donjon): 
++reparerArmure(armure: TypeArmure): String 
++reparerArme(arme: TypeArme): String 
++ameliorerArmure(armure: TypeArmure): String 
++ameliorerArme(arme: TypeArme): String 
++verifPO(cout: int): boolean 
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>366</x><y>258</y><w>192</w><h>96</h></coordinates><panel_attributes>&lt;&lt;PersonnageNonJoueur &gt;&gt;
+Package::pnj
+--
+#type: TypePersonnageNonJoueur 
+#position: int 
+#donjon: Donjon 
+--
++PersonnageNonJoueur (position: int, donjon: Donjon): 
++getPosition(): int 
++getType(): TypePersonnageNonJoueur 
++getDonjon(): Donjon 
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>390</x><y>378</y><w>138</w><h>42</h></coordinates><panel_attributes>&lt;&lt;enum: TypePersonnageNonJoueur&gt;&gt;
+Package::pnj
+--
+MARCHANT
+FORGERON
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>792</x><y>444</y><w>18</w><h>60</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>792</x><y>204</y><w>18</w><h>66</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>912</x><y>102</y><w>48</w><h>24</h></coordinates><panel_attributes></panel_attributes><additional_attributes>60;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>618</x><y>42</y><w>54</w><h>24</h></coordinates><panel_attributes></panel_attributes><additional_attributes>70;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>870</x><y>540</y><w>84</w><h>24</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;20;120;20</additional_attributes></element><element><id>Relation</id><coordinates><x>870</x><y>660</y><w>36</w><h>24</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;20;40;20</additional_attributes></element><element><id>Relation</id><coordinates><x>954</x><y>714</y><w>18</w><h>60</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>1062</x><y>606</y><w>18</w><h>168</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;10;260</additional_attributes></element><element><id>Relation</id><coordinates><x>918</x><y>876</y><w>78</w><h>78</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;110;110;10</additional_attributes></element><element><id>Relation</id><coordinates><x>936</x><y>876</y><w>90</w><h>150</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;230;130;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1038</x><y>876</y><w>72</w><h>150</h></coordinates><panel_attributes></panel_attributes><additional_attributes>100;230;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1062</x><y>876</y><w>90</w><h>84</h></coordinates><panel_attributes></panel_attributes><additional_attributes>130;120;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>456</x><y>228</y><w>18</w><h>42</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>456</x><y>348</y><w>18</w><h>42</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>606</x><y>750</y><w>114</w><h>24</h></coordinates><panel_attributes></panel_attributes><additional_attributes>170;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>546</x><y>978</y><w>18</w><h>48</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;60;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>288</x><y>978</y><w>18</w><h>48</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;60;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>186</x><y>936</y><w>72</w><h>24</h></coordinates><panel_attributes></panel_attributes><additional_attributes>100;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>558</x><y>132</y><w>114</w><h>186</h></coordinates><panel_attributes></panel_attributes><additional_attributes>170;10;90;10;90;290;10;290</additional_attributes></element><element><id>Relation</id><coordinates><x>642</x><y>864</y><w>90</w><h>96</h></coordinates><panel_attributes></panel_attributes><additional_attributes>130;10;10;140</additional_attributes></element></diagram>

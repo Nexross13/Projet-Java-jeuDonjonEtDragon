@@ -2,6 +2,7 @@ package affrontement;
 
 import java.io.Serializable;
 
+import item.Tresor;
 import affichage.Clavier;
 import protagonistes.Monstre;
 import protagonistes.Personnage;
@@ -68,7 +69,7 @@ public class Bataille implements Serializable{
             if(monstre.getType() == TypeMonstre.BOSS){
                 personnage.setCleSortie(true);
                 personnageGagner = true;
-                personnage.getInventaire().Tresor();
+                Tresor.Tresor(personnage);
                 personnage.getDonjon().getLabyrintheActuel()[personnage.getDonjon().getPositionJoueur()].setEstFinie(true);
                 try {
                     Thread.sleep(3000); // Pause le programme pendant 3 secondes
@@ -78,7 +79,7 @@ public class Bataille implements Serializable{
             } else {
                 // Le Monstre est mort
                 personnageGagner = true;
-                personnage.getInventaire().Tresor();
+                Tresor.Tresor(personnage);
                 personnage.gagnerPO(this.monstre);
                 personnage.getDonjon().getLabyrintheActuel()[personnage.getDonjon().getPositionJoueur()].setEstFinie(true); // Permet de rendre la piece en type NEUTRE quand le bataille est gagnée
                 try {

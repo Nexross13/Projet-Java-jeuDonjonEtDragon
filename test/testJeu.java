@@ -44,7 +44,7 @@ public class testJeu {
                     if (liste != null) {         
                         for (int i = 0; i < liste.length; i++) {
                         	
-	                     	if (liste[i].contains("Partie De")) {
+	                     	if (liste[i].contains("Partie de")) {
 	                       		nbPartie++;
                         	}
                         }
@@ -58,7 +58,7 @@ public class testJeu {
                     System.out.println("Choisir une partie a charger:");
                     
                     for (int i = 0; i < liste.length; i++) {
-                    	if (liste[i].contains("Partie De")) {
+                    	if (liste[i].contains("Partie de")) {
                     		System.out.println((i+1)+" --> "+liste[i]);
                     	}
                     }
@@ -66,7 +66,7 @@ public class testJeu {
                     int choixPartie = Clavier.entrerClavierInt();
                     choixPartie--;
                     
-                    if (liste[choixPartie].contains("Partie De")) {
+                    if (liste[choixPartie].contains("Partie de")) {
                     	System.out.println(liste[choixPartie]);
                     	Personnage persoCharger = Personnage.charger(liste[choixPartie]);
                     	testLab.main(persoCharger,persoCharger.getDonjon());

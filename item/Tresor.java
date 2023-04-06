@@ -21,21 +21,21 @@ public class Tresor {
 	}
 	
 	// Permet de définir le taux de drop de la pièce d'armure
-	private static TypeArmure armureTypeAleatoire(TypeArmure Casque, TypeArmure Plastron, TypeArmure Jambiere, TypeArmure Botte) {
+	private static TypeArmure armureTypeAleatoire(TypeArmure casque, TypeArmure plastron, TypeArmure jambiere, TypeArmure botte) {
 			
 			int chance = (int) (Math.random() * 4);
 			
 			if (chance < 1) {	   // 25% Casque
-				return Casque;
+				return casque;
 			}
 			else if (chance < 2) { // 25% Plastron
-				return Plastron;
+				return plastron;
 			}
 			else if (chance < 3) { // 25% Jambiere
-				return Jambiere;
+				return jambiere;
 			}
 			else {   			   // 25% Botte
-				return Botte;
+				return botte;
 			}
 		}
 		

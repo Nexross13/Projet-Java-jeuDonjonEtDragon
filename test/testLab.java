@@ -55,22 +55,4 @@ public class testLab {
             System.out.println();
         }
     }
-
-    public static void menuDeplacer(){
-        System.out.println("Votre cardinalite: ");
-            System.out.println("N - nord ");
-            System.out.println("S - sud ");
-            System.out.println("O - ouest ");
-            System.out.println("E - est ");
-        
-            String cardinalite = Clavier.entrerClavierString();
-            System.out.println(personnage.deplacer(cardinalite));
-            AffichageLab.AffichageLaby(donjon);
-            System.out.println("Le joueur est dans la salle numero: " + donjon.getPositionJoueur() + ", cette salle est de type: " + donjon.getLabyrintheActuel()[donjon.getPositionJoueur()].getType());
-            
-            
-    }
 }
-//afficherInventairePersonnage(Personnage joueur)
-//afficherStatsPersonnage(Personnage joueur)
-//boitePotion

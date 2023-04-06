@@ -25,8 +25,8 @@ public enum TypeArmure {
 	private int tempPV;
 	private int tempPA;
 	private String nomArmure;
-	private int PV=20;
-	private int PA=20;
+	private int PV;
+	private int PA;
 	
 	// Constructeur
 	TypeArmure(int rangePV, int rangePA, int tempPV, int tempPA, String nomArmure){
