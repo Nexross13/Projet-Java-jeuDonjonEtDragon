@@ -1,12 +1,12 @@
-<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLGeneric</id><coordinates><x>120</x><y>0</y><w>100</w><h>30</h></coordinates><panel_attributes>_Joueur_
-bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>490</x><y>0</y><w>100</w><h>30</h></coordinates><panel_attributes>_Ordinateur_
-bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>160</x><y>20</y><w>30</w><h>760</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;740</additional_attributes></element><element><id>Relation</id><coordinates><x>530</x><y>20</y><w>30</w><h>760</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;740</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>160</x><y>40</y><w>20</w><h>670</h></coordinates><panel_attributes>
-bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>530</x><y>40</y><w>20</w><h>660</h></coordinates><panel_attributes>
-bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>170</x><y>30</y><w>380</w><h>50</h></coordinates><panel_attributes>Lancement du jeu
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram n</help_text><element><id>UMLGeneric</id><coordinates><x>90</x><y>0</y><w>100</w><h>30</h></coordinates><panel_attributes>_Joueur_
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>460</x><y>0</y><w>100</w><h>30</h></coordinates><panel_attributes>_Ordinateur_
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>130</x><y>20</y><w>30</w><h>1200</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;1180</additional_attributes></element><element><id>Relation</id><coordinates><x>500</x><y>20</y><w>30</w><h>1220</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;1200</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>130</x><y>40</y><w>20</w><h>800</h></coordinates><panel_attributes>
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>500</x><y>40</y><w>20</w><h>1070</h></coordinates><panel_attributes>
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>140</x><y>30</y><w>380</w><h>50</h></coordinates><panel_attributes>Lancement du jeu
 
-lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>360;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>170</x><y>60</y><w>380</w><h>50</h></coordinates><panel_attributes>Afficher le menu de démarrage
+lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>360;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>140</x><y>60</y><w>380</w><h>50</h></coordinates><panel_attributes>Afficher le menu de démarrage
 
-lt=-&gt;&gt;&gt;</panel_attributes><additional_attributes>360;20;10;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>30</x><y>90</y><w>710</w><h>300</h></coordinates><panel_attributes>Choix du joueur
+lt=-&gt;&gt;&gt;</panel_attributes><additional_attributes>360;20;10;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>0</x><y>90</y><w>710</w><h>300</h></coordinates><panel_attributes>Choix du joueur
 --
 **1 - Créer un personnage**
 
@@ -27,27 +27,79 @@ lt=-&gt;&gt;&gt;</panel_attributes><additional_attributes>360;20;10;20</addition
 
 
 
--.</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>170</x><y>130</y><w>380</w><h>50</h></coordinates><panel_attributes>Demande le nom du personnage
+-.</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>140</x><y>130</y><w>380</w><h>50</h></coordinates><panel_attributes>Demande le nom du personnage
 
-lt=-&gt;&gt;&gt;</panel_attributes><additional_attributes>360;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>170</x><y>160</y><w>380</w><h>50</h></coordinates><panel_attributes>Saisit le nom du personnage
+lt=-&gt;&gt;&gt;</panel_attributes><additional_attributes>360;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>140</x><y>160</y><w>380</w><h>50</h></coordinates><panel_attributes>Saisit le nom du personnage
 
-lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>360;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>170</x><y>230</y><w>380</w><h>50</h></coordinates><panel_attributes>Demande la sauvegarde
+lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>360;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>140</x><y>230</y><w>380</w><h>50</h></coordinates><panel_attributes>Demande la sauvegarde
 
-lt=-&gt;&gt;&gt;</panel_attributes><additional_attributes>360;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>170</x><y>260</y><w>380</w><h>50</h></coordinates><panel_attributes>Saisit le numéro de la sauvegarde
+lt=-&gt;&gt;&gt;</panel_attributes><additional_attributes>360;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>140</x><y>260</y><w>380</w><h>50</h></coordinates><panel_attributes>Saisit le numéro de la sauvegarde
 
-lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>360;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>540</x><y>300</y><w>200</w><h>80</h></coordinates><panel_attributes>Charge la sauvegarde
+lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>360;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>510</x><y>300</y><w>200</w><h>80</h></coordinates><panel_attributes>Charge la sauvegarde
 
-lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;60;60;60;60;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>170</x><y>400</y><w>380</w><h>50</h></coordinates><panel_attributes>Afficher le labyrinthe
+lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;60;60;60;60;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>140</x><y>400</y><w>380</w><h>50</h></coordinates><panel_attributes>Afficher le labyrinthe
 
-lt=-&gt;&gt;&gt;</panel_attributes><additional_attributes>360;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>170</x><y>430</y><w>380</w><h>50</h></coordinates><panel_attributes>Afficher le menu d'actions
+lt=-&gt;&gt;&gt;</panel_attributes><additional_attributes>360;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>140</x><y>430</y><w>380</w><h>50</h></coordinates><panel_attributes>Afficher le menu d'actions
 
-lt=-&gt;&gt;&gt;</panel_attributes><additional_attributes>360;20;10;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>30</x><y>480</y><w>710</w><h>250</h></coordinates><panel_attributes>Choix du joueur
+lt=-&gt;&gt;&gt;</panel_attributes><additional_attributes>360;20;10;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>0</x><y>480</y><w>740</w><h>740</h></coordinates><panel_attributes>loop
 --
-with inner frames
--.
--.
--.
+1 - Se déplacer
 
 
 
--.</panel_attributes><additional_attributes></additional_attributes></element></diagram>
+
+
+
+
+
+
+-.
+2 - Voir inventaire
+
+
+
+
+-.
+3 - Boire une potion
+
+
+
+
+
+
+
+
+
+
+-.
+4 - Sauvegarder la partie
+
+
+
+
+
+
+-.
+5 - Quitter la partie
+
+
+
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>140</x><y>520</y><w>380</w><h>50</h></coordinates><panel_attributes>Demande la cardinalité
+
+lt=-&gt;&gt;&gt;</panel_attributes><additional_attributes>360;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>140</x><y>550</y><w>380</w><h>50</h></coordinates><panel_attributes>Saisit la cardinalité
+
+lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>360;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>510</x><y>570</y><w>270</w><h>80</h></coordinates><panel_attributes>Change la position du personnage
+
+lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;60;60;60;60;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>510</x><y>400</y><w>270</w><h>270</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;250;10;250;250;10;250</additional_attributes></element><element><id>Relation</id><coordinates><x>140</x><y>680</y><w>380</w><h>50</h></coordinates><panel_attributes>Affiche l'inventaire complet du personnage
+
+lt=-&gt;&gt;&gt;</panel_attributes><additional_attributes>360;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>140</x><y>760</y><w>380</w><h>50</h></coordinates><panel_attributes>Affiche les potions du joueur
+
+lt=-&gt;&gt;&gt;</panel_attributes><additional_attributes>360;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>140</x><y>790</y><w>380</w><h>50</h></coordinates><panel_attributes>Saisit la potion de son choix
+
+lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>360;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>510</x><y>470</y><w>270</w><h>270</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>250;10;250;250;10;250</additional_attributes></element><element><id>Relation</id><coordinates><x>510</x><y>810</y><w>250</w><h>80</h></coordinates><panel_attributes>Actualise les PV du personnage
+
+lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;60;60;60;60;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>510</x><y>640</y><w>270</w><h>270</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>250;10;250;250;10;250</additional_attributes></element><element><id>Relation</id><coordinates><x>510</x><y>920</y><w>240</w><h>80</h></coordinates><panel_attributes>Créer/update la sauvegarde
+
+lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;60;60;60;60;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>510</x><y>750</y><w>270</w><h>270</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>250;10;250;250;10;250</additional_attributes></element><element><id>Relation</id><coordinates><x>510</x><y>60</y><w>290</w><h>1010</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;270;10;270;990;10;990</additional_attributes></element></diagram>
