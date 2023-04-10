@@ -34,7 +34,7 @@ public class Personnage extends EtreVivant{
     private static String cheminStockage = "sauvegarde//";
     
     public Personnage(String nom){
-        super(100, 2000);
+        super(100, 20);
         this.nom = nom;
         inventaire = new Inventaire();
     }
