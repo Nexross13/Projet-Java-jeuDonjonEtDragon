@@ -3,7 +3,6 @@ package affichage;
 import item.TypeArme;
 import item.TypeArmure;
 import pnj.Forgeron;
-import pnj.PersonnageNonJoueur;
 import terrain.Donjon;
 
 public class AffichageForge {

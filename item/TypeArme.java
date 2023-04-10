@@ -42,7 +42,5 @@ public enum TypeArme {
 	public int getDMGTemp() {
 		return tempDmg;
 	}
-	
-	
 }
 

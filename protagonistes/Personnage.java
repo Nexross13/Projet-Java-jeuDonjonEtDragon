@@ -36,7 +36,7 @@ public class Personnage extends EtreVivant{
     public Personnage(String nom){
         super(100, 2000);
         this.nom = nom;
-        inventaire = new Inventaire(this);
+        inventaire = new Inventaire();
     }
 
     public Inventaire getInventaire() {
@@ -193,12 +193,15 @@ public class Personnage extends EtreVivant{
             
             case SORTIE:
                 if (cleSortie) {
-                    System.out.println("On passe à l'étage sup");
+                    System.out.println("On passe a l'etage sup");
                     Donjon etageSup = new Donjon(this);
                     this.rejointDonjon(etageSup);
                 } else {
                     System.out.println("Trouve le boss d'abord");
                 }
+                break;
+
+            default:
                 break;
         }
         return "";

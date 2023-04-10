@@ -1,24 +1,23 @@
 package inventaire;
 import item.*;
-import protagonistes.Personnage;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Inventaire implements Serializable{
 	
+	// Attributs
 	private TypeArmure[] armuresStock = new TypeArmure[4];
 	private int[][] sauvegardeStatsArmure = new int[4][2];
 	private TypeArme arme = null;
 	private int sauvegardeStatsArme;
 	private ArrayList<TypePotion> potionsStock = new ArrayList<TypePotion>();
-	private Personnage proprietaire;
 	
-	
-	public Inventaire(Personnage joueur){
-		proprietaire = joueur;
+	// Constructeur
+	public Inventaire(){
 	}
 
+	// Guetteur
 	public TypeArmure getArmures(int i) {
 		return armuresStock[i];
 	}
@@ -42,7 +41,8 @@ public class Inventaire implements Serializable{
 	public int getSauvegardeArme(){
 		return sauvegardeStatsArme;
 	}
-		
+	
+	// Autres méthodes
 	public void ajouterArmure(TypeArmure typeArmure, int position) {
 		typeArmure.setStats();
 		armuresStock[position] = typeArmure;

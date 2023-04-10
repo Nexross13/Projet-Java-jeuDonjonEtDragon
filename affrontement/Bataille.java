@@ -14,7 +14,6 @@ public class Bataille implements Serializable{
     private Monstre monstre;
     private int tour = 1;
     private boolean personnageContinuer = true;
-    private boolean personnageGagner = false;
 
     // Constructeur
     public Bataille(Personnage personnage, Monstre monstre){
@@ -33,7 +32,6 @@ public class Bataille implements Serializable{
 
     // Autres méthodes
     public String combat(){
-        String texte ="";
         // texte faire apparaitre les stats du monstre et du personnage
         System.out.println("---------------------Combat-------------------------");
         if (monstre.getType() == TypeMonstre.BOSS){
@@ -68,7 +66,6 @@ public class Bataille implements Serializable{
         if (monstre.getPvActuel() == 0){
             if(monstre.getType() == TypeMonstre.BOSS){
                 personnage.setCleSortie(true);
-                personnageGagner = true;
                 Tresor.Tresor(personnage);
                 personnage.getDonjon().getLabyrintheActuel()[personnage.getDonjon().getPositionJoueur()].setEstFinie(true);
                 try {
@@ -78,7 +75,6 @@ public class Bataille implements Serializable{
                 }
             } else {
                 // Le Monstre est mort
-                personnageGagner = true;
                 Tresor.Tresor(personnage);
                 personnage.gagnerPO(this.monstre);
                 personnage.getDonjon().getLabyrintheActuel()[personnage.getDonjon().getPositionJoueur()].setEstFinie(true); // Permet de rendre la piece en type NEUTRE quand le bataille est gagnée
@@ -97,9 +93,7 @@ public class Bataille implements Serializable{
             System.out.println("Vous fuyer le combat!");
             personnage.getDonjon().enregistrerPiece(monstre); // Enregistre le monstre dans la pièce car la pièce est découverte
         }
-
         System.out.println("--------------------Fin-Combat-------------------------");
-
         return ""; 
     }
     
