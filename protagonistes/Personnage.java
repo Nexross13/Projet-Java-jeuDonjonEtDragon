@@ -5,7 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
+
 
 import affichage.AffichageForge;
 import affichage.AffichagePerso;
@@ -21,7 +21,7 @@ import terrain.Cardinalite;
 import terrain.Donjon;
 import terrain.Piece;
 
-public class Personnage extends EtreVivant implements Serializable{
+public class Personnage extends EtreVivant{
     // Attributs
     private String nom;
     private int nbrPO = 50;
@@ -408,14 +408,15 @@ public class Personnage extends EtreVivant implements Serializable{
 	        }
 	        int choix_potion = Clavier.entrerClavierInt();
 	        if(choix_potion >=1 && choix_potion <= inventaire.getPotions().size()) {  // Tant que le nombre entré est compris entre 1 et la longueur de la taille du stock de potion
-	            double soin = ((double)inventaire.getPotions().get(choix_potion-1).getPourcent_Soin()/(double)100) * (double)pvMax;
-                if ((int) soin + pvActuel < pvMax) {
+	            double soin = ((double)inventaire.getPotions().get(choix_potion-1).getPourcent_Soin()/(double)100) * (double)pvMax; // Soin en pourcentage convertit en soin fixe en fonction des PV max du Personnage
+                if ((int) soin + pvActuel < pvMax) { 
                     pvActuel = pvActuel + (int)soin;
                     System.out.println("Soin: +"+(int)soin+" PV");
                 }
-                else {
+                else { // Si les soins dépasse les PV Max, le surplus de soin ne sera pas comptabilisé
+                    int tempPvActuel = pvActuel;
                     pvActuel = pvMax;
-                    System.out.println("Soin: +"+(pvMax-pvActuel)+" PV");
+                    System.out.println("Soin: +"+(pvMax-tempPvActuel)+" PV");
                 }
                 
                 inventaire.getPotions().remove(choix_potion-1);
@@ -459,7 +460,7 @@ public class Personnage extends EtreVivant implements Serializable{
         degatReduit = paBonus;
     }
     
-    public void sauvegarder(String s) {
+    public void sauvegarder(String s) { // Sauegarde le personnage dans un fichier
     	String chemin = cheminStockage+"Partie de "+s;
         try {
             ObjectOutputStream save = new ObjectOutputStream(new FileOutputStream(chemin));
