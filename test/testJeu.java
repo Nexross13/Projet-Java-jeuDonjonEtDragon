@@ -10,14 +10,16 @@ public class testJeu {
 
 	public static void main(String[] args) {
 		String chemin = "sauvegarde//";
-		File repertoire = new File(chemin);
-        String liste[] = repertoire.list();  
         
 		while(true) {
+			File repertoire = new File(chemin);
+	        String liste[] = repertoire.list(); 
+	        
 			System.out.println("+---------MENU PRINCIPAL---------+");
             System.out.println("|1 --> Creer une nouvelle Partie |");
             System.out.println("|2 --> Charger une Partie        |");
-            System.out.println("|3 --> Quitter le Jeu            |");
+            System.out.println("|3 --> Devenir Maitre de donjon  |");
+            System.out.println("|4 --> Quitter le Jeu            |");
 			System.out.println("+--------------------------------+");
 			System.out.print("Votre choix: ");
 			int choix_action = Clavier.entrerClavierInt();
@@ -75,6 +77,9 @@ public class testJeu {
             		break;
             		
             	case 3:
+            		testMaitreDeDijon.main(args);
+            		break;
+            	case 4:
             		System.exit(0);
 					break;
             }
