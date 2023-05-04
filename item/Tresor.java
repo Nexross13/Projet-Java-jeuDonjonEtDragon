@@ -102,8 +102,8 @@ public class Tresor {
 				TypeArme armeTresor = armeAleatoire().randomDMG();	// Création de l'arme			
 				System.out.println("Tresor "+(i+1)+": "+armeTresor.getNomArme()+" (DMG: " + armeTresor.getDMGTemp()+")");				
 				proprietaire.sEquiperArme(armeTresor); // On équipe le joueur avec l'arme s'il peut
-				}
 			}
 		}
+	}
    
 }

@@ -28,4 +28,17 @@ public class EtreVivant implements Serializable{
     public int getPvMax() {
         return pvMax;
     }
+
+    // Setteur
+    public void setForce(int force) {
+        this.force = force;
+    }
+
+    public void setPvActuel(int pvActuel) {
+        this.pvActuel = pvActuel;
+    }
+
+    public void setPvMax(int pvMax) {
+        this.pvMax = pvMax;
+    }
 }

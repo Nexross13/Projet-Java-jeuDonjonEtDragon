@@ -8,6 +8,7 @@ import java.io.ObjectOutputStream;
 
 
 import affichage.AffichageForge;
+import affichage.AffichageMarchant;
 import affichage.AffichagePerso;
 import affichage.Clavier;
 import item.Tresor;
@@ -17,6 +18,7 @@ import item.TypeArme;
 import item.TypeArmure;
 import item.TypePotion;
 import pnj.Forgeron;
+import pnj.Marchant;
 import terrain.Cardinalite;
 import terrain.Donjon;
 import terrain.Piece;
@@ -188,8 +190,15 @@ public class Personnage extends EtreVivant{
             	break;
             	
             case MARCHANT:
-            	System.out.println("Je n'ai rien a vous proposer pour le moment, revenez plus tard!");
-            	break;
+                Marchant marchant;
+
+                if(donjon.getLabyrintheActuel()[donjon.getPositionJoueur()].getForgeron() == null){
+                    marchant = new Marchant(donjon.getPositionJoueur(), donjon);
+                } else {
+                    marchant = donjon.getLabyrintheActuel()[donjon.getPositionJoueur()].getMarchant();
+                }
+                AffichageMarchant.actionEntrer(donjon, marchant);
+                break;
             
             case SORTIE:
                 if (cleSortie) {
