@@ -62,12 +62,12 @@ public class testMaitreDeDijon {
 	             	
 	             	while(true) {
 	        				        		        
-	        			 System.out.println("+----Gestion de la partie de"+liste[choixPartie]+"------+");
-	        	         System.out.println("|1 --> Modifier une piece            ");
-	        	         System.out.println("|2 --> Modifier Stat Joueur          ");
-	        	         System.out.println("|3 --> Sauvegarder les modifications ");
-	        	         System.out.println("|4 --> Quitter la gestion            ");
-	        			 System.out.println("+-----------------------------------+");
+	        			 System.out.println("+-Gestion de la partie de "+persoCharger.getNom()+"-+");
+	        	         System.out.println("|1 --> Modifier une piece            |");
+	        	         System.out.println("|2 --> Modifier Stat Joueur          |");
+	        	         System.out.println("|3 --> Sauvegarder les modifications |");
+	        	         System.out.println("|4 --> Quitter la gestion            |");
+	        			 System.out.println("+------------------------------------+");
 	        			 System.out.print("Votre choix: ");
 	        	         int choix_action_MdJ = Clavier.entrerClavierInt();
 	        	         	         

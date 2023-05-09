@@ -2,9 +2,9 @@ package item;
 
 public enum TypeArme {
 	
-	EPEE_COMMUN(30, 50, 0, 0,"Epee Commun", 100),
-	EPEE_RARE(60, 100, 0, 0,"Epee Rare", 200),
-	EPEE_LEGENDAIRE(150, 300, 0, 0,"Epee Legendaire", 300);
+	EPEE_COMMUN(5, 25, 0, 0,"Epee Commun", 100),
+	EPEE_RARE(35, 75, 0, 0,"Epee Rare", 250),
+	EPEE_LEGENDAIRE(125, 275, 0, 0,"Epee Legendaire", 600);
 	
 	private int dmgMin;
 	private int dmgMax;

@@ -37,6 +37,7 @@ public class AffichagePerso {
 		System.out.println(petitePotion+" Petite(s) Potion(s)");
 		System.out.println(potionMax+" Potion(s) Max");
         System.out.println("\n");
+		
 	}
 
     public static void afficherStatsPersonnage(Personnage joueur) {

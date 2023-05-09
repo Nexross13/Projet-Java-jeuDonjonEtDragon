@@ -256,12 +256,10 @@ public class Personnage extends EtreVivant{
         degat = degat - degatReduit; // On réduit les dégats reçu en fonction de notre résistance
         
         if (pvActuel <= degat) {
-        	mourir();
-            
-            
+        	mourir(); 
         } 
         else {
-            pvActuel = pvActuel - degat;
+            pvActuel = pvActuel - degat;  // Changement des pv actuel en fonction des dégats reçu après réduction
             text = nom+" prend " + degat + " de degats. Il lui reste " + pvActuel + "PV!";
         }
         return text;
@@ -457,7 +455,8 @@ public class Personnage extends EtreVivant{
     	}
     	
         if (inventaire.getArme() != null) {
-	        force = inventaire.getArme().getDMG(); // Mise à jour des dégats d'attaque en fonction de l'épée
+            int forceArme = inventaire.getArme().getDMG();
+	        force = this.force + forceArme; // Mise à jour des dégats d'attaque en fonction de l'épée
 	    }
         
         for (int i=0; i<4; i++){
@@ -467,7 +466,7 @@ public class Personnage extends EtreVivant{
             }
         }
 
-        pvMax = 100 + pvBonus;
+        pvMax = this.pvMax + pvBonus;
         pvActuel = (int) (pvMax * ratioPV_PVmax) ;
         degatReduit = paBonus;
     }

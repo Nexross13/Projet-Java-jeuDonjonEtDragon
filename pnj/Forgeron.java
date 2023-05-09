@@ -54,7 +54,7 @@ public class Forgeron extends PersonnageNonJoueur implements Serializable{
     }
 
     public boolean verifPO(int cout){
-        return donjon.getJoueur().getNbrPO() > cout ? true : false; //Va vérifier si le joueur à assez de PO
+        return donjon.getJoueur().getNbrPO() >= cout ? true : false; //Va vérifier si le joueur à assez de PO
     }
 
 }

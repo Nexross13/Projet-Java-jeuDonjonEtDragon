@@ -17,7 +17,6 @@ public class Marchant extends PersonnageNonJoueur implements Serializable{
 	private int[][] stockStatsArmure = new int[4][2];
 	private TypePotion[] stockPotion = new TypePotion[3];
 	private String[] infoTypeDansChoix = new String[3];
-	private int[] infoPlaceDansStock = new int[3];
 
     public Marchant(int position, Donjon donjon){
         super(position, donjon);
@@ -58,7 +57,6 @@ public class Marchant extends PersonnageNonJoueur implements Serializable{
 	public void ajouterArmure(TypeArmure typeArmure, int position) {
 		typeArmure.setStats();
 		stockArmure[position] = typeArmure;
-		infoPlaceDansStock[position] = stockArmure.length - 1;
 		infoTypeDansChoix[position] = "Armure";
 		
 		stockStatsArmure[position][0] = typeArmure.getPV();  // Sauvegarde les PV
@@ -68,7 +66,6 @@ public class Marchant extends PersonnageNonJoueur implements Serializable{
 	public void ajouterArme(TypeArme typeArme, int position) {
 		typeArme.setDMG();
 		stockArme[position] = typeArme;
-		infoPlaceDansStock[position] = stockArme.length - 1;
 		infoTypeDansChoix[position] = "Arme";
 		stockStatArme[position] = stockArme[position].getDMG(); 	// Sauvegarde les DMG
 	}
@@ -76,7 +73,7 @@ public class Marchant extends PersonnageNonJoueur implements Serializable{
 	public void ajouterPotion(TypePotion typePotion, int position) {
 		stockPotion[position] = typePotion;
 		infoTypeDansChoix[position] = "Potion";
-		infoPlaceDansStock[position] = stockPotion.length - 1;
+		
 	}
 
     public static TypeArmure armureRareteAleatoire() {
@@ -142,20 +139,23 @@ public class Marchant extends PersonnageNonJoueur implements Serializable{
 	}
 	
 	
-	public static void Produit() {
+	public void Produit() {
 		for (int i = 0; i < 3 ; i++) { 
 			int chanceTypeItem = (int) (Math.random() * 100); 
 			
 			if (chanceTypeItem < 25) {    
 				TypePotion potion = potionAleatoire();	
+				ajouterPotion(potion, i);
 				AffichageMarchant.AfficherPotion(potion, i); 
 			}
 			else if (chanceTypeItem < 65) { 
-				TypeArmure armure = armureRareteAleatoire().randomStats(); 
+				TypeArmure armure = armureRareteAleatoire().randomStats();
+				ajouterArmure(armure, i);
 				AffichageMarchant.AfficherArmure(armure, i);			
 			}
 			else { 						   
 				TypeArme arme = armeAleatoire().randomDMG();
+				ajouterArme(arme, i);
 				AffichageMarchant.AfficherArme(arme, i);
 			}
 		}
@@ -165,38 +165,42 @@ public class Marchant extends PersonnageNonJoueur implements Serializable{
 		String texte = "";
 		switch (infoTypeDansChoix[choix]) {
 			case "Armure":
-				if (verifPO(stockArmure[infoPlaceDansStock[choix]].getPrix())) {
-					proprietaire.sEquiperArmure(stockArmure[infoPlaceDansStock[choix]]);
-					texte = "Vous venez d'acheter l'item";
+				if (verifPO(stockArmure[choix].getPrix())) {
+					proprietaire.achatItem(stockArmure[choix].getPrix());
+					proprietaire.sEquiperArmure(stockArmure[choix]);
+					texte = "Vous venez d'acheter " + stockArmure[choix].getNomArmure() ;
 				} else {
 					texte = "Pas assez de sous";
 				}
-
 				break;
+
 			case "Arme":
-				if (verifPO(stockArme[infoPlaceDansStock[choix]].getPrix())) {
-					proprietaire.sEquiperArme(stockArme[infoPlaceDansStock[choix]]);
-					texte = "Vous venez d'acheter l'item";
+				if (verifPO(stockArme[choix].getPrix())) {
+					proprietaire.achatItem(stockArme[choix].getPrix());
+					proprietaire.sEquiperArme(stockArme[choix]);
+					texte = "Vous venez d'acheter " + stockArme[choix].getNomArme();
 				} else {
 					texte = "Pas assez de sous";
 				}
-
 				break;
+
 			case "Potion":
-				if (verifPO(stockPotion[infoPlaceDansStock[choix]].getPrix())) {
-					proprietaire.sEquiperPotion(stockPotion[infoPlaceDansStock[choix]]);
-					texte = "Vous venez d'acheter l'item";
+				if (verifPO(stockPotion[choix].getPrix())) {
+					proprietaire.achatItem(stockPotion[choix].getPrix());
+					proprietaire.sEquiperPotion(stockPotion[choix]);
+					texte = "Vous venez d'acheter " + stockPotion[choix].getNomPotion();
 				} else {
 					texte = "Pas assez de sous";
 				}
-
 				break;
+
 		}
 		return texte;
 	}
 
     public boolean verifPO(int cout){
-        return donjon.getJoueur().getNbrPO() > cout ? true : false; //Va vérifier si le joueur à assez de PO
+		System.out.println(cout);
+        return donjon.getJoueur().getNbrPO() >= cout ? true : false; //Va vérifier si le joueur à assez de PO
     }
 
 }
