@@ -63,7 +63,7 @@ public class AffichagePerso {
 		}
 		AffichageLab.AffichageLaby(donjon);
 		try {
-			Thread.sleep(3500);
+			Thread.sleep(1500);
 		} catch (Exception e) {
 		}
 	}
@@ -72,13 +72,13 @@ public class AffichagePerso {
 		System.out.print("Vous entrez dans une pièce");
 
 		try {
-			Thread.sleep(500); // Pause le programme pendant 1 seconde
+			Thread.sleep(200); // Pause le programme pendant 1 seconde
 			System.out.print(" .");
-			Thread.sleep(500); 
+			Thread.sleep(200); 
+			System.out.print(".");
+			Thread.sleep(200); 
 			System.out.print(".");
 			Thread.sleep(500); 
-			System.out.print(".");
-			Thread.sleep(1000); 
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

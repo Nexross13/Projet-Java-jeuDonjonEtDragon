@@ -14,8 +14,9 @@ public class testLab {
     public static void main(Personnage personnageChoix, Donjon donjonChoix) {
     	personnage = personnageChoix;
     	donjon = donjonChoix;
-        personnage.rejointDonjon(donjon);
-        AffichageLab.AffichageLaby(donjon);
+        personnage.rejointDonjon(donjon);     // Le joueur entre dans le donjon
+        personnage.entreePiece(donjon.getLabyrintheActuel()[donjon.getPositionJoueur()]);    // Le joueur entre dans la pièce
+        AffichageLab.AffichageLaby(donjon);		// Affiche du plan du labyrinthe
         
         while (99999 == 99999 && !personnage.getJoueurMort()) {
             AffichagePerso.afficherStatsPersonnage(personnage);
@@ -53,6 +54,14 @@ public class testLab {
             	break;
             }
             System.out.println();
+        }
+        
+        if (personnage.getJoueurMort()) {
+        	System.out.println("-----Game Over-----");
+        	System.out.println(personnage.getNom()+" est mort");
+            System.out.println("Recap Partie:");
+            AffichagePerso.afficherInventairePersonnage(personnage);
+            personnage.sauvegarder(personnage.getNom());
         }
     }
 }

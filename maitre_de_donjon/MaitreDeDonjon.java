@@ -31,7 +31,7 @@ public class MaitreDeDonjon {
          joueur = persoCharger;
     }
 	
-	public String changerPiece(String posiHori, int posiVerti, int typePieceChoisi) {
+	public String changerPieceouPosition(String posiHori, int posiVerti, int typePieceChoisi) { // Change une pièce ou la position du joueur dans le labyrinthe
 		
 		if (posiVerti > 0 && posiVerti < 15) { // Si la position vertical est compris entre 0 et 15 non inclus
 			
@@ -40,6 +40,12 @@ public class MaitreDeDonjon {
 				if (tabPosiHori[i].contains(posiHori)){ // Si la position vertical correspond à une lettre du tableau
 					int posiHoriTemp = Integer.parseInt(tabPosiHori[i+1]); // Transforme la lettre correspondante au nombre suivant
 					int positionPiece = ((posiHoriTemp * 14) + posiVerti)-1; // Position correspondant au labyrinthe
+					
+					// Changement de position du joueur
+					if (typePieceChoisi == -1) {
+						joueur.getDonjon().setPositionJoueur(positionPiece);
+						return "Position joueur effectue";
+					}
 					
 					int nbSortie = 0;
 					int nbBoss = 0;
@@ -113,20 +119,48 @@ public class MaitreDeDonjon {
 	
 	public String changerStatsDMGJoueur(int dmgPerso) {
 		if (dmgPerso >=0) {
-			joueur.setForce(dmgPerso);
+			joueur.setDegatInit(dmgPerso);
 			return "Changement d'attaque du personnage effectue";
 		}
-		return "Aucun changement";
+		return "Aucun changement effectue";
 		
 	}
 	
 	public String changerStatsPVJoueur(int pvActuelPerso, int pvMaxPerso) {
 		if (pvActuelPerso >=0 && pvMaxPerso >=0 && pvActuelPerso <= pvMaxPerso) {
 			joueur.setPvActuel(pvActuelPerso);
-			joueur.setPvMax(pvMaxPerso);
+			joueur.setPvInit(pvMaxPerso);
 			return "Changement des pv du personnage effectue";
 		}
 		
-		return "Aucun changement";
+		return "Aucun changement effectue";
+	}
+	
+	public String changerStatsPAJoueur(int pointArmure) {
+		if (pointArmure >=0) {
+			joueur.setPAInit(pointArmure);
+			return "Changement des points d'armure du personnage effectue";
+		}
+		
+		return "Aucun changement effectue";
+	}
+	
+	public String changerPOJoueur(int piecedOr) {
+		
+		joueur.setNbrPO(piecedOr);
+		return "Changement piece d'Or effectue";
+	}
+		
+	
+	public String ressusciterJoueur() {
+		if (joueur.getJoueurMort()) {
+			joueur.setJoueurMort(false);
+			joueur.setPvActuel(joueur.getPvMax());
+			return "Le joueur a ete ressuscite !";
+		}
+		else {
+			return "Le joueur est deja vivant.";
+		}
+		
 	}
 }

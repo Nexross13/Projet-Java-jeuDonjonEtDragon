@@ -9,7 +9,7 @@ import maitre_de_donjon.MaitreDeDonjon;
 import protagonistes.Personnage;
 
 
-public class testMaitreDeDijon {
+public class testMaitreDeDonjon {
 	
 	 public static void main(String[] args) {
 		 String chemin = "sauvegarde//";
@@ -64,9 +64,12 @@ public class testMaitreDeDijon {
 	        				        		        
 	        			 System.out.println("+-Gestion de la partie de "+persoCharger.getNom()+"-+");
 	        	         System.out.println("|1 --> Modifier une piece            |");
-	        	         System.out.println("|2 --> Modifier Stat Joueur          |");
-	        	         System.out.println("|3 --> Sauvegarder les modifications |");
-	        	         System.out.println("|4 --> Quitter la gestion            |");
+	        	         System.out.println("|2 --> Modifier Stat Joueur          |");	
+	        	         System.out.println("|3 --> Changer position joueur	  	  |");
+	        	         System.out.println("|4 --> Ouvrir Inventaire joueur      |");	
+	        	         System.out.println("|5 --> Ressusciter le joueur	  	  |");	        	         
+	        	         System.out.println("|6 --> Sauvegarder les modifications |");
+	        	         System.out.println("|7 --> Quitter la gestion            |");
 	        			 System.out.println("+------------------------------------+");
 	        			 System.out.print("Votre choix: ");
 	        	         int choix_action_MdJ = Clavier.entrerClavierInt();
@@ -94,15 +97,17 @@ public class testMaitreDeDijon {
 		        			 System.out.println("+-------------------------------------+");
 		        			 System.out.print("Votre choix: ");
 		        			 int typePieceChoisi = Clavier.entrerClavierInt();
-		        			 System.out.println(MD.changerPiece(pieceChoisiHori, pieceChoisiVerti, typePieceChoisi));
+		        			 System.out.println(MD.changerPieceouPosition(pieceChoisiHori, pieceChoisiVerti, typePieceChoisi));
 	        	        	 break;
 	        	        	 
 	        	         case 2:
-	        	        	 AffichagePerso.afficherInventairePersonnage(persoCharger);
+	        	        	 AffichagePerso.afficherStatsPersonnage(persoCharger);
 	        	        	 System.out.println("+-Choix des Statistiques Joueur a modifier-+");
-	        	        	 System.out.println("|1 --> Attaque           				    | ");
-	        	        	 System.out.println("|2 --> PV (actuel/max)    				    | ");        	        	         	        		        	        
-		        	         System.out.println("|3 --> Annuler                        		| ");		        	     
+	        	        	 System.out.println("|1 --> Attaque								| ");
+	        	        	 System.out.println("|2 --> PV (actuel/max)						| ");   
+	        	        	 System.out.println("|3 --> Point d'Armure						| ");  
+	        	        	 System.out.println("|4 --> Piece d'Or							| "); 
+		        	         System.out.println("|5 --> Annuler								| ");		        	     
 		        			 System.out.println("+------------------------------------------+");
 		        			 System.out.print("Votre choix: ");
 		        			 int choixPerso = Clavier.entrerClavierInt();
@@ -112,6 +117,7 @@ public class testMaitreDeDijon {
 		        				 System.out.print("Nouvelle attaque:");
 		        				 int dmgPerso = Clavier.entrerClavierInt();
 		        				 System.out.println(MD.changerStatsDMGJoueur(dmgPerso));
+		        				 persoCharger.majStatJoueur();
 		        				 break;
 		        			 case 2:
 		        				 System.out.print("Nouveau PV Actuel:");
@@ -119,18 +125,54 @@ public class testMaitreDeDijon {
 		        				 System.out.print("Nouveau PV MAX:");
 		        				 int pvMaxPerso = Clavier.entrerClavierInt();
 		        				 System.out.println(MD.changerStatsPVJoueur(pvActuelPerso,pvMaxPerso));
+		        				 persoCharger.majStatJoueur();
 		        				 break;
+		        				
+		        			 case 3:
+		        				 System.out.print("Nouveau PA :");
+		        				 int paPerso = Clavier.entrerClavierInt();
+		        				 System.out.println(MD.changerStatsPAJoueur(paPerso));
+		        				 persoCharger.majStatJoueur();
+		        				 break;
+		        				 
+		        			 case 4:
+		        				 System.out.print("Nouveau PO :");
+		        				 int poPerso = Clavier.entrerClavierInt();
+		        				 System.out.println(MD.changerPOJoueur(poPerso));
+		        				 persoCharger.majStatJoueur();
+		        				 break;
+		        				 
 		        			default:
 		        				break;
 		        			 }
 	        	        	 break;
 	        	        	 
 	        	         case 3:
+	        	        	 
+	        	        	 AffichageLab.AffichageLabyMD(persoCharger.getDonjon());
+	        	        	 System.out.print("Choix position horizontale (ex: G) :");
+	        	        	 String pieceChoisiHori2 = Clavier.entrerClavierString();
+	        	        	 System.out.print("Choix position verticale (ex: 13) :");
+	        	        	 int pieceChoisiVerti2 = Clavier.entrerClavierInt();
+	        	        	 System.out.println(MD.changerPieceouPosition(pieceChoisiHori2, pieceChoisiVerti2, -1));
+	        	        	 break;
+	        	        	 
+	        	         
+	        	         case 4:
+	        	        	 AffichagePerso.afficherInventairePersonnage(persoCharger);
+	        	        	 break;
+	        	        	 
+	        	         case 5:
+	        	        	 System.out.println(MD.ressusciterJoueur());
+	        	        	 break;
+	        	        	 
+	        	         case 6:
 	        	        	 persoCharger.sauvegarder(persoCharger.getNom());
 	        	        	break;
+	        	         
 	        	        	 
-	        	         case 4:
-	        	        	 return;
+	        	         case 7:
+	        	        	 return; // Quitte le menu gestion de partie du maitre de donjon
 	        	        	 
 	        	         default:
 	        	        	 break;

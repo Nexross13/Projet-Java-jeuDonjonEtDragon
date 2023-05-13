@@ -51,7 +51,10 @@ public class Bataille implements Serializable{
                 // Action Joueur
                 System.out.println("1 --> Attaquer");
                 System.out.println("2 --> Soigner");
-                System.out.println("3 --> Fuir");
+                if (personnage.getDonjon().getAnciennePosition() != (-1)) { // Si le joueur a une ancienne position 
+                	System.out.println("3 --> Fuir"); // Il peut fuir
+                }
+                
                 int choix = Clavier.entrerClavierInt();
                 personnage.actionCombat(choix); // Boundary qui va faire les paramètres d'entrés
                                
@@ -64,7 +67,7 @@ public class Bataille implements Serializable{
             tour++;               
         }
         if (monstre.getPvActuel() == 0){
-            if(monstre.getType() == TypeMonstre.BOSS){
+            if(monstre.getType() == TypeMonstre.BOSS){ // Si le mosntre etait un BOSS
                 personnage.setCleSortie(true);
                 Tresor.Tresor(personnage);
                 personnage.getDonjon().getLabyrintheActuel()[personnage.getDonjon().getPositionJoueur()].setEstFinie(true);
@@ -75,7 +78,7 @@ public class Bataille implements Serializable{
                 }
             } else {
                 // Le Monstre est mort
-                Tresor.Tresor(personnage);
+                Tresor.Tresor(personnage); // Le personange obtient un trésor
                 personnage.gagnerPO(this.monstre);
                 personnage.getDonjon().getLabyrintheActuel()[personnage.getDonjon().getPositionJoueur()].setEstFinie(true); // Permet de rendre la piece en type NEUTRE quand le bataille est gagnée
                 try {

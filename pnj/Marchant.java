@@ -3,6 +3,7 @@ package pnj;
 import java.io.Serializable;
 
 import affichage.AffichageMarchant;
+import item.Tresor;
 import item.TypeArme;
 import item.TypeArmure;
 import item.TypePotion;
@@ -10,53 +11,42 @@ import protagonistes.Personnage;
 import terrain.Donjon;
 
 public class Marchant extends PersonnageNonJoueur implements Serializable{
-    private TypePersonnageNonJoueur type = TypePersonnageNonJoueur.MARCHANT;
-    private TypeArme[] stockArme = new TypeArme[3];
-	private int[] stockStatArme = new int[3];
-	private TypeArmure[] stockArmure = new TypeArmure[3];
-	private int[][] stockStatsArmure = new int[4][2];
-	private TypePotion[] stockPotion = new TypePotion[3];
-	private String[] infoTypeDansChoix = new String[3];
+	private int nbProduitAVendre;
+	private TypePersonnageNonJoueur type = TypePersonnageNonJoueur.MARCHANT;
+    private TypeArme[] stockArme;
+	private int[] stockStatArme;
+	private TypeArmure[] stockArmure;
+	private int[][] stockStatsArmure;
+	private TypePotion[] stockPotion;
+	private String[] infoTypeDansChoix;
+	private boolean productionProduit = false; // Lorsque le marchant choisi ses produit à vendre, il ne peut plus choisir d'autre produit
+	private int nbProduitRestant;
+	
 
     public Marchant(int position, Donjon donjon){
         super(position, donjon);
+        int maxProduit = 5;
+		int minProduit = 3;
+		nbProduitAVendre = minProduit + (int)(Math.random() * ((maxProduit - minProduit))); // Nombre de produit vendu par le marchant est aléatoire
+		
+		stockArme = new TypeArme[nbProduitAVendre];
+		stockStatArme = new int[nbProduitAVendre];
+		stockArmure = new TypeArmure[nbProduitAVendre];
+		stockStatsArmure = new int[nbProduitAVendre][2];
+		stockPotion = new TypePotion[nbProduitAVendre];
+		infoTypeDansChoix = new String[nbProduitAVendre];
+		nbProduitRestant = nbProduitAVendre;
     }
 
-	public TypeArmure getArmures(int i) {
-		return stockArmure[i];
-	}
 
-	public TypeArmure[] getArmuresStock() {
-		return stockArmure;
-	}
-
-	public TypeArme getArme(int i) {
-		return stockArme[i];
-	}
-	
-	public TypeArme[] getArmeStock() {
-		return stockArme;
-	}
-
-	public TypePotion getPotions(int i) {
-		return stockPotion[i];
-	}
-
-	public TypePotion[] getPotionsStock() {
-		return stockPotion;
-	}
-	
-	public int[][] getSauvegardeArmure(){
-		return stockStatsArmure;
-	}
-	
-	public int[] getSauvegardeArme(){
-		return stockStatArme;
-	}
-
+    public int getNbProduitRestant() {
+    	return nbProduitRestant;
+    }
+    
 	public void ajouterArmure(TypeArmure typeArmure, int position) {
-		typeArmure.setStats();
+		
 		stockArmure[position] = typeArmure;
+		stockArmure[position].setStats();
 		infoTypeDansChoix[position] = "Armure";
 		
 		stockStatsArmure[position][0] = typeArmure.getPV();  // Sauvegarde les PV
@@ -64,8 +54,9 @@ public class Marchant extends PersonnageNonJoueur implements Serializable{
 	}
 	
 	public void ajouterArme(TypeArme typeArme, int position) {
-		typeArme.setDMG();
+		
 		stockArme[position] = typeArme;
+		stockArme[position].setDMG();
 		infoTypeDansChoix[position] = "Arme";
 		stockStatArme[position] = stockArme[position].getDMG(); 	// Sauvegarde les DMG
 	}
@@ -76,90 +67,51 @@ public class Marchant extends PersonnageNonJoueur implements Serializable{
 		
 	}
 
-    public static TypeArmure armureRareteAleatoire() {
 		
-		int chance = (int) (Math.random() * 100);
-		
-		if (chance < 60) {		// 60% Commun
-			return armureTypeAleatoire(TypeArmure.CASQUE_COMMUN,TypeArmure.PLASTRON_COMMUN,TypeArmure.JAMBIERE_COMMUN,TypeArmure.BOTTE_COMMUN);		
-		}
-		else if (chance < 90) { // 30% Rare
-			return armureTypeAleatoire(TypeArmure.CASQUE_RARE,TypeArmure.PLASTRON_RARE,TypeArmure.JAMBIERE_RARE,TypeArmure.BOTTE_RARE);	
-		}		
-		else {					// 10% Legendaire
-			return armureTypeAleatoire(TypeArmure.CASQUE_LEGENDAIRE,TypeArmure.PLASTRON_LEGENDAIRE,TypeArmure.JAMBIERE_LEGENDAIRE,TypeArmure.BOTTE_LEGENDAIRE);
-		}	
-	}
 	
-	// Permet de définir le taux de drop de la pièce d'armure
-	private static TypeArmure armureTypeAleatoire(TypeArmure casque, TypeArmure plastron, TypeArmure jambiere, TypeArmure botte) {
-			
-			int chance = (int) (Math.random() * 4);
-			
-			if (chance < 1) {	   // 25% Casque
-				return casque;
-			}
-			else if (chance < 2) { // 25% Plastron
-				return plastron;
-			}
-			else if (chance < 3) { // 25% Jambiere
-				return jambiere;
-			}
-			else {   			   // 25% Botte
-				return botte;
-			}
-		}
+	public void Produit() {		
 		
-	public static TypeArme armeAleatoire() {
-			
-			int chance = (int) (Math.random() * 100);
-	
-			if (chance < 75) { 				// 75% Epée Commun
-				return TypeArme.EPEE_COMMUN;
+		if (!productionProduit) { // Création des produits que le marchant va pouvoir vendre
+						
+			for (int i = 0; i < this.nbProduitAVendre; i++) { 
+				int chanceTypeItem = (int) (Math.random() * 100); 
+				
+				if (chanceTypeItem < 25) {    // 25% chance echange potion
+					TypePotion potion = Tresor.potionAleatoire(50);	
+					ajouterPotion(potion, i);
+					
 				}
-			
-			else if (chance < 95) {			// 20% Epée Commun
-				return TypeArme.EPEE_RARE;	
-			}		
-			else {							// 5% Epée Commun
-				return TypeArme.EPEE_LEGENDAIRE;
-			}	
-		}
-	
-	public static TypePotion potionAleatoire() {
-		
-		int chance = (int) (Math.random() * 100);
-		
-		if (chance < 75) {		// 75% Petite potion
-			return TypePotion.PETITE_POTION;		
-		}
-		else {					// 25% Potion Max
-			return TypePotion.MAX_POTION;
-		}	
-	}
-	
-	
-	public void Produit() {
-		for (int i = 0; i < 3 ; i++) { 
-			int chanceTypeItem = (int) (Math.random() * 100); 
-			
-			if (chanceTypeItem < 25) {    
-				TypePotion potion = potionAleatoire();	
-				ajouterPotion(potion, i);
-				AffichageMarchant.AfficherPotion(potion, i); 
+				else if (chanceTypeItem < 70) {   // 45 % chance echange armure
+					TypeArmure armure = Tresor.armureRareteAleatoire(20,47).randomStats();
+					ajouterArmure(armure, i);
+							
+				}
+				else { 		// 30 % chance echange arme				   
+					TypeArme arme = Tresor.armeAleatoire(20,47).randomDMG();
+					ajouterArme(arme, i);
+					
+				}
 			}
-			else if (chanceTypeItem < 65) { 
-				TypeArmure armure = armureRareteAleatoire().randomStats();
-				ajouterArmure(armure, i);
-				AffichageMarchant.AfficherArmure(armure, i);			
-			}
-			else { 						   
-				TypeArme arme = armeAleatoire().randomDMG();
-				ajouterArme(arme, i);
-				AffichageMarchant.AfficherArme(arme, i);
+			productionProduit = true;
+		}
+		
+		for (int i = 0 ; i < this.nbProduitAVendre; i++) {
+			switch (infoTypeDansChoix[i]) {
+			case "Armure":		
+				AffichageMarchant.AfficherArmure(stockArmure[i], stockStatsArmure[i][0], stockStatsArmure[i][1], i);
+				break;
+				
+			case "Arme":
+				AffichageMarchant.AfficherArme(stockArme[i],stockStatArme[i], i);
+				break;
+				
+			case "Potion":
+				AffichageMarchant.AfficherPotion(stockPotion[i], i);
+				break;
 			}
 		}
 	}
+	
 
 	public String Achat(Personnage proprietaire, int choix){
 		String texte = "";
@@ -167,8 +119,34 @@ public class Marchant extends PersonnageNonJoueur implements Serializable{
 			case "Armure":
 				if (verifPO(stockArmure[choix].getPrix())) {
 					proprietaire.achatItem(stockArmure[choix].getPrix());
-					proprietaire.sEquiperArmure(stockArmure[choix]);
-					texte = "Vous venez d'acheter " + stockArmure[choix].getNomArmure() ;
+					
+					String nomArmure = stockArmure[choix].getNomArmure();
+					int positionArmure = -1;
+					
+					if (nomArmure.contains("Casque")){
+						positionArmure = 0;
+					}
+					
+					else if (nomArmure.contains("Plastron")) {
+						positionArmure = 1;						
+					}
+
+					else if (nomArmure.contains("Jambiere")) {
+						positionArmure = 2;						
+					}
+
+					else if (nomArmure.contains("Botte")) {
+						positionArmure = 3;						
+					}
+					
+					proprietaire.getInventaire().ajouterArmure(stockArmure[choix], positionArmure); // On ajoute - modifie l'armure actuel du joueur
+					proprietaire.getInventaire().getArmures(positionArmure).setPV(stockStatsArmure[choix][0]); // On modifie les PV en fonction de ce que le joueur a choisi
+					proprietaire.getInventaire().getArmures(positionArmure).setPA(stockStatsArmure[choix][1]); // On modifie les PA
+					
+					texte = "Vous venez d'acheter " + stockArmure[choix].getNomArmure()+" PV:"+stockStatsArmure[choix][0]+" PA:"+stockStatsArmure[choix][1] ;
+					infoTypeDansChoix[choix] = ""; // Le produit disparait une fois vendu
+					nbProduitRestant--;
+					
 				} else {
 					texte = "Pas assez de sous";
 				}
@@ -177,8 +155,15 @@ public class Marchant extends PersonnageNonJoueur implements Serializable{
 			case "Arme":
 				if (verifPO(stockArme[choix].getPrix())) {
 					proprietaire.achatItem(stockArme[choix].getPrix());
-					proprietaire.sEquiperArme(stockArme[choix]);
-					texte = "Vous venez d'acheter " + stockArme[choix].getNomArme();
+					
+					proprietaire.getInventaire().ajouterArme(stockArme[choix]); // On ajoute - modifie l'arme actuel du joueur
+					proprietaire.getInventaire().getArme().setDMG(stockStatArme[choix]); // On modifie les dégats en fonction de ce que le joueur a choisi
+
+				
+					texte = "Vous venez d'acheter " + stockArme[choix].getNomArme() +" DMG:"+stockStatArme[choix];
+					infoTypeDansChoix[choix] = "";
+					nbProduitRestant--;
+					
 				} else {
 					texte = "Pas assez de sous";
 				}
@@ -189,6 +174,9 @@ public class Marchant extends PersonnageNonJoueur implements Serializable{
 					proprietaire.achatItem(stockPotion[choix].getPrix());
 					proprietaire.sEquiperPotion(stockPotion[choix]);
 					texte = "Vous venez d'acheter " + stockPotion[choix].getNomPotion();
+					infoTypeDansChoix[choix] = "";
+					nbProduitRestant--;
+					
 				} else {
 					texte = "Pas assez de sous";
 				}
@@ -199,8 +187,7 @@ public class Marchant extends PersonnageNonJoueur implements Serializable{
 	}
 
     public boolean verifPO(int cout){
-		System.out.println(cout);
-        return donjon.getJoueur().getNbrPO() >= cout ? true : false; //Va vérifier si le joueur à assez de PO
+		return donjon.getJoueur().getNbrPO() >= cout ? true : false; //Va vérifier si le joueur à assez de PO
     }
 
 }

@@ -27,7 +27,7 @@ public class testJeu {
     
             switch(choix_action) {
             	case 1: 					
-            		System.out.print("Entrer le nom du Heros: ");
+            		System.out.print("Entrer le nom du Heros (aucun espace): ");
             		String nomPersonnage = Clavier.entrerClavierString();
 					System.out.println("Bienvenue dans le donjon " + nomPersonnage);
 					try {
@@ -72,12 +72,15 @@ public class testJeu {
                     int choixPartie = Clavier.entrerClavierInt();
                     choixPartie--;
                     
-                    if (liste[choixPartie].contains("Partie de")) {
-                    	System.out.println(liste[choixPartie]);
-                    	Personnage persoCharger = Personnage.charger(liste[choixPartie]);
-                    	testLab.main(persoCharger,persoCharger.getDonjon());
-						break;
-                    }
+                    if (choixPartie < liste.length && choixPartie >=0) {
+                    	if (liste[choixPartie].contains("Partie de")) {
+	                    	System.out.println(liste[choixPartie]);
+	                    	Personnage persoCharger = Personnage.charger(liste[choixPartie]);
+	                    	testLab.main(persoCharger,persoCharger.getDonjon());
+							break;
+                    	}
+                    }                  
+                
                     System.out.println("Annulation");
             		break;
 
@@ -132,7 +135,7 @@ public class testJeu {
             		break;
             		
             	case 4:
-            		testMaitreDeDijon.main(args);
+            		testMaitreDeDonjon.main(args);
             		break;
             	case 5:
             		System.exit(0);

@@ -7,12 +7,14 @@ import java.util.List;
 import protagonistes.Monstre;
 import protagonistes.Personnage;
 import affichage.AffichagePerso;
+import pnj.Marchant;
 
 
 public class Donjon implements Serializable{
 
     // Attributs
     private Piece[] labyrintheActuel = new Piece[196];
+    //private String[] labyrintheModele ={"E","M","M","M","M","M","M","F","HB","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M"};
     private String[] labyrintheModele ={"E","S","M","M","M","M","M","F","HB","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","HD","HD","HD","HD","HD","HD","HD","HD","HD","HD","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF"};
     private Cardinalite[] cardinaliteImpossiblesLab = { // Permet de stocker toutes les cardinalités impossibles (a savoir les bords du labyrinthe)
         Cardinalite.NORD_OUEST, Cardinalite.NORD, Cardinalite.NORD, Cardinalite.NORD, Cardinalite.NORD, Cardinalite.NORD, Cardinalite.NORD, Cardinalite.NORD, Cardinalite.NORD, Cardinalite.NORD, Cardinalite.NORD, Cardinalite.NORD, Cardinalite.NORD, Cardinalite.NORD_EST, 
@@ -31,7 +33,7 @@ public class Donjon implements Serializable{
         Cardinalite.SUD_OUEST, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD/*190*/, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD_EST};
     private boolean etageTermine = false;
     private int positionJoueur;
-    private int anciennePosition;
+    private int anciennePosition = -1; 
     private int etage = 0;
     private Personnage joueur;
 
@@ -52,6 +54,10 @@ public class Donjon implements Serializable{
 
     public int getPositionJoueur() {
         return positionJoueur;
+    }
+    
+    public void setPositionJoueur(int posi) {
+        this.positionJoueur = posi;
     }
 
     public int getAnciennePosition() {
@@ -116,7 +122,7 @@ public class Donjon implements Serializable{
                     break;
             }
         }
-        String text = "Création étage fait!";
+        String text = "Creation etage fait!";
         return text;
     }
 
@@ -168,14 +174,18 @@ public class Donjon implements Serializable{
 
     // Lors de la fuite, on rétablit l'ancienne position du joueur en position actuelle
     public String personnageFuit(){
-        int temp = positionJoueur;
         positionJoueur = anciennePosition;
-        anciennePosition = temp;
         return "";
     }
 
     public String enregistrerPiece(Monstre monstre){
         labyrintheActuel[anciennePosition].setMonstre(monstre); //Enregistre le monstre dans la pièce
+        return "";
+    }
+    
+    public String enregistrerPiece(Marchant marchant){
+    
+        labyrintheActuel[positionJoueur].setMarchant(marchant); //Enregistre le marchant dans la pièce
         return "";
     }
 }

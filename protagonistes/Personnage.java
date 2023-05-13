@@ -30,6 +30,7 @@ public class Personnage extends EtreVivant{
     private Bataille bataille;
     private Donjon donjon;
     private Inventaire inventaire;
+    private int  statsInitiale [] = new int[3]; // Sert de référence aux stats initiales du joueur (pouvant être modifier par le maitre  du donjon) PV / DEGAT / PA
     private int degatReduit;
     private boolean cleSortie = false;
     private boolean joueurMort = false;
@@ -38,6 +39,8 @@ public class Personnage extends EtreVivant{
     public Personnage(String nom){
         super(100, 25);
         this.nom = nom;
+        this.statsInitiale[0] = 100;
+        this.statsInitiale[1] = 25;
         inventaire = new Inventaire();
     }
 
@@ -51,6 +54,10 @@ public class Personnage extends EtreVivant{
 
     public int getNbrPO(){
         return nbrPO;
+    }
+    
+    public void setNbrPO(int po){
+        this.nbrPO = po;
     }
 
     public int getProtection(){
@@ -68,7 +75,25 @@ public class Personnage extends EtreVivant{
     public boolean getJoueurMort() {
     	return joueurMort;
     }
-
+    
+    public void setJoueurMort(boolean bool) {
+    	this.joueurMort = bool;
+    }
+    
+    public void setPvInit(int pvMax) {
+    	this.statsInitiale[0] = pvMax;
+    	this.pvMax = statsInitiale[0];
+    	
+    }
+    
+    public void setDegatInit(int degat) {
+    	this.statsInitiale[1] = degat;
+    }
+    
+    public void setPAInit(int pa) {
+    	this.statsInitiale[2] = pa;
+    }
+    
     public void setCleSortie(boolean cleSortie) {
         this.cleSortie = cleSortie;
     }
@@ -192,12 +217,16 @@ public class Personnage extends EtreVivant{
             case MARCHANT:
                 Marchant marchant;
 
-                if(donjon.getLabyrintheActuel()[donjon.getPositionJoueur()].getForgeron() == null){
+                if(donjon.getLabyrintheActuel()[donjon.getPositionJoueur()].getMarchant() == null){
                     marchant = new Marchant(donjon.getPositionJoueur(), donjon);
+                    
                 } else {
                     marchant = donjon.getLabyrintheActuel()[donjon.getPositionJoueur()].getMarchant();
                 }
                 AffichageMarchant.actionEntrer(donjon, marchant);
+                if (marchant.getNbProduitRestant() ==0) { // On change la salle, le marchant quitte les lieux, il n'a plus rien à cendre
+                	this.getDonjon().getLabyrintheActuel()[this.getDonjon().getPositionJoueur()].setEstFinie(true);
+                }
                 break;
             
             case SORTIE:
@@ -232,7 +261,9 @@ public class Personnage extends EtreVivant{
                 break;
 
             case 3:
-                fuir();
+            	if (this.getDonjon().getAnciennePosition() != (-1)) { // Si le joueur a une anciennce position
+            		fuir(); // Il peut fuir
+            	}                
                 break;
         }
         return "";
@@ -267,9 +298,6 @@ public class Personnage extends EtreVivant{
 
     public void mourir(){
     	pvActuel = 0;
-    	System.out.println(nom+" est mort");
-        System.out.println("Recap Partie:");
-        AffichagePerso.afficherInventairePersonnage(this);
         joueurMort = true;
     }
     
@@ -281,11 +309,18 @@ public class Personnage extends EtreVivant{
 						
 			if(nomArmure.contains("Botte")) {
 				int position = 3;
-				if(inventaire.getArmures(position) == null) {
-					inventaire.ajouterArmure(armure,position);								
-					System.out.println("Le joueur s'equipe avec une paire de "+armure.getNomArmure()); 
+				if(inventaire.getArmures(position) == null) { // Si l'utilisateur de possède pas de botte
+					System.out.println("Voulez-vous vous equiper de cette paire de "+armure.getNomArmure()+" ? Oui(O) ou Non(N)"); 
+					String choix = Clavier.entrerClavierString();
+					
+					if(choix.equalsIgnoreCase("Oui") || choix.equalsIgnoreCase("O")) {
+						
+						System.out.println("Ajout effectue");
+						inventaire.ajouterArmure(armure,position); // On ajoute la paire de botte dans l'équipement du joueur
+					}							
+					
 				}
-				else {
+				else { // Si l'utilisateur possède déjà une paire de botte, on lui demande s'il veut la remplacer
 					System.out.println("Remplacer "+armure.getNomArmure()+" (PV:"+armure.getTempPV()+" PA:"+armure.getTempPA()+") ==> "+inventaire.getArmures(position).getNomArmure()+" (PV:"+inventaire.getArmures(position).getPV()+" PA:"+inventaire.getArmures(position).getPA()+")? Oui(O) ou Non(N)"); // On demande à l'utilisateur s'il veut remplacer la nouvelle paire de botte par une autre
 					String choix = Clavier.entrerClavierString();
 					
@@ -301,8 +336,14 @@ public class Personnage extends EtreVivant{
 			if(nomArmure.contains("Jambiere")) {
 				int position = 2;
 				if(inventaire.getArmures(position) == null) {
-					inventaire.ajouterArmure(armure,position);								
-					System.out.println("Le joueur s'equipe avec une "+armure.getNomArmure()); 
+					System.out.println("Voulez-vous vous equiper de cette "+armure.getNomArmure()+" ? Oui(O) ou Non(N)"); 
+					String choix = Clavier.entrerClavierString();
+					
+					if(choix.equalsIgnoreCase("Oui") || choix.equalsIgnoreCase("O")) {
+						
+						System.out.println("Ajout effectue");
+						inventaire.ajouterArmure(armure,position); 
+					}		
 				}
 				else {
 					System.out.println("Remplacer "+armure.getNomArmure()+" (PV:"+armure.getTempPV()+" PA:"+armure.getTempPA()+") ==> "+inventaire.getArmures(position).getNomArmure()+" (PV:"+inventaire.getArmures(position).getPV()+" PA:"+inventaire.getArmures(position).getPA()+")? Oui(O) ou Non(N)");
@@ -320,8 +361,14 @@ public class Personnage extends EtreVivant{
 			if(nomArmure.contains("Plastron")) {			
 				int position = 1;
 				if(inventaire.getArmures(position) == null) {
-					inventaire.ajouterArmure(armure,position);								
-					System.out.println("Le joueur s'equipe avec un "+armure.getNomArmure()); 
+					System.out.println("Voulez-vous vous equiper de ce "+armure.getNomArmure()+" ? Oui(O) ou Non(N)"); 
+					String choix = Clavier.entrerClavierString();
+					
+					if(choix.equalsIgnoreCase("Oui") || choix.equalsIgnoreCase("O")) {
+						
+						System.out.println("Ajout effectue");
+						inventaire.ajouterArmure(armure,position); 
+					}	
 				}
 				else {
 					System.out.println("Remplacer "+armure.getNomArmure()+" (PV:"+armure.getTempPV()+" PA:"+armure.getTempPA()+") ==> "+inventaire.getArmures(position).getNomArmure()+" (PV:"+inventaire.getArmures(position).getPV()+" PA:"+inventaire.getArmures(position).getPA()+")? Oui(O) ou Non(N)");
@@ -339,8 +386,14 @@ public class Personnage extends EtreVivant{
 			if(nomArmure.contains("Casque")) {
 				int position = 0;
 				if(inventaire.getArmures(position) == null) {
-					inventaire.ajouterArmure(armure,position);								
-					System.out.println("Le joueur s'equipe avec un "+armure.getNomArmure()); 
+					System.out.println("Voulez-vous vous equiper de ce "+armure.getNomArmure()+" ? Oui(O) ou Non(N)"); 
+					String choix = Clavier.entrerClavierString();
+					
+					if(choix.equalsIgnoreCase("Oui") || choix.equalsIgnoreCase("O")) {
+						
+						System.out.println("Ajout effectue");
+						inventaire.ajouterArmure(armure,position); 
+					}	
 				}
 				else {
 					System.out.println("Remplacer "+armure.getNomArmure()+" (PV:"+armure.getTempPV()+" PA:"+armure.getTempPA()+") ==> "+inventaire.getArmures(position).getNomArmure()+" (PV:"+inventaire.getArmures(position).getPV()+" PA:"+inventaire.getArmures(position).getPA()+")? Oui(O) ou Non(N)");
@@ -365,9 +418,16 @@ public class Personnage extends EtreVivant{
 	
 	public String sEquiperArme(TypeArme arme) {
 		
-		if (inventaire.getArme() == null) { 	// Si l'utilisateur ne possede pas d'épee, on l'equipe automatiquement
-			inventaire.ajouterArme(arme);
-			System.out.println("Le joueur s'arme avec une "+arme.getNomArme()); 
+		if (inventaire.getArme() == null) { 	// Si l'utilisateur ne possède pas d'épee
+			System.out.println("Voulez-vous vous equiper de cette "+arme.getNomArme()+" ? Oui(O) ou Non(N)"); 
+			String choix = Clavier.entrerClavierString();
+			
+			if(choix.equalsIgnoreCase("Oui") || choix.equalsIgnoreCase("O")) {
+				
+				System.out.println("Ajout effectue");
+				inventaire.ajouterArme(arme);
+			}	
+			
 		}
 		else {
 			System.out.println("Remplacer "+arme.getNomArme()+" (DMG:"+arme.getDMGTemp()+") ==> "+inventaire.getArme().getNomArme()+" (DMG:"+inventaire.getArme().getDMG()+")? Oui(O) ou Non(N)"); // On demande à l'utilisateur s'il veut remplacer la nouvelle Epée par une autre
@@ -446,7 +506,9 @@ public class Personnage extends EtreVivant{
 	}
 
     public void majStatJoueur(){
-        double ratioPV_PVmax =  ((double) pvActuel / (double)pvMax);    // Mise à jour des stats PV, PVMAX et PAactuel
+    	
+    	double ratioPV_PVmax =  ((double) pvActuel / (double)pvMax);    // Mise à jour des stats PV, PVMAX et PAactuel
+        
         int pvBonus = 0;
         int paBonus = 0;
     	
@@ -456,8 +518,11 @@ public class Personnage extends EtreVivant{
     	
         if (inventaire.getArme() != null) {
             int forceArme = inventaire.getArme().getDMG();
-	        force = this.force + forceArme; // Mise à jour des dégats d'attaque en fonction de l'épée
+	        force = forceArme + statsInitiale[1]; // Mise à jour des dégats d'attaque en fonction de l'épée
 	    }
+        else {
+        	force = statsInitiale[1];
+        }
         
         for (int i=0; i<4; i++){
             if (inventaire.getArmures(i) != null){
@@ -466,12 +531,12 @@ public class Personnage extends EtreVivant{
             }
         }
 
-        pvMax = this.pvMax + pvBonus;
-        pvActuel = (int) (pvMax * ratioPV_PVmax) ;
-        degatReduit = paBonus;
+        pvMax =  pvBonus + statsInitiale[0];
+        pvActuel = (int) (pvMax  * ratioPV_PVmax) ;
+        degatReduit = paBonus + statsInitiale[2];
     }
     
-    public void sauvegarder(String s) { // Sauegarde le personnage dans un fichier
+    public void sauvegarder(String s) { // Sauvegarde le personnage dans un fichier
     	String chemin = cheminStockage+"Partie de "+s;
         try {
             ObjectOutputStream save = new ObjectOutputStream(new FileOutputStream(chemin));

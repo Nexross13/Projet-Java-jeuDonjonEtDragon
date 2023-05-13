@@ -9,7 +9,7 @@ public enum TypeArmure {
 	
 	PLASTRON_COMMUN(50,20,1,1,"Plastron Commun", 100),
 	PLASTRON_RARE(200,45,1,1,"Plastron Rare", 200),
-	PLASTRON_LEGENDAIRE(300,70,1,1,"Plastron Legandaire", 300),
+	PLASTRON_LEGENDAIRE(300,70,1,1,"Plastron Legendaire", 300),
 	
 	JAMBIERE_COMMUN(30,15,1,1,"Jambiere Commun", 100),
 	JAMBIERE_RARE(125,30,1,1,"Jambiere Rare", 200),

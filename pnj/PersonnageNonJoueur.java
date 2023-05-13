@@ -1,8 +1,10 @@
 package pnj;
 
+import java.io.Serializable;
+
 import terrain.Donjon;
 
-public class PersonnageNonJoueur {
+public class PersonnageNonJoueur implements Serializable{
 
     protected TypePersonnageNonJoueur type;
     protected int position;
