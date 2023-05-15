@@ -98,7 +98,7 @@ public class Tresor {
 				System.out.println("Tresor "+(i+1)+": "+armureTresor.getNomArmure()+" (PV: "+armureTresor.getTempPV()+" PA:"+armureTresor.getTempPA()+")");
 				proprietaire.sEquiperArmure(armureTresor);
 			}
-			else if (chanceTypeTresor < 25)	{		// 20% obtenir Trésor de type arme
+			else if (chanceTypeTresor < 75)	{		// 20% obtenir Trésor de type arme
 				TypeArme armeTresor = armeAleatoire(77,97).randomDMG(proprietaire.getDonjon().getEtage());	// Création de l'arme			
 				System.out.println("Tresor "+(i+1)+": "+armeTresor.getNomArme()+" (DMG: " + armeTresor.getDMGTemp()+")");				
 				proprietaire.sEquiperArme(armeTresor); // On équipe le joueur avec l'arme s'il peut

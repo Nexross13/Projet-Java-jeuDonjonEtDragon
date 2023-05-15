@@ -143,8 +143,10 @@ public class Personnage extends EtreVivant{
                 if (donjon.getLabyrintheActuel()[donjon.getPositionJoueur()].getMonstre() == null){ //Si il y a pas de monstre dans la pièce
                     monstreFacile = new MonstreFacile(donjon.getEtage());  // On créer le mosntre
                     
+                    
                 } else{ // Si un monstre a déjà été découvert, on reprend le même monstre
                     monstreFacile = donjon.getLabyrintheActuel()[donjon.getPositionJoueur()].getMonstre();
+                    
                 }
                 
                 Bataille batailleFacile = new Bataille(this, monstreFacile);
@@ -273,6 +275,7 @@ public class Personnage extends EtreVivant{
 
             case 3:
             	if (this.getDonjon().getAnciennePosition() != (-1)) { // Si le joueur a une anciennce position
+            		getDonjon().enregistrerPiece(getBataille().getMonstre()); // Enregistre le monstre dans la pièce car la pièce est découverte
             		fuir(); // Il peut fuir
             	}                
                 break;
@@ -292,14 +295,17 @@ public class Personnage extends EtreVivant{
         String text = "";
         for (int i = 0; i < getInventaire().getArmuresStock().length; i++) {
             TypeArmure armure = getInventaire().getArmuresStock()[i];
-            System.out.println(armure);
             if (armure != null) {
-                armure.setDurabilite(armure.getDurabilite() - 2);
+                armure.setDurabilite(armure.getDurabilite() - 1);
+                if (armure.getDurabilite() <= 0) {
+                	text = text + inventaire.DetruireArmure(i)+'\n';
+                }
             }
         }
         
         if (degat - degatReduit <=0) {
-        	return nom+" resiste au coup du monstre";
+        	text = text +nom+" resiste au coup du monstre";
+        	return text;
         }
         
         degat = degat - degatReduit; // On réduit les dégats reçu en fonction de notre résistance
@@ -309,7 +315,7 @@ public class Personnage extends EtreVivant{
         } 
         else {
             pvActuel = pvActuel - degat;  // Changement des pv actuel en fonction des dégats reçu après réduction
-            text = nom+" prend " + degat + " de degats. Il lui reste " + pvActuel + "PV!";
+            text = text + nom+" prend " + degat + " de degats. Il lui reste " + pvActuel + "PV!";
         }
         return text;
     }
@@ -550,7 +556,7 @@ public class Personnage extends EtreVivant{
         }
 
         pvMax =  pvBonus + statsInitiale[0];
-        pvActuel = (int) (pvMax  * ratioPV_PVmax) ;
+        pvActuel = (int) (pvMax  * ratioPV_PVmax);
         degatReduit = paBonus + statsInitiale[2];
     }
     

@@ -178,7 +178,7 @@ public class Donjon implements Serializable{
     }
 
     public String enregistrerPiece(Monstre monstre){
-        labyrintheActuel[anciennePosition].setMonstre(monstre); //Enregistre le monstre dans la pièce
+        labyrintheActuel[positionJoueur].setMonstre(monstre); //Enregistre le monstre dans la pièce
         return "";
     }
     

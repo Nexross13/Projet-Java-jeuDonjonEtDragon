@@ -74,6 +74,13 @@ public class Inventaire implements Serializable{
 		sauvegardeStatsArme[0] = 0;
 		return "Votre arme est détruite";
 	}
+	
+	public String DetruireArmure(int position){
+		armuresStock[position] = null;
+		sauvegardeStatsArmure[position][0] = 0; 
+		sauvegardeStatsArmure[position][1] = 0;
+		return "Votre armure est détruite";
+	}
 }
 	
 	

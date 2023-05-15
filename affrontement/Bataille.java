@@ -95,7 +95,7 @@ public class Bataille implements Serializable{
         else{
             // Sauvegarder le monstre dans la pièce 
             System.out.println("Vous fuyer le combat!");
-            personnage.getDonjon().enregistrerPiece(monstre); // Enregistre le monstre dans la pièce car la pièce est découverte
+            
         }
         System.out.println("--------------------Fin-Combat-------------------------");
         return ""; 
