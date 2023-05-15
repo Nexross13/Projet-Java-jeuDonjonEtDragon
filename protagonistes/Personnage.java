@@ -6,10 +6,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-
 import affichage.AffichageForge;
 import affichage.AffichageMarchant;
-import affichage.AffichagePerso;
 import affichage.Clavier;
 import item.Tresor;
 import affrontement.Bataille;
@@ -44,6 +42,8 @@ public class Personnage extends EtreVivant{
         inventaire = new Inventaire();
     }
 
+    //guetteur
+
     public Inventaire getInventaire() {
 		return inventaire;
 	}
@@ -75,6 +75,8 @@ public class Personnage extends EtreVivant{
     public boolean getJoueurMort() {
     	return joueurMort;
     }
+
+    //setteur
     
     public void setJoueurMort(boolean bool) {
     	this.joueurMort = bool;
@@ -232,8 +234,8 @@ public class Personnage extends EtreVivant{
             case SORTIE:
                 if (cleSortie) {
                     System.out.println("On passe a l'etage sup");
-                    Donjon etageSup = new Donjon(this);
-                    this.rejointDonjon(etageSup);
+                    
+                    donjon.creerLabyrinthe();
                 } else {
                     System.out.println("Trouve le boss d'abord");
                 }
@@ -247,6 +249,15 @@ public class Personnage extends EtreVivant{
 
     public String attaquer(Monstre monstre){
         String texte = monstre.subirAttaque(force);
+        TypeArme arme = getInventaire().getArme();
+        if (arme != null) {
+            arme.setDurabilite(arme.getDurabilite() - 2);
+
+            if (arme.getDurabilite() == 0) {
+            inventaire.DetruireArme();
+            }
+        }
+        
         return texte;
     }
 
@@ -279,6 +290,13 @@ public class Personnage extends EtreVivant{
 
     public String subirAttaque(int degat){
         String text = "";
+        for (int i = 0; i < getInventaire().getArmuresStock().length; i++) {
+            TypeArmure armure = getInventaire().getArmuresStock()[i];
+            System.out.println(armure);
+            if (armure != null) {
+                armure.setDurabilite(armure.getDurabilite() - 2);
+            }
+        }
         
         if (degat - degatReduit <=0) {
         	return nom+" resiste au coup du monstre";
@@ -571,9 +589,12 @@ public class Personnage extends EtreVivant{
     }
     
     public void chargerStats() {
-    	if (inventaire.getSauvegardeArme() != 0) {
-    		inventaire.getArme().setDMG(inventaire.getSauvegardeArme());
-    	}
+        for (int i = 0; i<inventaire.getSauvegardeArme().length; i++){
+            if (inventaire.getSauvegardeArme()[i] != 0) {
+                inventaire.getArme().setDMG(inventaire.getSauvegardeArme()[0]);
+                inventaire.getArme().setDurabilite(inventaire.getSauvegardeArme()[1]);
+            }
+        }
     	
     	for (int i =0; i<inventaire.getSauvegardeArmure().length; i++ ) {
     		

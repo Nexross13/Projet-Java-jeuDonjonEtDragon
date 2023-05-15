@@ -11,13 +11,13 @@ public class AffichagePerso {
 		System.out.println("\nArmure:");
 		for (int i = 0;i<4;i++) {
 			if (joueur.getInventaire().getArmures(i) != null) {
-				System.out.println(joueur.getInventaire().getArmures(i).getNomArmure()+" (PV:"+joueur.getInventaire().getArmures(i).getPV()+" PA:"+joueur.getInventaire().getArmures(i).getPA()+")");
+				System.out.println(joueur.getInventaire().getArmures(i).getNomArmure()+" (PV:"+joueur.getInventaire().getArmures(i).getPV()+" PA:"+joueur.getInventaire().getArmures(i).getPA()+" Durabilite: "+joueur.getInventaire().getArmures(i).getDurabilite()+ " / "+ joueur.getInventaire().getArmures(i).getDurabiliteMax() + ")");
 			}
 		}
 		
 		System.out.println("\nArme:");
 		if (joueur.getInventaire().getArme() != null) {
-			System.out.println(joueur.getInventaire().getArme().getNomArme()+" (DMG:"+joueur.getInventaire().getArme().getDMG()+")");
+			System.out.println(joueur.getInventaire().getArme().getNomArme()+" (DMG:"+joueur.getInventaire().getArme().getDMG()+ "| Durabilite: " + joueur.getInventaire().getArme().getDurabilite() + "/" + joueur.getInventaire().getArme().getDurabiliteMax()+ ")");
 		}
 		else {
 			System.out.println("Pas d'arme equipe");

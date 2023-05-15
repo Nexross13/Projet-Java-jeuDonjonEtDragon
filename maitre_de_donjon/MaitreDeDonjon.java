@@ -79,8 +79,8 @@ public class MaitreDeDonjon {
 			            joueur.getDonjon().getLabyrintheActuel()[positionPiece] = marchant;
 			            break;
 			        case 5:
-			            Piece forge = new Piece(i, cardinaliteImpossiblesLab[i], TypePiece.FORGE);
-			            joueur.getDonjon().getLabyrintheActuel()[i] = forge;
+			            Piece forge = new Piece(positionPiece, cardinaliteImpossiblesLab[positionPiece], TypePiece.FORGE);
+			            joueur.getDonjon().getLabyrintheActuel()[positionPiece] = forge;
 			            break;
 			        case 8:
 			            Piece hostileBoss = new Piece(positionPiece, cardinaliteImpossiblesLab[positionPiece], TypePiece.HOSTILE_BOSS);

@@ -82,12 +82,12 @@ public class Marchant extends PersonnageNonJoueur implements Serializable{
 					
 				}
 				else if (chanceTypeItem < 70) {   // 45 % chance echange armure
-					TypeArmure armure = Tresor.armureRareteAleatoire(20,47).randomStats();
+					TypeArmure armure = Tresor.armureRareteAleatoire(20,47).randomStats(donjon.getEtage());
 					ajouterArmure(armure, i);
 							
 				}
 				else { 		// 30 % chance echange arme				   
-					TypeArme arme = Tresor.armeAleatoire(20,47).randomDMG();
+					TypeArme arme = Tresor.armeAleatoire(20,47).randomDMG(donjon.getEtage());
 					ajouterArme(arme, i);
 					
 				}

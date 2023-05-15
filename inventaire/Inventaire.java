@@ -8,9 +8,9 @@ public class Inventaire implements Serializable{
 	
 	// Attributs
 	private TypeArmure[] armuresStock = new TypeArmure[4];
-	private int[][] sauvegardeStatsArmure = new int[4][2];
+	private int[][] sauvegardeStatsArmure = new int[4][3];
 	private TypeArme arme = null;
-	private int sauvegardeStatsArme;
+	private int[] sauvegardeStatsArme = new int[2];
 	private ArrayList<TypePotion> potionsStock = new ArrayList<TypePotion>();
 	
 	// Constructeur
@@ -38,7 +38,7 @@ public class Inventaire implements Serializable{
 		return sauvegardeStatsArmure;
 	}
 	
-	public int getSauvegardeArme(){
+	public int[] getSauvegardeArme(){
 		return sauvegardeStatsArme;
 	}
 	
@@ -48,13 +48,16 @@ public class Inventaire implements Serializable{
 		armuresStock[position] = typeArmure;
 		
 		sauvegardeStatsArmure[position][0] = typeArmure.getPV();  // Sauvegarde les PV
-		sauvegardeStatsArmure[position][1] = typeArmure.getPA();  // Sauvegarde les PA	
+		sauvegardeStatsArmure[position][1] = typeArmure.getPA();
+		sauvegardeStatsArmure[position][2] = typeArmure.getDurabilite();  
 	}
 	
 	public void ajouterArme(TypeArme typeArme) {
 		typeArme.setDMG();
+		typeArme.setDurabilite(typeArme.getDurabiliteMax());
 		arme = typeArme;
-		sauvegardeStatsArme = arme.getDMG(); 	// Sauvegarde les DMG
+		sauvegardeStatsArme[0] = arme.getDMG();
+		sauvegardeStatsArme[1] = arme.getDurabilite(); 	
 	}
 	
 	public void ajouterPotion(TypePotion typePotion) {
@@ -64,6 +67,12 @@ public class Inventaire implements Serializable{
 		else {
 			System.out.println("Operation impossible : ajouterPotion dans inventaire");
 		}
+	}
+
+	public String DetruireArme(){
+		arme = null;
+		sauvegardeStatsArme[0] = 0;
+		return "Votre arme est détruite";
 	}
 }
 	

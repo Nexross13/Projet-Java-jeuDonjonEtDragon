@@ -36,6 +36,7 @@ public class Bataille implements Serializable{
         System.out.println("---------------------Combat-------------------------");
         if (monstre.getType() == TypeMonstre.BOSS){
             System.out.println("Attention !!!, vous combattez un "+monstre.getType());
+            System.out.println(personnage.getDonjon().getEtage());
         }
         else{
             System.out.println("Vous êtes face à un monstre "+monstre.getType());

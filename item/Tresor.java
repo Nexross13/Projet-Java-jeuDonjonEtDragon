@@ -94,12 +94,12 @@ public class Tresor {
 				
 			}
 			else if (chanceTypeTresor < 65) { // 45% obtenir Trésor de type armure
-				TypeArmure armureTresor = armureRareteAleatoire(60,30).randomStats(); // Création de l'armure
+				TypeArmure armureTresor = armureRareteAleatoire(60,30).randomStats(proprietaire.getDonjon().getEtage()); // Création de l'armure
 				System.out.println("Tresor "+(i+1)+": "+armureTresor.getNomArmure()+" (PV: "+armureTresor.getTempPV()+" PA:"+armureTresor.getTempPA()+")");
 				proprietaire.sEquiperArmure(armureTresor);
 			}
 			else { 						   // 30% obtenir Trésor de type arme
-				TypeArme armeTresor = armeAleatoire(75,20).randomDMG();	// Création de l'arme			
+				TypeArme armeTresor = armeAleatoire(75,20).randomDMG(proprietaire.getDonjon().getEtage());	// Création de l'arme			
 				System.out.println("Tresor "+(i+1)+": "+armeTresor.getNomArme()+" (DMG: " + armeTresor.getDMGTemp()+")");				
 				proprietaire.sEquiperArme(armeTresor); // On équipe le joueur avec l'arme s'il peut
 			}
