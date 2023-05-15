@@ -9,13 +9,13 @@ public class Tresor {
 		
 		int chance = (int) (Math.random() * 100);
 		
-		if (chance <  chanceCommun) {	// 60% Commun => trésor / 20 % => Marchant
+		if (chance <  chanceCommun) {	// 75% Commun => trésor / 20 % => Marchant
 			return armureTypeAleatoire(TypeArmure.CASQUE_COMMUN,TypeArmure.PLASTRON_COMMUN,TypeArmure.JAMBIERE_COMMUN,TypeArmure.BOTTE_COMMUN);		
 		}
-		else if (chance < chanceRare) { // 30% Rare => trésor / 47 % => Marchant
+		else if (chance < chanceRare) { // 20% Rare => trésor / 47 % => Marchant
 			return armureTypeAleatoire(TypeArmure.CASQUE_RARE,TypeArmure.PLASTRON_RARE,TypeArmure.JAMBIERE_RARE,TypeArmure.BOTTE_RARE);	
 		}		
-		else {					// 10% Legendaire => trésor / 33 % => Marchant
+		else {					// 5% Legendaire => trésor / 33 % => Marchant
 			return armureTypeAleatoire(TypeArmure.CASQUE_LEGENDAIRE,TypeArmure.PLASTRON_LEGENDAIRE,TypeArmure.JAMBIERE_LEGENDAIRE,TypeArmure.BOTTE_LEGENDAIRE);
 		}	
 	}
@@ -43,14 +43,14 @@ public class Tresor {
 			
 			int chance = (int) (Math.random() * 100);
 	
-			if (chance < chanceCommun) { 				// 75% Epée Commun => trésor / 20 % => Marchant
+			if (chance < chanceCommun) { 				// 77% Epée Commun => trésor / 20 % => Marchant
 				return TypeArme.EPEE_COMMUN;
 				}
 			
-			else if (chance < chanceRare) {			// 20% Epée Commun => trésor / 47 % => Marchant
+			else if (chance < chanceRare) {			// 20% Epée Rare => trésor / 47 % => Marchant
 				return TypeArme.EPEE_RARE;	
 			}		
-			else {							// 5% Epée Commun => trésor / 33 % => Marchant
+			else {							// 3% Epée Commun => trésor / 33 % => Marchant
 				return TypeArme.EPEE_LEGENDAIRE;
 			}	
 		}
@@ -87,21 +87,24 @@ public class Tresor {
 		for (int i = 0; i < nbTresor ; i++) { // Boucle en fonction du nombre de Trésor tiré au hasard
 			int chanceTypeTresor = (int) (Math.random() * 100); // Chance pour détermine le type de trésor
 			
-			if (chanceTypeTresor < 25) {     // 25% obtenir Trésor de type potion
+			if (chanceTypeTresor < 30) {     // 30% obtenir Trésor de type potion
 				TypePotion potionTresor = potionAleatoire(75);	// Création de la potion
 				System.out.println("Tresor "+(i+1)+": "+potionTresor.getNomPotion()); // i trésor : potion => nom, 2pée, nom + dmg, et armure => nom, PV et PA
 				proprietaire.sEquiperPotion(potionTresor);	// On équipe le joueur avec la potion s'il peut
 				
 			}
-			else if (chanceTypeTresor < 65) { // 45% obtenir Trésor de type armure
-				TypeArmure armureTresor = armureRareteAleatoire(60,30).randomStats(proprietaire.getDonjon().getEtage()); // Création de l'armure
+			else if (chanceTypeTresor < 55) { // 25% obtenir Trésor de type armure
+				TypeArmure armureTresor = armureRareteAleatoire(75,95).randomStats(proprietaire.getDonjon().getEtage()); // Création de l'armure
 				System.out.println("Tresor "+(i+1)+": "+armureTresor.getNomArmure()+" (PV: "+armureTresor.getTempPV()+" PA:"+armureTresor.getTempPA()+")");
 				proprietaire.sEquiperArmure(armureTresor);
 			}
-			else { 						   // 30% obtenir Trésor de type arme
-				TypeArme armeTresor = armeAleatoire(75,20).randomDMG(proprietaire.getDonjon().getEtage());	// Création de l'arme			
+			else if (chanceTypeTresor < 25)	{		// 20% obtenir Trésor de type arme
+				TypeArme armeTresor = armeAleatoire(77,97).randomDMG(proprietaire.getDonjon().getEtage());	// Création de l'arme			
 				System.out.println("Tresor "+(i+1)+": "+armeTresor.getNomArme()+" (DMG: " + armeTresor.getDMGTemp()+")");				
 				proprietaire.sEquiperArme(armeTresor); // On équipe le joueur avec l'arme s'il peut
+			}
+			else { // 25% obtenir Trésor vide
+				System.out.println("Tresor: poussière");
 			}
 		}
 	}

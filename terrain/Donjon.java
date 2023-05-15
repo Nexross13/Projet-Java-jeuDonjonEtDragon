@@ -33,7 +33,7 @@ public class Donjon implements Serializable{
         Cardinalite.SUD_OUEST, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD/*190*/, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD_EST};
     private int positionJoueur;
     private int anciennePosition = -1; 
-    private int etage = 50;
+    private int etage = 0;
     private Personnage joueur;
 
     // Constructeur
