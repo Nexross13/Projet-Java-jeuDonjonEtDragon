@@ -9,10 +9,6 @@ public class ControleurMaitreDonjon {
 	
 	Personnage joueur;
 
-	public ControleurMaitreDonjon() {
-		
-	}
-	
 	public void chargerJoueur(ControleurPerso controleurPerso) {
 		this.joueur = controleurPerso.p();
 	}
@@ -103,7 +99,7 @@ public class ControleurMaitreDonjon {
 		return "Aucun changement de piece effectue";
 	}
 	
-	public String changerStatsDMGJoueur(int dmgPerso) {
+	public String changerStatsDMGJoueur(int dmgPerso) { // Permet de changer les dégats du personnage
 		if (dmgPerso >=0) {
 			joueur.setDegatInit(dmgPerso);
 			return "Changement d'attaque du personnage effectue";
@@ -112,7 +108,7 @@ public class ControleurMaitreDonjon {
 		
 	}
 	
-	public String changerStatsPVJoueur(int pvActuelPerso, int pvMaxPerso) {
+	public String changerStatsPVJoueur(int pvActuelPerso, int pvMaxPerso) { // Permet de changer les PV Actuel et Max du personnage
 		if (pvActuelPerso >=0 && pvMaxPerso >=0 && pvActuelPerso <= pvMaxPerso) {
 			joueur.setPvActuel(pvActuelPerso);
 			joueur.setPvInit(pvMaxPerso);
@@ -122,7 +118,7 @@ public class ControleurMaitreDonjon {
 		return "Aucun changement effectue";
 	}
 	
-	public String changerStatsPAJoueur(int pointArmure) {
+	public String changerStatsPAJoueur(int pointArmure) { // Permet de changer les Points d'armures du personnage
 		if (pointArmure >=0) {
 			joueur.setPAInit(pointArmure);
 			return "Changement des points d'armure du personnage effectue";
@@ -131,14 +127,14 @@ public class ControleurMaitreDonjon {
 		return "Aucun changement effectue";
 	}
 	
-	public String changerPOJoueur(int piecedOr) {
+	public String changerPOJoueur(int piecedOr) { // Permet de changer le montant des pièces d'or du personnage
 		
 		joueur.setNbrPO(piecedOr);
 		return "Changement piece d'Or effectue";
 	}
 		
 	
-	public String ressusciterJoueur() {
+	public String ressusciterJoueur() { // Réssuscite le personnage en cas de mort (PV Actuel = 0) avec toute sa barre de vie
 		if (joueur.getJoueurMort()) {
 			joueur.setJoueurMort(false);
 			joueur.setPvActuel(joueur.getPvMax());

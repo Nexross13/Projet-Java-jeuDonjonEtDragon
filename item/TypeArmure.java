@@ -3,7 +3,7 @@ package item;
 public enum TypeArmure {
 	
 	// Enum
-	CASQUE_COMMUN(25,10,1,1,"Casque Commun", 50, 10),
+	CASQUE_COMMUN(25,10,1,1,"Casque Commun", 50, 10), // Armure casque commum, 25 Point de Vie +/-20%, 10 Point d'armure +/-20%, vaut 50 Pièce d'Or en vente et 10 de durabilité
 	CASQUE_RARE(75,25,1,1,"Casque Rare", 200, 20),
 	CASQUE_LEGENDAIRE(150,40,1,1,"Casque Legendaire", 400, 50),
 	

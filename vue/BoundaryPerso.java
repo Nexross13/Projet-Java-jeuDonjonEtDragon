@@ -19,12 +19,13 @@ public class BoundaryPerso {
 		this.controleur = controleur;
 	}
 	
-	public void afficherStatsPersonnage() {
+	public void afficherStatsPersonnage() { // Affichage des statistiques du personnage Nom, Force, PV actuel et Max, Point d'armure et pièce d'or
         controleur.majStatJoueur();
         System.out.println("Stats de "+controleur.p().getNom()+": DMG: "+controleur.p().getForce()+" | PV: "+controleur.p().getPvActuel()+"/"+controleur.p().getPvMax()+" | PA: "+controleur.p().getProtection() + " | PO: "+ controleur.p().getNbrPO());
     }
 	
 	public void afficherDeplacement(BoundaryDonjon boundaryDonjon, ControleurDonjon controleurDonjon, ControleurTresor controleurTresor){
+		// Choix déplacement personnage
 		System.out.println("+---Votre cardinalite---+");
 		System.out.println("|N - nord               |");
 		System.out.println("|S - sud                |");
@@ -70,7 +71,7 @@ public class BoundaryPerso {
 		}
 	}
 	
-	public void afficherInventairePersonnage() {
+	public void afficherInventairePersonnage() { // Affichage de l'inventaire du personnage (Armure, Arme, Potion)
 		System.out.println("--------- INVENTAIRE "+controleur.p().getNom()+"--------");
 		System.out.println("\nArmure:");
 		for (int i = 0;i<4;i++) {

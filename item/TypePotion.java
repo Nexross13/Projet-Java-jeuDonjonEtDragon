@@ -1,7 +1,7 @@
 package item;
 
 public enum TypePotion {
-	PETITE_POTION(33,"Petite Potion", 50),
+	PETITE_POTION(33,"Petite Potion", 50), // Petite potion donne 33% de vie au personnage, vaut 50 pièce d'or en vente
 	MAX_POTION(100,"Potion Max", 100);
 		
 	private int pourcentSoin;

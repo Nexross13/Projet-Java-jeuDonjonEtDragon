@@ -24,7 +24,7 @@ public class ControleurMarchant {
 		this.boundaryPerso = boundaryPerso;
 	}
 	
-	public void ajouterArmure(TypeArmure typeArmure, int position) {
+	public void ajouterArmure(TypeArmure typeArmure, int position) { // Ajoute une armure à la vente
 			
 		marchant.setStockArmure(typeArmure,position);
 		marchant.getStockArmure()[position].setStats();
@@ -34,7 +34,7 @@ public class ControleurMarchant {
 		marchant.setStockStatsArmure(typeArmure.getPA(), position, 1);  // Sauvegarde les PA	
 	}
 	
-	public void ajouterArme(TypeArme typeArme, int position) {
+	public void ajouterArme(TypeArme typeArme, int position) { // Ajoute une arme à la vente
 		
 		marchant.setStockArme(typeArme, position);
 		marchant.getStockArme()[position].setDMG();
@@ -42,7 +42,7 @@ public class ControleurMarchant {
 		marchant.setStockStatArme(marchant.getStockArme()[position].getDMG(),position); 	// Sauvegarde les DMG
 	}
 	
-	public void ajouterPotion(TypePotion typePotion, int position) {
+	public void ajouterPotion(TypePotion typePotion, int position) { // Ajoute une potion à la vente
 		marchant.setStockPotion(typePotion, position);
 		marchant.setInfoTypeDansChoix("Potion",position);
 		
@@ -92,7 +92,7 @@ public class ControleurMarchant {
 	}
 	
 
-	public String Achat(Personnage proprietaire, int choix){
+	public String Achat(Personnage proprietaire, int choix){  // Le personnage achète les produits vendu par le marchant
 		String texte = "";
 		switch (marchant.getInfoTypeDansChoix()[choix]) {
 			case "Armure":
@@ -165,7 +165,7 @@ public class ControleurMarchant {
 		return texte;
 	}
 
-    public boolean verifPO(int cout){
+    public boolean verifPO(int cout){ // Vérification si le personnage à assez de pièce d'Or pour acheter l'article
 		return proprietaire.getNbrPO() >= cout ? true : false; //Va vérifier si le joueur à assez de PO
     }
 }

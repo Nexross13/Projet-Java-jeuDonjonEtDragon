@@ -13,7 +13,7 @@ public class BoundaryJouer {
 		this.boundaryMaitreDonjon = boundaryMaitreDonjon;
 	}
 	
-	public void menu() {
+	public void menu() { // Lancement du jeu
 		String chemin = "sauvegarde//";
         
 		while(true) {

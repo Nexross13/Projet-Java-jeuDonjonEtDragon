@@ -13,8 +13,9 @@ public class Donjon implements Serializable{
 
     // Attributs
     private Piece[] labyrintheActuel = new Piece[196];
-    //private String[] labyrintheModele ={"E","M","M","M","M","M","M","F","HB","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M"};
-    private String[] labyrintheModele ={"E","S","M","M","M","M","M","F","HB","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","HD","HD","HD","HD","HD","HD","HD","HD","HD","HD","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF"};
+    // Labyrinthe composé de toute les pièces, E (entrée), S (Sortie), M (Marchant), F (Forge), T (Trésor), N (Neutre), HF, HI, HD, HB (Hostile Facile, Intermediaire, Difficile et BOSS), 
+    private String[] labyrintheModele ={"E","S","M","M","M","M","M","F","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","T","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","HB","HD","HD","HD","HD","HD","HD","HD","HD","HD","HD","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HI","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF","HF"};
+    // Cardinalité du labyrinte, possède des murs que en bordure 
     private Cardinalite[] cardinaliteImpossiblesLab = { // Permet de stocker toutes les cardinalités impossibles (a savoir les bords du labyrinthe)
         Cardinalite.NORD_OUEST, Cardinalite.NORD, Cardinalite.NORD, Cardinalite.NORD, Cardinalite.NORD, Cardinalite.NORD, Cardinalite.NORD, Cardinalite.NORD, Cardinalite.NORD, Cardinalite.NORD, Cardinalite.NORD, Cardinalite.NORD, Cardinalite.NORD, Cardinalite.NORD_EST, 
         Cardinalite.OUEST, null, null, null, null, null, null, null, null, null, null, null, null, Cardinalite.EST, 
@@ -136,20 +137,20 @@ public class Donjon implements Serializable{
         return text;
     }
     
- // Lors de la fuite, on rétablit l'ancienne position du joueur en position actuelle
-    public String personnageFuit(){
-        positionJoueur = anciennePosition;
+ 
+    public String personnageFuit(){ // Le personnage fuit le combat
+        positionJoueur = anciennePosition; // Retourne à son ancienne position
         return "";
     }
 
-    public String enregistrerPiece(Monstre monstre){
+    public String enregistrerPiece(Monstre monstre){ // Enregistre le monstre dans la pièce une fois découvert par le personnage
         labyrintheActuel[positionJoueur].setMonstre(monstre); //Enregistre le monstre dans la pièce
         return "";
     }
     
-    public String enregistrerPiece(Marchant marchant){
+    public String enregistrerPiece(Marchant marchant){ // Enregistre le marchant dans la pièce une fois découvert par le personnage
     
-    	labyrintheActuel[positionJoueur].setMarchant(marchant); //Enregistre le marchant dans la pièce
+    	labyrintheActuel[positionJoueur].setMarchant(marchant); //Enregistre le marchant avec ses produit vendu
         return "";
     }
 

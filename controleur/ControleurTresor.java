@@ -6,16 +6,12 @@ import item.TypePotion;
 
 public class ControleurTresor {
 	
-	public ControleurTresor() {
-		
-	}
-
-	// Permet de définir le drop de la rareté en fonction de l'armure
+	// Permet de définir le pourcentage de chance de rareté de l'armure (Commum, rare, légendaire)
 		public TypeArmure armureRareteAleatoire(int chanceCommun, int chanceRare) {
 			
-			int chance = (int) (Math.random() * 100);
+			int chance = (int) (Math.random() * 100); // Nombre aléatoire entre 0 et 100
 			
-			if (chance <  chanceCommun) {	// 75% Commun => trésor / 20 % => Marchant
+			if (chance <  chanceCommun) {	// 75% obtenir armure Commun dans un trésor / 20 % obtenir armure par le Marchant
 				return armureTypeAleatoire(TypeArmure.CASQUE_COMMUN,TypeArmure.PLASTRON_COMMUN,TypeArmure.JAMBIERE_COMMUN,TypeArmure.BOTTE_COMMUN);		
 			}
 			else if (chance < chanceRare) { // 20% Rare => trésor / 47 % => Marchant
@@ -26,7 +22,7 @@ public class ControleurTresor {
 			}	
 		}
 		
-		// Permet de définir le taux de drop de la pièce d'armure
+		// Permet de définir le taux d'obtenir des pièces d'armure
 		private TypeArmure armureTypeAleatoire(TypeArmure casque, TypeArmure plastron, TypeArmure jambiere, TypeArmure botte) {
 				
 				int chance = (int) (Math.random() * 4);
@@ -46,7 +42,7 @@ public class ControleurTresor {
 			}
 			
 		public TypeArme armeAleatoire(int chanceCommun, int chanceRare) {
-				
+				// Définit le taux de rarete d'une arme (Commum, rare, légendaire)
 				int chance = (int) (Math.random() * 100);
 		
 				if (chance < chanceCommun) { 				// 77% Epée Commun => trésor / 20 % => Marchant
@@ -62,7 +58,7 @@ public class ControleurTresor {
 			}
 		
 		public TypePotion potionAleatoire(int chancePetitPotion) {
-			
+			// Définit le taux de rarete des potions ( petite potion, potion max)
 			int chance = (int) (Math.random() * 100);
 			
 			if (chance < chancePetitPotion) {		// 75% Petite potion => Trésor / 50 % =>  Marchant

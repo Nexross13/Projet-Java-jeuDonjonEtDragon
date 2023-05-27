@@ -2,7 +2,6 @@ package vue;
 
 import java.io.File;
 
-import affichage.AffichagePerso;
 import controleur.ControleurDonjon;
 import controleur.ControleurPerso;
 import controleur.ControleurTresor;
@@ -25,7 +24,7 @@ public class BoundaryJeu {
 		this.controleurTresor = new ControleurTresor();		
 	}
 	
-	public void nouvellePartie(File repertoire,String[] liste, String chemin) {
+	public void nouvellePartie(File repertoire,String[] liste, String chemin) { // Création d'une partie, création du personnage
 		System.out.print("Entrer le nom du Heros (aucun espace): ");
 		String nomPersonnage = Clavier.entrerClavierString();
 		System.out.println("Bienvenue dans le donjon " + nomPersonnage);
@@ -40,7 +39,7 @@ public class BoundaryJeu {
 		menuPartie(chemin);		// Lancement de la Partie du personnage
 	}
 	
-	public void chargerPartie(File repertoire,String[] liste, String chemin) {
+	public void chargerPartie(File repertoire,String[] liste, String chemin) { // Chargement d'une partie sauvegardé
 		int nbPartie = 0;
         if (liste != null) {         // Savoir le nombre de partie
             for (int i = 0; i < liste.length; i++) {
@@ -81,7 +80,7 @@ public class BoundaryJeu {
         System.out.println("Annulation");
 	}
 	
-	public void supprPartie(File repertoire,String[] liste, String chemin) {
+	public void supprPartie(File repertoire,String[] liste, String chemin) { // Suppréssion d'une partie sauvegardé
 		int nbPartie2 = 0;
         if (liste != null) {         // Savoir le nombre de partie
             for (int i = 0; i < liste.length; i++) {
@@ -131,7 +130,7 @@ public class BoundaryJeu {
         System.out.println("Annulation");
 	}
 	
-	public void menuPartie(String chemin) {
+	public void menuPartie(String chemin) {  // Action Principale du Personnage 
 		boundaryDonjon.affichageLaby();		// Affiche du plan du labyrinthe
         
         while (99999 == 99999 && controleurPerso.vivant()) {

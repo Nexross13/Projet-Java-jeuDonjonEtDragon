@@ -36,7 +36,7 @@ public class ControleurPerso {
 	}
 	
 	public void creerPerso(String nomPersonnage) {
-		Personnage personnage = new Personnage(nomPersonnage); // Création du personnage
+		Personnage personnage = new Personnage(nomPersonnage); // Création du personnage avec son nom
 		this.personnage = personnage;
 	}
 	
@@ -44,15 +44,15 @@ public class ControleurPerso {
 		return personnage;
 	}
 	
-	public Boolean vivant() {
+	public boolean vivant() { // Vérifie l'état du personnage, true = vivant
 		return !personnage.getJoueurMort();
 	}
 	
-	public void sauvegarder(String chemin) {	 // Sauvegarde le personnage dans un fichier
-	    	String fichierPerso = chemin+"Partie de "+personnage.getNom();
+	public void sauvegarder(String chemin) {	 // Sauvegarde le personnage dans un fichier indiquer par le chemin
+	    	String fichierPerso = chemin+"Partie de "+personnage.getNom(); // Nom du fichier en fonction du nom du personnage
 	        try {
-	            ObjectOutputStream save = new ObjectOutputStream(new FileOutputStream(fichierPerso));
-	            save.writeObject(personnage); //Où "this" est l'objet personnage
+	            ObjectOutputStream save = new ObjectOutputStream(new FileOutputStream(fichierPerso)); 
+	            save.writeObject(personnage); // Ecrit la sauvegarde du personnage
 	            save.close();
 	            System.out.println("La partie du personnage "+personnage.getNom()+" a bien ete enregistree");
 	        } catch (IOException e) {
@@ -64,13 +64,13 @@ public class ControleurPerso {
 	}
 	
 
-    public void charger(String chemin, String nomPartie, ControleurDonjon controleurDonjon) {
-    	String fichierPerso = chemin+nomPartie;
+    public void charger(String chemin, String nomPartie, ControleurDonjon controleurDonjon) { // Chargement du personnage depuis une sauvegarde
+    	String fichierPerso = chemin+nomPartie; // Récupère le chemin et nom du fichier de la sauvegarde du personnage
         Object obj = null;
  
         try {
             ObjectInputStream load = new ObjectInputStream(new FileInputStream(fichierPerso));
-            obj = load.readObject();
+            obj = load.readObject(); // Chargement de l'objet inscrit dans load
             load.close();
         } catch (IOException e) {
             System.out.println("Impossible de charger votre Personnage");
@@ -78,14 +78,14 @@ public class ControleurPerso {
         } catch (Exception e) {
             e.printStackTrace();
         }
-       Personnage personnage = (Personnage) obj;  // Récupération de l'object stocker       				  				
+       Personnage personnage = (Personnage) obj;  // Récupération de l'object stocké       				  				
        this.personnage = personnage;
-       chargerStats(); //On charge ses stats enregistrées
-       controleurDonjon.chargerDonjon(personnage, this);
+       chargerStats(); //On charge ses stats enregistrées vers le personnage
+       controleurDonjon.chargerDonjon(personnage, this); // Chargement du donjon
        
     }
     
-    public void chargerStats() {
+    public void chargerStats() { // Chargement des stats du personnage à l'initialisation de la sauvegarde
         for (int i = 0; i<personnage.getInventaire().getSauvegardeArme().length; i++){
             if (personnage.getInventaire().getSauvegardeArme()[i] != 0) {
             	personnage.getInventaire().getArme().setDMG(personnage.getInventaire().getSauvegardeArme()[0]);
@@ -103,7 +103,7 @@ public class ControleurPerso {
 		}
     }
     
-	public void majStatJoueur(){
+	public void majStatJoueur(){ // Mise à jour des statistiques du personnage en fonction de son équipement
 	    	
 	    	double ratioPV_PVmax =  ((double) personnage.getPvActuel() / (double) personnage.getPvMax());    // Mise à jour des stats PV, PVMAX et PAactuel
 	        
@@ -135,6 +135,7 @@ public class ControleurPerso {
 	}
 	
 	public boolean deplacer(String cardinalite, ControleurDonjon controleurDonjon, BoundaryPerso boundaryPerso, ControleurTresor controleurTresor){
+		// Déplace le personnage dans une pièce s'il y a pas de mur sur le chemin
 		boolean possible = true;
         switch (cardinalite) {
             case "N":
@@ -151,13 +152,14 @@ public class ControleurPerso {
                 break;
         }
         entreePiece(personnage.getDonjon().getLabyrintheActuel()[personnage.getDonjon().getPositionJoueur()], controleurTresor);
+        // Le personnage entre dans la pièce
         return possible;
     }
 
-    public String entreePiece(Piece piece, ControleurTresor controleurTresor){
-        piece.setEstDecouverte(true);
-        switch (piece.getType()) {
-            case HOSTILE_FACILE:
+    public String entreePiece(Piece piece, ControleurTresor controleurTresor){ // Le personnage entre dans la pièce
+        piece.setEstDecouverte(true); // La pièce devient découverte par le personnage
+        switch (piece.getType()) { // En fonction du type de la pièce
+            case HOSTILE_FACILE: // Combat Personnage VS Montre de niveau facile
                 Monstre monstreFacile;
 
                 if (personnage.getDonjon().getLabyrintheActuel()[personnage.getDonjon().getPositionJoueur()].getMonstre() == null){ //Si il y a pas de monstre dans la pièce
@@ -226,13 +228,13 @@ public class ControleurPerso {
                 controleurBatailleB.combat();
                 break;
 
-            case TRESOR:
+            case TRESOR: // Personnage ouvre le trésor
             	
                 boundaryTresor.tresor(this); // Récupère le trésor
                 personnage.getDonjon().getLabyrintheActuel()[personnage.getDonjon().getPositionJoueur()].setEstFinie(true); // Rend la pièce NEUTRE 
                 break;
                 
-            case FORGE:
+            case FORGE: // Amélioration et réparation d'équipement
                 Forgeron forgeron;
 
                 if(personnage.getDonjon().getLabyrintheActuel()[personnage.getDonjon().getPositionJoueur()].getForgeron() == null){
@@ -246,7 +248,7 @@ public class ControleurPerso {
                 boundaryForge.actionEntrer(personnage.getDonjon(), forgeron);
             	break;
             	
-            case MARCHANT:
+            case MARCHANT: // Achat d'équipement
                 Marchant marchant;
 
                 if(personnage.getDonjon().getLabyrintheActuel()[personnage.getDonjon().getPositionJoueur()].getMarchant() == null){
@@ -263,13 +265,13 @@ public class ControleurPerso {
                 }
                 break;
             
-            case SORTIE:
+            case SORTIE: // Peut sortie qu'en possession de la clé (en battant le BOSS)
                 if (personnage.getCleSortie()) {
                     System.out.println("On passe a l'etage sup");
                     
                     personnage.getDonjon().creerLabyrinthe();
                 } else {
-                    System.out.println("Trouve le boss d'abord");
+                    System.out.println("Trouve le BOSS d'abord");
                 }
                 break;
 
@@ -279,17 +281,17 @@ public class ControleurPerso {
         return "";
     }
     
-    public String actionCombat(int numAction, BoundaryPerso boundaryPerso){
+    public String actionCombat(int numAction, BoundaryPerso boundaryPerso){ // Action du joueur en combat
         switch (numAction) {
-            case 1:
+            case 1: // Le personnage attaque le monstre
                 System.out.println(personnage.attaquer(personnage.getBataille().getMonstre()));
                 break;
 
-            case 2:
+            case 2: // Le personnage boit une potion
             	boundaryPerso.boirePotion();
                 break;
 
-            case 3:
+            case 3: // Le personnage fuit
             	if (personnage.getDonjon().getAnciennePosition() != (-1)) { // Si le joueur a une anciennce position
             		personnage.getDonjon().enregistrerPiece(personnage.getBataille().getMonstre()); // Enregistre le monstre dans la pièce car la pièce est découverte
             		fuir(); // Il peut fuir
@@ -299,7 +301,7 @@ public class ControleurPerso {
         return "";
     }
 
-    public String fuir(){
+    public String fuir(){ // Le personnage fuit le combat
         personnage.getBataille().fuir();
         personnage.setBataille(null);
         String texte = "Je fuis le combat!";

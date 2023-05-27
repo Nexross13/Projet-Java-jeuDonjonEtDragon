@@ -8,6 +8,6 @@ public class Jouer {
 		BoundaryJeu boundaryJeu = new BoundaryJeu();
 		BoundaryMaitreDonjon boundaryMaitreDonjon = new BoundaryMaitreDonjon();
 		BoundaryJouer boundaryJouer = new BoundaryJouer(boundaryJeu, boundaryMaitreDonjon);
-		boundaryJouer.menu();
+		boundaryJouer.menu(); // Lancement du jeu
 	}		
 }

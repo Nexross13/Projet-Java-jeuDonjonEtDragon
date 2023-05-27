@@ -16,7 +16,7 @@ public class BoundaryTresor {
 		this.controleur = controleur;
 	}
 	
-	public void tresor(ControleurPerso controleurPerso) {
+	public void tresor(ControleurPerso controleurPerso) { // Le personnage obtient un trésor
 		
 		BoundaryPerso boundaryPerso = new BoundaryPerso(controleurPerso);
 		

@@ -26,7 +26,7 @@ public class BoundaryMaitreDonjon {
 		this.boundaryPerso = new BoundaryPerso(controleurPerso);
 	}
 	
-	public void menuMaitreDuDonjon(String chemin) {
+	public void menuMaitreDuDonjon(String chemin) { // Action maitre du donjon
 		while(true) {
 			File repertoire = new File(chemin);
 	        String liste[] = repertoire.list();

@@ -68,9 +68,6 @@ public class Marchant extends PersonnageNonJoueur implements Serializable{
     	this.stockStatArme[position] = dmg;
     }
     
-    public void getStockStatArme(int dmg, int position) {
-    	this.stockStatArme[position] = dmg;
-    }
     
     public TypePotion[] getStockPotion() {
     	return stockPotion;

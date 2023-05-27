@@ -6,7 +6,7 @@ import protagonistes.Monstre;
 import protagonistes.Personnage;
 import protagonistes.TypeMonstre;
 
-public class Bataille implements Serializable{
+public class Bataille implements Serializable{ 
     // Attribut
     private Personnage personnage;
     private Monstre monstre;
@@ -14,7 +14,7 @@ public class Bataille implements Serializable{
     private boolean personnageContinuer = true;
 
     // Constructeur
-    public Bataille(Personnage personnage, Monstre monstre){
+    public Bataille(Personnage personnage, Monstre monstre){ // Permet de confronter un personnage et un monstre
         this.personnage = personnage; 
         this.monstre = monstre;
     }
@@ -36,7 +36,7 @@ public class Bataille implements Serializable{
     	this.tour = tour;
     }
     
-   public boolean getPersonnageContinuer() {
+   public boolean getPersonnageContinuer() { // Permet de savoir si le personnage continue le combat 
 	   return personnageContinuer;
    }
     

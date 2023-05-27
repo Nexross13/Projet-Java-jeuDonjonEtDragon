@@ -19,7 +19,7 @@ public class BoundaryForge {
 		this.boundaryPerso = boundaryPerso;
 	}
 	
-	public void actionEntrer(Donjon donjon, Forgeron forgeron){
+	public void actionEntrer(Donjon donjon, Forgeron forgeron){ // Action du personnage avec le forgeron
         System.out.println("-----------Choix-----------");
         System.out.println("0 - Quitter la salle");
         System.out.println("1 - Améliorer un equipement");
@@ -45,7 +45,7 @@ public class BoundaryForge {
         }
     }
 
-    public void choixEquipement(String type, Donjon donjon, Forgeron forgeron){
+    public void choixEquipement(String type, Donjon donjon, Forgeron forgeron){ // Le personnage à choisi l'équipement à réparer ou  à améliorer
         System.out.println("-----------Choix-----------");
         System.out.println("0 - Retour en arrière");
         System.out.println("1 - "+type+" une arme");

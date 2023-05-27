@@ -17,19 +17,19 @@ public class Personnage extends EtreVivant{
     private Inventaire inventaire;
     private int  statsInitiale [] = new int[3]; // Sert de référence aux stats initiales du joueur (pouvant être modifier par le maitre  du donjon) PV / DEGAT / PA
     private int degatReduit;
-    private boolean cleSortie = false;
-    private boolean joueurMort = false;
+    private boolean cleSortie = false;	// clé de sortie de l'étage permettant de passer à l'étage suppérieur via la sortie, false signifiant qu'il ne la possède pas
+    private boolean joueurMort = false;	// etat du joueur, false = vivant, true = mort
    
     
     public Personnage(String nom){
         super(100, 25);
         this.nom = nom;
-        this.statsInitiale[0] = 100;
-        this.statsInitiale[1] = 25;
-        inventaire = new Inventaire();
+        this.statsInitiale[0] = 100; // PV d'origine pouvant être modifier par le maitre du donjon
+        this.statsInitiale[1] = 25;  // Attaque d'origine, idem
+        inventaire = new Inventaire(); // Création de l'invention
     }
 
-    //guetteur
+    
 
     public Inventaire getInventaire() {
 		return inventaire;
@@ -66,9 +66,7 @@ public class Personnage extends EtreVivant{
     public boolean getJoueurMort() {
     	return joueurMort;
     }
-
-    //setteur
-    
+  
     public void setJoueurMort(boolean bool) {
     	this.joueurMort = bool;
     }
@@ -76,7 +74,6 @@ public class Personnage extends EtreVivant{
     public void setPvInit(int pvMax) {
     	this.statsInitiale[0] = pvMax;
     	this.pvMax = statsInitiale[0];
-    	
     }
     
     public void setDegatInit(int degat) {
@@ -112,13 +109,12 @@ public class Personnage extends EtreVivant{
         this.bataille = bataille;
         return "";
     }
-
+   
     
-
-    public String attaquer(Monstre monstre){
+    public String attaquer(Monstre monstre){ // Le personnage attaque le monstre en combat
         String texte = monstre.subirAttaque(force);
         TypeArme arme = getInventaire().getArme();
-        if (arme != null) {
+        if (arme != null) { // En cas de possession d'arme, perd de la durabilité en attaquant
             arme.setDurabilite(arme.getDurabilite() - 2);
 
             if (arme.getDurabilite() == 0) {
@@ -130,7 +126,7 @@ public class Personnage extends EtreVivant{
     }
 
     
-    public String subirAttaque(int degat){
+    public String subirAttaque(int degat){ // Le personnage subit des dégats en fonction de l'attaque du monstre
         String text = "";
         for (int i = 0; i < getInventaire().getArmuresStock().length; i++) {
             TypeArmure armure = getInventaire().getArmuresStock()[i];
@@ -147,7 +143,7 @@ public class Personnage extends EtreVivant{
         	return text;
         }
         
-        degat = degat - degatReduit; // On réduit les dégats reçu en fonction de notre résistance
+        degat = degat - degatReduit; // Réduction les dégats reçu en fonction de notre résistance
         
         if (pvActuel <= degat) {
         	mourir(); 
@@ -159,18 +155,18 @@ public class Personnage extends EtreVivant{
         return text;
     }
 
-    public void mourir(){
+    public void mourir(){ // Le personnage meurt
     	pvActuel = 0;
         joueurMort = true;
     }
     
 
-    public String gagnerPO(Monstre monstre){
+    public String gagnerPO(Monstre monstre){ // Le personnage gagne des Pièces d'Or en fonction du monstre battu
         this.nbrPO = this.nbrPO + monstre.getGainPO();
         return "";
     }
 
-    public String achatItem(int cout){
+    public String achatItem(int cout){ // Soustrait l'Or du personnage lors d'achat d'équipement ou de consommable
         this.nbrPO = this.nbrPO - cout;
         return "";
     }

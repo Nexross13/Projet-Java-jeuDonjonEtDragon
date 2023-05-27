@@ -14,7 +14,7 @@ public class BoundaryDonjon {
 		this.controleur = controleur;
 	}
 	
-	public void affichageLaby() {	
+	public void affichageLaby() {	// affichage du labyrinthe vue par l'utilisateur en fonction des pièces découvertes
 		
         String murHorizontal = "   +---------------------------------------------------------------------+"; // Définit la ligne horizontale du mur
         String murVertical = "|"; // Définit le mur vertical de chaque côté
@@ -84,7 +84,7 @@ public class BoundaryDonjon {
         System.out.println(murHorizontal);        
 	}
 	
-	public void affichageLabyMD() {
+	public void affichageLabyMD() { // Affichage du labyrinthe vue par le maitre du donjon, toutes les pièces sont révélés
 		
 		String murHorizontal = "   +---------------------------------------------------------------------+"; // Définit la ligne horizontale du mur
         String murVertical = "|"; // Définit le mur vertical de chaque côté

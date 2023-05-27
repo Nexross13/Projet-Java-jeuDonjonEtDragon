@@ -18,7 +18,7 @@ public class BoundaryMarchant {
 		this.controleur = controleur;
 	}
 	
-	public void actionEntrer(Donjon donjon, Marchant marchant){
+	public void actionEntrer(Donjon donjon, Marchant marchant){ // Action du personnage au marchant
         while (marchant.getNbProduitRestant() !=0) { // Tant que le marchant à qqch à vendre
             System.out.println("-----------Choix-----------");
             System.out.println("0 - Quitter la salle");
