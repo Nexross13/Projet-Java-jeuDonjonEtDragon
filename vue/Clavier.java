@@ -1,4 +1,4 @@
-package affichage;
+package vue;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

@@ -11,7 +11,7 @@ public class MonstreDifficile extends Monstre implements Serializable{
     private TypeMonstre type = TypeMonstre.DIFFICILE;
 
     //Constructeur
-    MonstreDifficile(int etage){
+    public MonstreDifficile(int etage){
         super(0,0,0);
         etage++; // Diffilculté dynamique en fonction de l'étage
         this.pvMax = (int) (pvBorne[0] + ( Math.random() * ((pvBorne[1]+1)*etage - pvBorne[0]*etage)));

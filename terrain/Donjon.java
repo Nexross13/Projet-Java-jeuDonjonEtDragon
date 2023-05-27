@@ -4,11 +4,10 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
+import pnj.Marchant;
 import protagonistes.Monstre;
 import protagonistes.Personnage;
-import affichage.AffichagePerso;
-import pnj.Marchant;
-
 
 public class Donjon implements Serializable{
 
@@ -46,6 +45,10 @@ public class Donjon implements Serializable{
     public int getEtage() {
         return etage;
     }
+    
+    public void setEtage(int etage) {
+    	this.etage = etage;
+    }
 
     public Piece[] getLabyrintheActuel() {
         return labyrintheActuel;
@@ -62,9 +65,17 @@ public class Donjon implements Serializable{
     public int getAnciennePosition() {
         return anciennePosition;
     }
+    
+    public void setAnciennePosition(int posi) {
+        this.anciennePosition = posi;
+    }
 
     public Personnage getJoueur() {
         return joueur;
+    }
+    
+    public Cardinalite[] getCardinaliteImpossiblesLab() {
+    	return this.cardinaliteImpossiblesLab;
     }
 
     // Autres méthodes
@@ -124,54 +135,8 @@ public class Donjon implements Serializable{
         String text = "Creation etage fait!";
         return text;
     }
-
-    public boolean changerPositionJoueur(Cardinalite deplacement){
-        Piece pieceActuelle = labyrintheActuel[positionJoueur];
-        boolean possible = true;
-            switch (deplacement) {
-                case NORD:
-                    if (pieceActuelle.getCardinalitesImpossibles() == Cardinalite.NORD || pieceActuelle.getCardinalitesImpossibles() == Cardinalite.NORD_OUEST || pieceActuelle.getCardinalitesImpossibles() == Cardinalite.NORD_EST) {
-                        possible = false;
-                    } else {
-                        anciennePosition = positionJoueur;
-                        positionJoueur = positionJoueur - 14;
-                        AffichagePerso.phrasePiece(this);
-                    }
-                    break;
-                case EST:
-                    if (pieceActuelle.getCardinalitesImpossibles() == Cardinalite.EST || pieceActuelle.getCardinalitesImpossibles() == Cardinalite.NORD_EST || pieceActuelle.getCardinalitesImpossibles() == Cardinalite.SUD_EST) {
-                        possible = false;
-                    } else {
-                        anciennePosition = positionJoueur;
-                        positionJoueur = positionJoueur + 1;
-                        AffichagePerso.phrasePiece(this);
-                    }
-                    
-                    break;
-                case SUD:
-                    if (pieceActuelle.getCardinalitesImpossibles() == Cardinalite.SUD || pieceActuelle.getCardinalitesImpossibles() == Cardinalite.SUD_EST || pieceActuelle.getCardinalitesImpossibles() == Cardinalite.SUD_OUEST) {
-                        possible = false;
-                    } else {
-                        anciennePosition = positionJoueur;
-                        positionJoueur = positionJoueur + 14;
-                        AffichagePerso.phrasePiece(this);
-                    }
-                    
-                    break;
-                case OUEST:
-                    if (pieceActuelle.getCardinalitesImpossibles() == Cardinalite.OUEST || pieceActuelle.getCardinalitesImpossibles() == Cardinalite.NORD_OUEST || pieceActuelle.getCardinalitesImpossibles() == Cardinalite.SUD_OUEST) {
-                        possible = false;
-                    } else {
-                        anciennePosition = positionJoueur;
-                        positionJoueur = positionJoueur - 1;
-                        AffichagePerso.phrasePiece(this);
-                    }
-                    break;
-            }
-        return possible;
-    }
-
-    // Lors de la fuite, on rétablit l'ancienne position du joueur en position actuelle
+    
+ // Lors de la fuite, on rétablit l'ancienne position du joueur en position actuelle
     public String personnageFuit(){
         positionJoueur = anciennePosition;
         return "";
@@ -184,12 +149,9 @@ public class Donjon implements Serializable{
     
     public String enregistrerPiece(Marchant marchant){
     
-        labyrintheActuel[positionJoueur].setMarchant(marchant); //Enregistre le marchant dans la pièce
+    	labyrintheActuel[positionJoueur].setMarchant(marchant); //Enregistre le marchant dans la pièce
         return "";
     }
 
-    public String EtageSup(){
-        etage++;
-        return creerLabyrinthe();
-    }
+    
 }

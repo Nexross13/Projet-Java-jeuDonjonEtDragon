@@ -11,7 +11,7 @@ public class MonstreIntermediaire extends Monstre implements Serializable{
     private TypeMonstre type = TypeMonstre.INTERMEDIAIRE;
 
     //Constructeur
-    MonstreIntermediaire(int etage){
+    public MonstreIntermediaire(int etage){
         super(0,0,0);
         etage++; // Diffilculté dynamique en fonction de l'étage
         this.pvMax = (int) (pvBorne[0] + ( Math.random() * ((pvBorne[1]+1)*etage - pvBorne[0]*etage))); 

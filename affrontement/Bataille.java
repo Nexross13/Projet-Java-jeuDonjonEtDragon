@@ -2,8 +2,6 @@ package affrontement;
 
 import java.io.Serializable;
 
-import item.Tresor;
-import affichage.Clavier;
 import protagonistes.Monstre;
 import protagonistes.Personnage;
 import protagonistes.TypeMonstre;
@@ -29,77 +27,19 @@ public class Bataille implements Serializable{
     public Monstre getMonstre(){
         return monstre;
     }
-
-    // Autres méthodes
-    public String combat(){
-        // texte faire apparaitre les stats du monstre et du personnage
-        System.out.println("---------------------Combat-------------------------");
-        if (monstre.getType() == TypeMonstre.BOSS){
-            System.out.println("Attention !!!, vous combattez un "+monstre.getType());
-            System.out.println(personnage.getDonjon().getEtage());
-        }
-        else{
-            System.out.println("Vous êtes face à un monstre "+monstre.getType());
-        }
-        
-        while(personnage.getPvActuel() != 0 && monstre.getPvActuel() != 0 && personnageContinuer){
-            if (tour % 2 != 0){
-
-                System.out.println("------------------------------------------");
-                System.out.println("Stats Monstre:    Dégat: "+monstre.getForce()+" | PV: "+monstre.getPvActuel()+"/"+monstre.getPvMax());
-                System.out.println("Stats Personnage: Dégat: "+personnage.getForce()+" | PV: "+personnage.getPvActuel()+"/"+personnage.getPvMax()+" |  PA:"+personnage.getProtection());
-                System.out.println("------------------------------------------");
-                // Action Joueur
-                System.out.println("1 --> Attaquer");
-                System.out.println("2 --> Soigner");
-                if (personnage.getDonjon().getAnciennePosition() != (-1)) { // Si le joueur a une ancienne position 
-                	System.out.println("3 --> Fuir"); // Il peut fuir
-                }
-                
-                int choix = Clavier.entrerClavierInt();
-                personnage.actionCombat(choix); // Boundary qui va faire les paramètres d'entrés
-                               
-            }
-
-            if (tour % 2 == 0){
-                // Attaque Monstre
-                System.out.println(monstre.attaquer(personnage));
-            }
-            tour++;               
-        }
-        if (monstre.getPvActuel() == 0){
-            if(monstre.getType() == TypeMonstre.BOSS){ // Si le mosntre etait un BOSS
-                personnage.setCleSortie(true);
-                Tresor.Tresor(personnage);
-                personnage.getDonjon().getLabyrintheActuel()[personnage.getDonjon().getPositionJoueur()].setEstFinie(true);
-                try {
-                    Thread.sleep(3000); // Pause le programme pendant 3 secondes
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            } else {
-                // Le Monstre est mort
-                Tresor.Tresor(personnage); // Le personange obtient un trésor
-                personnage.gagnerPO(this.monstre);
-                personnage.getDonjon().getLabyrintheActuel()[personnage.getDonjon().getPositionJoueur()].setEstFinie(true); // Permet de rendre la piece en type NEUTRE quand le bataille est gagnée
-                try {
-                    Thread.sleep(3000); // Pause le programme pendant 3 secondes
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        else if (personnage.getPvActuel() == 0){
-        	return ""; 
-        }
-        else{
-            // Sauvegarder le monstre dans la pièce 
-            System.out.println("Vous fuyer le combat!");
-            
-        }
-        System.out.println("--------------------Fin-Combat-------------------------");
-        return ""; 
+    
+    public int getTour() {
+    	return tour;
     }
+    
+    public void setTour(int tour) {
+    	this.tour = tour;
+    }
+    
+   public boolean getPersonnageContinuer() {
+	   return personnageContinuer;
+   }
+    
     
     public void fuir(){ // Le personnage fuit le combat, il retourne à son ancienne position
         this.personnageContinuer = false;

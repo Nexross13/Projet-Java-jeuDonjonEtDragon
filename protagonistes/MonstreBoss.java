@@ -8,7 +8,7 @@ public class MonstreBoss extends Monstre implements Serializable{
     private TypeMonstre type = TypeMonstre.BOSS;
 
     //Constructeur
-    MonstreBoss(int etage){
+    public MonstreBoss(int etage){
         super(1500,500,150);
         etage++;
         this.pvMax = pvMax*etage;

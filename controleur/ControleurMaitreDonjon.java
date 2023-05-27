@@ -1,37 +1,23 @@
-package maitre_de_donjon;
+package controleur;
 
-import java.util.Iterator;
 
 import protagonistes.Personnage;
-import terrain.Cardinalite;
 import terrain.Piece;
 import terrain.TypePiece;
 
-public class MaitreDeDonjon {
+public class ControleurMaitreDonjon {
 	
-	private Personnage joueur;
+	Personnage joueur;
 
-	private Cardinalite[] cardinaliteImpossiblesLab = { // Permet de stocker toutes les cardinalités impossibles (a savoir les bords du labyrinthe)
-	        Cardinalite.NORD_OUEST, Cardinalite.NORD, Cardinalite.NORD, Cardinalite.NORD, Cardinalite.NORD, Cardinalite.NORD, Cardinalite.NORD, Cardinalite.NORD, Cardinalite.NORD, Cardinalite.NORD, Cardinalite.NORD, Cardinalite.NORD, Cardinalite.NORD, Cardinalite.NORD_EST, 
-	        Cardinalite.OUEST, null, null, null, null, null, null, null, null, null, null, null, null, Cardinalite.EST, 
-	        Cardinalite.OUEST,  null, null /*30*/, null, null, null, null, null, null, null, null, null, null /*40*/, Cardinalite.EST, 
-	        Cardinalite.OUEST, null, null, null, null, null, null, null, null/*50*/, null, null, null, null, Cardinalite.EST, 
-	        Cardinalite.OUEST, null, null, null, null/*60*/, null, null, null, null, null, null, null, null,Cardinalite.EST, 
-	        Cardinalite.OUEST /*70*/, null, null, null, null, null, null, null, null, null, null/*80*/, null, null, Cardinalite.EST, 
-	        Cardinalite.OUEST, null, null, null, null, null, null/*90*/, null, null, null, null, null, null, Cardinalite.EST, 
-	        Cardinalite.OUEST, null, null /*100 */, null, null, null, null, null, null, null, null, null, null/*110*/, Cardinalite.EST, 
-	        Cardinalite.OUEST, null, null, null, null, null, null, null, null/*120*/, null, null, null, null, Cardinalite.EST, 
-	        Cardinalite.OUEST, null, null, null, null/*130*/, null, null, null, null, null, null, null, null, Cardinalite.EST, 
-	        Cardinalite.OUEST/*140*/, null, null, null, null, null, null, null, null, null, null/*150*/, null, null, Cardinalite.EST, 
-	        Cardinalite.OUEST, null, null, null, null, null, null/*160 */, null, null, null, null, null, null, Cardinalite.EST, 
-	        Cardinalite.OUEST, null, null/*170 */, null, null, null, null, null, null, null, null, null, null/*180 */, Cardinalite.EST,
-	        Cardinalite.SUD_OUEST, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD/*190*/, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD_EST};
+	public ControleurMaitreDonjon() {
+		
+	}
 	
-	public MaitreDeDonjon(Personnage persoCharger){
-         joueur = persoCharger;
-    }
+	public void chargerJoueur(ControleurPerso controleurPerso) {
+		this.joueur = controleurPerso.p();
+	}
 	
-	public String changerPieceouPosition(String posiHori, int posiVerti, int typePieceChoisi) { // Change une pièce ou la position du joueur dans le labyrinthe
+	public String changerPieceouPosition(String posiHori, int posiVerti, int typePieceChoisi, ControleurDonjon controleurDonjon) { // Change une pièce ou la position du joueur dans le labyrinthe
 		
 		if (posiVerti > 0 && posiVerti < 15) { // Si la position vertical est compris entre 0 et 15 non inclus
 			
@@ -71,39 +57,39 @@ public class MaitreDeDonjon {
 					switch (typePieceChoisi) {
 			        
 			        case 9:			        
-			            Piece sortie = new Piece(positionPiece, cardinaliteImpossiblesLab[positionPiece], TypePiece.SORTIE);
+			            Piece sortie = new Piece(positionPiece, controleurDonjon.d().getCardinaliteImpossiblesLab()[positionPiece], TypePiece.SORTIE);
 			            joueur.getDonjon().getLabyrintheActuel()[positionPiece] = sortie;
 			            break;
 			        case 4:
-			            Piece marchant = new Piece(positionPiece, cardinaliteImpossiblesLab[positionPiece], TypePiece.MARCHANT);
+			            Piece marchant = new Piece(positionPiece, controleurDonjon.d().getCardinaliteImpossiblesLab()[positionPiece], TypePiece.MARCHANT);
 			            joueur.getDonjon().getLabyrintheActuel()[positionPiece] = marchant;
 			            break;
 			        case 5:
-			            Piece forge = new Piece(positionPiece, cardinaliteImpossiblesLab[positionPiece], TypePiece.FORGE);
+			            Piece forge = new Piece(positionPiece, controleurDonjon.d().getCardinaliteImpossiblesLab()[positionPiece], TypePiece.FORGE);
 			            joueur.getDonjon().getLabyrintheActuel()[positionPiece] = forge;
 			            break;
 			        case 8:
-			            Piece hostileBoss = new Piece(positionPiece, cardinaliteImpossiblesLab[positionPiece], TypePiece.HOSTILE_BOSS);
+			            Piece hostileBoss = new Piece(positionPiece, controleurDonjon.d().getCardinaliteImpossiblesLab()[positionPiece], TypePiece.HOSTILE_BOSS);
 			            joueur.getDonjon().getLabyrintheActuel()[positionPiece] = hostileBoss;
 			            break;
 			        case 7:
-			            Piece tresor = new Piece(positionPiece, cardinaliteImpossiblesLab[positionPiece], TypePiece.TRESOR);
+			            Piece tresor = new Piece(positionPiece, controleurDonjon.d().getCardinaliteImpossiblesLab()[positionPiece], TypePiece.TRESOR);
 			            joueur.getDonjon().getLabyrintheActuel()[positionPiece] = tresor;
 			            break;
 			        case 6:
-			            Piece neutre = new Piece(positionPiece, cardinaliteImpossiblesLab[positionPiece], TypePiece.NEUTRE);
+			            Piece neutre = new Piece(positionPiece, controleurDonjon.d().getCardinaliteImpossiblesLab()[positionPiece], TypePiece.NEUTRE);
 			            joueur.getDonjon().getLabyrintheActuel()[positionPiece] = neutre;
 			            break;
 			        case 2:
-			            Piece hostileIntermediaire = new Piece(positionPiece, cardinaliteImpossiblesLab[positionPiece], TypePiece.HOSTILE_INTERMEDIAIRE);
+			            Piece hostileIntermediaire = new Piece(positionPiece, controleurDonjon.d().getCardinaliteImpossiblesLab()[positionPiece], TypePiece.HOSTILE_INTERMEDIAIRE);
 			            joueur.getDonjon().getLabyrintheActuel()[positionPiece] = hostileIntermediaire;
 			            break;
 			        case 3:
-			            Piece hostileDifficile = new Piece(positionPiece, cardinaliteImpossiblesLab[positionPiece], TypePiece.HOSTILE_DIFFICILE);
+			            Piece hostileDifficile = new Piece(positionPiece, controleurDonjon.d().getCardinaliteImpossiblesLab()[positionPiece], TypePiece.HOSTILE_DIFFICILE);
 			            joueur.getDonjon().getLabyrintheActuel()[positionPiece] = hostileDifficile;
 			            break;
 			        case 1:
-			            Piece hostileFacile = new Piece(positionPiece, cardinaliteImpossiblesLab[positionPiece], TypePiece.HOSTILE_FACILE);
+			            Piece hostileFacile = new Piece(positionPiece, controleurDonjon.d().getCardinaliteImpossiblesLab()[positionPiece], TypePiece.HOSTILE_FACILE);
 			            joueur.getDonjon().getLabyrintheActuel()[positionPiece] = hostileFacile;
 			            break;
 			            
@@ -163,4 +149,5 @@ public class MaitreDeDonjon {
 		}
 		
 	}
+	
 }
