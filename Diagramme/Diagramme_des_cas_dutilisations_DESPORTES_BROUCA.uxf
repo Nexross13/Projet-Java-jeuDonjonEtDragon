@@ -1,104 +1,1012 @@
-<diagram program="umletino" version="15.1"><zoom_level>5</zoom_level><element><id>UMLActor</id><coordinates><x>350</x><y>16</y><w>30</w><h>55</h></coordinates><panel_attributes>Joueur
-fg=RED</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLActor</id><coordinates><x>250</x><y>211</y><w>45</w><h>55</h></coordinates><panel_attributes>Maitre du Jeu
-fg=BLUE</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>370</x><y>226</y><w>75</w><h>25</h></coordinates><panel_attributes>Connexion MJ
-fg=BLUE</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>480</x><y>111</y><w>75</w><h>25</h></coordinates><panel_attributes>Creer nouvelle partie
-fg=RED</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>365</x><y>181</y><w>75</w><h>25</h></coordinates><panel_attributes>Quitter le jeu
-fg=RED</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>535</x><y>201</y><w>75</w><h>25</h></coordinates><panel_attributes>Liste partie
-fg=BLACK</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>445</x><y>161</y><w>75</w><h>25</h></coordinates><panel_attributes>Charger une partie
-fg=BLACK</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>290</x><y>226</y><w>90</w><h>20</h></coordinates><panel_attributes>
-fg=BLUE</panel_attributes><additional_attributes>160;20;10;20</additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>370</x><y>271</y><w>75</w><h>25</h></coordinates><panel_attributes>Gestion partie
-fg=BLUE</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>375</x><y>41</y><w>115</w><h>90</h></coordinates><panel_attributes>
-fg=RED</panel_attributes><additional_attributes>210;160;10;10</additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>725</x><y>71</y><w>75</w><h>25</h></coordinates><panel_attributes>Quitter partie
-fg=RED</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLActor</id><coordinates><x>610</x><y>121</y><w>40</w><h>55</h></coordinates><panel_attributes>Personnage
-fg=RED</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>290</x><y>231</y><w>90</w><h>60</h></coordinates><panel_attributes>
-fg=BLUE</panel_attributes><additional_attributes>160;100;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>375</x><y>41</y><w>35</w><h>150</h></coordinates><panel_attributes>
-fg=RED</panel_attributes><additional_attributes>50;280;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>290</x><y>186</y><w>85</w><h>60</h></coordinates><panel_attributes>
-fg=BLUE</panel_attributes><additional_attributes>150;10;10;100</additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>650</x><y>201</y><w>75</w><h>25</h></coordinates><panel_attributes>Sauvegarder partie
-fg=RED</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>745</x><y>186</y><w>75</w><h>25</h></coordinates><panel_attributes>Jouer partie
-fg=RED</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>645</x><y>86</y><w>100</w><h>65</h></coordinates><panel_attributes>
-fg=RED</panel_attributes><additional_attributes>10;110;180;10</additional_attributes></element><element><id>Relation</id><coordinates><x>645</x><y>136</y><w>45</w><h>75</h></coordinates><panel_attributes>
-fg=RED</panel_attributes><additional_attributes>10;10;70;130</additional_attributes></element><element><id>Relation</id><coordinates><x>645</x><y>136</y><w>115</w><h>65</h></coordinates><panel_attributes>
-fg=RED</panel_attributes><additional_attributes>10;10;210;110</additional_attributes></element><element><id>Relation</id><coordinates><x>375</x><y>41</y><w>90</w><h>135</h></coordinates><panel_attributes>
-fg=RED</panel_attributes><additional_attributes>160;250;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>480</x><y>141</y><w>150</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-
-fg=RED</panel_attributes><additional_attributes>280;10;10;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>121</y><w>80</w><h>25</h></coordinates><panel_attributes>lt=&lt;&lt;-
-fg=RED</panel_attributes><additional_attributes>140;30;110;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>430</x><y>181</y><w>90</w><h>105</h></coordinates><panel_attributes>lt=&lt;.
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.0.0">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>176</x>
+      <y>56</y>
+      <w>48</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>Joueur
+fg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>8</x>
+      <y>368</y>
+      <w>88</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>Maitre du Jeu
+fg=BLUE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>208</x>
+      <y>392</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Connexion MJ
+fg=BLUE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>384</x>
+      <y>208</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Creer nouvelle partie
+fg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>200</x>
+      <y>320</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Quitter le jeu
+fg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>472</x>
+      <y>352</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Liste partie
+fg=BLACK</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>328</x>
+      <y>288</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Charger une partie
+fg=BLACK</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>80</x>
+      <y>392</y>
+      <w>144</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>
+fg=BLUE</panel_attributes>
+    <additional_attributes>160.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>208</x>
+      <y>464</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Gestion partie
+fg=BLUE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>216</x>
+      <y>96</y>
+      <w>184</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>
+fg=RED</panel_attributes>
+    <additional_attributes>210.0;160.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>776</x>
+      <y>144</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Quitter partie
+fg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>584</x>
+      <y>224</y>
+      <w>80</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>Personnage
+fg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>80</x>
+      <y>400</y>
+      <w>144</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>
+fg=BLUE</panel_attributes>
+    <additional_attributes>160.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>216</x>
+      <y>96</y>
+      <w>56</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>
+fg=RED</panel_attributes>
+    <additional_attributes>50.0;280.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>80</x>
+      <y>328</y>
+      <w>136</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>
+fg=BLUE</panel_attributes>
+    <additional_attributes>150.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>656</x>
+      <y>352</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Sauvegarder partie
+fg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>808</x>
+      <y>328</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Jouer partie
+fg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>648</x>
+      <y>168</y>
+      <w>160</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>
+fg=RED</panel_attributes>
+    <additional_attributes>10.0;110.0;180.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>648</x>
+      <y>248</y>
+      <w>72</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>
+fg=RED</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>648</x>
+      <y>248</y>
+      <w>184</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>
+fg=RED</panel_attributes>
+    <additional_attributes>10.0;10.0;210.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>216</x>
+      <y>96</y>
+      <w>144</w>
+      <h>216</h>
+    </coordinates>
+    <panel_attributes>
+fg=RED</panel_attributes>
+    <additional_attributes>160.0;250.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>384</x>
+      <y>256</y>
+      <w>240</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+fg=RED</panel_attributes>
+    <additional_attributes>280.0;10.0;10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>496</x>
+      <y>224</y>
+      <w>128</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+fg=RED</panel_attributes>
+    <additional_attributes>140.0;30.0;110.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>304</x>
+      <y>320</y>
+      <w>152</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
 &lt;&lt;include&gt;&gt;
-fg=BLUE</panel_attributes><additional_attributes>110;10;110;190;10;190</additional_attributes></element><element><id>Relation</id><coordinates><x>605</x><y>206</y><w>55</w><h>20</h></coordinates><panel_attributes>lt=.&gt;
+fg=BLUE</panel_attributes>
+    <additional_attributes>110.0;10.0;110.0;190.0;10.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>584</x>
+      <y>360</y>
+      <w>88</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
 &lt;&lt;extends&gt;&gt;
-fg=RED</panel_attributes><additional_attributes>90;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>515</x><y>161</y><w>65</w><h>50</h></coordinates><panel_attributes>lt=&lt;.
-&lt;&lt;include&gt;&gt;</panel_attributes><additional_attributes>110;80;110;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>440</x><y>221</y><w>140</w><h>70</h></coordinates><panel_attributes>lt=.&gt;
+fg=RED</panel_attributes>
+    <additional_attributes>90.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>440</x>
+      <y>288</y>
+      <w>104</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;include&gt;&gt;</panel_attributes>
+    <additional_attributes>110.0;80.0;110.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>320</x>
+      <y>384</y>
+      <w>224</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
 &lt;&lt;extends&gt;&gt;
 bg=BLUE
-fg=BLUE</panel_attributes><additional_attributes>10;120;260;120;260;10</additional_attributes></element><element><id>UMLNote</id><coordinates><x>830</x><y>261</y><w>45</w><h>45</h></coordinates><panel_attributes>Scénarios:
+fg=BLUE</panel_attributes>
+    <additional_attributes>10.0;120.0;260.0;120.0;260.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>944</x>
+      <y>448</y>
+      <w>72</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>Scénarios:
 Nord
 Sud
 Ouest
 Est
-fg=RED</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>795</x><y>226</y><w>75</w><h>25</h></coordinates><panel_attributes>Consulter Inventaire
-fg=RED</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>745</x><y>271</y><w>75</w><h>25</h></coordinates><panel_attributes>Se déplacer
-fg=RED</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>685</x><y>236</y><w>75</w><h>25</h></coordinates><panel_attributes>Boire Potion
-fg=RED</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>775</x><y>206</y><w>15</w><h>75</h></coordinates><panel_attributes>
-fg=RED</panel_attributes><additional_attributes>10;10;10;130</additional_attributes></element><element><id>Relation</id><coordinates><x>775</x><y>206</y><w>40</w><h>35</h></coordinates><panel_attributes>
-fg=RED</panel_attributes><additional_attributes>10;10;60;50</additional_attributes></element><element><id>Relation</id><coordinates><x>745</x><y>206</y><w>45</w><h>45</h></coordinates><panel_attributes>
-fg=RED</panel_attributes><additional_attributes>70;10;10;70</additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>850</x><y>421</y><w>60</w><h>25</h></coordinates><panel_attributes>Attaquer
-fg=RED</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>705</x><y>346</y><w>75</w><h>25</h></coordinates><panel_attributes>Récupérer Trésor
+fg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>888</x>
+      <y>392</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Consulter Inventaire
+fg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>808</x>
+      <y>464</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Se déplacer
+fg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>712</x>
+      <y>408</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Boire Potion
+fg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>856</x>
+      <y>360</y>
+      <w>24</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>
+fg=RED</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>856</x>
+      <y>360</y>
+      <w>64</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>
+fg=RED</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>808</x>
+      <y>360</y>
+      <w>72</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>
+fg=RED</panel_attributes>
+    <additional_attributes>70.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>976</x>
+      <y>704</y>
+      <w>96</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Attaquer
+fg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>744</x>
+      <y>584</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Récupérer Trésor
 
-fg=RED</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>640</x><y>326</y><w>65</w><h>25</h></coordinates><panel_attributes>Marchander
-fg=RED</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>825</x><y>391</y><w>50</w><h>25</h></coordinates><panel_attributes>Se soigner
-fg=RED</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>715</x><y>406</y><w>50</w><h>25</h></coordinates><panel_attributes>Gagner
-fg=RED</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>840</x><y>336</y><w>75</w><h>25</h></coordinates><panel_attributes>Combattre Monstre
-fg=RED</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>890</x><y>391</y><w>45</w><h>25</h></coordinates><panel_attributes>Fuir
-fg=RED</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>925</x><y>286</y><w>45</w><h>25</h></coordinates><panel_attributes>Perdre
-fg=RED</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>775</x><y>291</y><w>115</w><h>55</h></coordinates><panel_attributes>
-fg=RED</panel_attributes><additional_attributes>10;10;210;90</additional_attributes></element><element><id>Relation</id><coordinates><x>735</x><y>291</y><w>55</w><h>65</h></coordinates><panel_attributes>
-fg=RED</panel_attributes><additional_attributes>90;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>670</x><y>291</y><w>120</w><h>45</h></coordinates><panel_attributes>
-fg=RED</panel_attributes><additional_attributes>220;10;15;70</additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>845</x><y>76</y><w>45</w><h>30</h></coordinates><panel_attributes>Fin de partie
-fg=RED</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>540</x><y>381</y><w>85</w><h>30</h></coordinates><panel_attributes>Gestion Inventaire
-fg=RED</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>325</x><y>361</y><w>75</w><h>25</h></coordinates><panel_attributes>Gestion pièce
-fg=BLUE</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>325</x><y>316</y><w>75</w><h>25</h></coordinates><panel_attributes>Gestion donjon
-fg=BLUE</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>415</x><y>316</y><w>75</w><h>25</h></coordinates><panel_attributes>Gestion personnage
-fg=BLUE</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>415</x><y>361</y><w>75</w><h>25</h></coordinates><panel_attributes>Gestion inventaire
-fg=BLUE</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>340</x><y>396</y><w>45</w><h>55</h></coordinates><panel_attributes>Scénarios:
+fg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>632</x>
+      <y>536</y>
+      <w>112</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Marchant :
+Achat équipement
+et consommable
+fg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>936</x>
+      <y>656</y>
+      <w>80</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Se soigner
+fg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>760</x>
+      <y>680</y>
+      <w>80</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Gagner
+fg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>960</x>
+      <y>568</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Combattre Monstre
+fg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1040</x>
+      <y>656</y>
+      <w>72</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Fuir
+fg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1096</x>
+      <y>488</y>
+      <w>72</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Perdre
+fg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>856</x>
+      <y>496</y>
+      <w>184</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>
+fg=RED</panel_attributes>
+    <additional_attributes>10.0;10.0;210.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>792</x>
+      <y>496</y>
+      <w>88</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>
+fg=RED</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>688</x>
+      <y>496</y>
+      <w>192</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>
+fg=RED</panel_attributes>
+    <additional_attributes>220.0;10.0;15.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>968</x>
+      <y>152</y>
+      <w>72</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Fin de partie
+fg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>480</x>
+      <y>640</y>
+      <w>136</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Gestion Inventaire
+fg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>136</x>
+      <y>608</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Gestion pièce
+fg=BLUE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>136</x>
+      <y>536</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Gestion donjon
+fg=BLUE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>280</x>
+      <y>536</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Gestion personnage
+fg=BLUE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>280</x>
+      <y>608</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Gestion Statistique
+fg=BLUE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>160</x>
+      <y>664</y>
+      <w>72</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>Scénarios:
 Monstre
 Marchand
 Forgeron
 Trésor
+Neutre
 Sortie
-fg=BLUE</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>291</y><w>60</w><h>35</h></coordinates><panel_attributes>
-fg=BLUE</panel_attributes><additional_attributes>100;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>405</x><y>291</y><w>50</w><h>35</h></coordinates><panel_attributes>
-fg=BLUE</panel_attributes><additional_attributes>10;10;80;50</additional_attributes></element><element><id>Relation</id><coordinates><x>355</x><y>336</y><w>15</w><h>35</h></coordinates><panel_attributes>
-fg=BLUE</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>445</x><y>336</y><w>15</w><h>35</h></coordinates><panel_attributes>
-fg=BLUE</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>UMLNote</id><coordinates><x>430</x><y>396</y><w>45</w><h>40</h></coordinates><panel_attributes>Scénarios:
-Armure
-Arme
-Potion
-fg=BLUE</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>590</x><y>301</y><w>45</w><h>25</h></coordinates><panel_attributes>Forger
-fg=RED</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>630</x><y>291</y><w>160</w><h>30</h></coordinates><panel_attributes>
-fg=RED</panel_attributes><additional_attributes>300;10;10;40</additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>760</x><y>126</y><w>45</w><h>25</h></coordinates><panel_attributes>Mourir
-fg=RED</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>795</x><y>91</y><w>60</w><h>50</h></coordinates><panel_attributes>lt=.&gt;
+fg=BLUE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>192</x>
+      <y>496</y>
+      <w>96</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>
+fg=BLUE</panel_attributes>
+    <additional_attributes>100.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>264</x>
+      <y>496</y>
+      <w>80</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>
+fg=BLUE</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>184</x>
+      <y>568</y>
+      <w>24</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>
+fg=BLUE</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>328</x>
+      <y>568</y>
+      <w>24</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>
+fg=BLUE</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>304</x>
+      <y>664</y>
+      <w>80</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>Scénarios:
+Force
+PV
+Point d'armure
+Pièce d'Or
+fg=BLUE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>528</x>
+      <y>488</y>
+      <w>120</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>Forge :
+Réparation et 
+amélioration 
+équipement
+fg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>640</x>
+      <y>496</y>
+      <w>240</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>
+fg=RED</panel_attributes>
+    <additional_attributes>280.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>832</x>
+      <y>232</y>
+      <w>72</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Mourir
+fg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>888</x>
+      <y>176</y>
+      <w>96</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
 &lt;&lt;extends&gt;&gt;
-fg=RED</panel_attributes><additional_attributes>10;80;100;10</additional_attributes></element><element><id>Relation</id><coordinates><x>645</x><y>131</y><w>125</w><h>20</h></coordinates><panel_attributes>
-fg=RED</panel_attributes><additional_attributes>230;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>445</x><y>381</y><w>15</w><h>25</h></coordinates><panel_attributes>
-fg=BLUE</panel_attributes><additional_attributes>10;10;10;30</additional_attributes></element><element><id>Relation</id><coordinates><x>355</x><y>381</y><w>15</w><h>25</h></coordinates><panel_attributes>
-fg=BLUE</panel_attributes><additional_attributes>10;10;10;30</additional_attributes></element><element><id>Relation</id><coordinates><x>845</x><y>356</y><w>45</w><h>45</h></coordinates><panel_attributes>
-fg=RED</panel_attributes><additional_attributes>70;10;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>875</x><y>356</y><w>15</w><h>75</h></coordinates><panel_attributes>
-fg=RED</panel_attributes><additional_attributes>10;10;10;130</additional_attributes></element><element><id>Relation</id><coordinates><x>875</x><y>356</y><w>45</w><h>45</h></coordinates><panel_attributes>
-fg=RED</panel_attributes><additional_attributes>10;10;70;70</additional_attributes></element><element><id>Relation</id><coordinates><x>795</x><y>141</y><w>165</w><h>155</h></coordinates><panel_attributes>lt=&lt;.
+fg=RED</panel_attributes>
+    <additional_attributes>10.0;80.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>648</x>
+      <y>240</y>
+      <w>200</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>
+fg=RED</panel_attributes>
+    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>328</x>
+      <y>640</y>
+      <w>24</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>
+fg=BLUE</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>184</x>
+      <y>640</y>
+      <w>24</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>
+fg=BLUE</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>968</x>
+      <y>600</y>
+      <w>72</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>
+fg=RED</panel_attributes>
+    <additional_attributes>70.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1016</x>
+      <y>600</y>
+      <w>24</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>
+fg=RED</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1016</x>
+      <y>600</y>
+      <w>72</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>
+fg=RED</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>888</x>
+      <y>256</y>
+      <w>264</w>
+      <h>248</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
 &lt;&lt;include&gt;&gt;
-fg=RED</panel_attributes><additional_attributes>310;290;310;250;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>910</x><y>306</y><w>60</w><h>50</h></coordinates><panel_attributes>lt=&lt;.
+fg=RED</panel_attributes>
+    <additional_attributes>310.0;290.0;310.0;250.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1072</x>
+      <y>520</y>
+      <w>96</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
 &lt;&lt;include&gt;&gt;
-fg=RED</panel_attributes><additional_attributes>10;80;80;80;80;10</additional_attributes></element><element><id>Relation</id><coordinates><x>735</x><y>366</y><w>45</w><h>50</h></coordinates><panel_attributes>lt=.&gt;
+fg=RED</panel_attributes>
+    <additional_attributes>10.0;80.0;80.0;80.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>792</x>
+      <y>616</y>
+      <w>72</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
 &lt;&lt;extends&gt;&gt;
-fg=RED</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>755</x><y>351</y><w>105</w><h>70</h></coordinates><panel_attributes>lt=&lt;.
+fg=RED</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>824</x>
+      <y>592</y>
+      <w>168</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
 &lt;&lt;include&gt;&gt;
-fg=RED</panel_attributes><additional_attributes>190;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>580</x><y>361</y><w>140</w><h>35</h></coordinates><panel_attributes>lt=&lt;.
+fg=RED</panel_attributes>
+    <additional_attributes>190.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>544</x>
+      <y>608</y>
+      <w>224</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
 
 
 &lt;&lt;include&gt;&gt;
-fg=RED</panel_attributes><additional_attributes>260;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>580</x><y>346</y><w>90</w><h>45</h></coordinates><panel_attributes>lt=&lt;.
+fg=RED</panel_attributes>
+    <additional_attributes>260.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>544</x>
+      <y>584</y>
+      <w>152</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
 
 &lt;&lt;include&gt;&gt;
-fg=RED</panel_attributes><additional_attributes>160;10;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>580</x><y>321</y><w>55</w><h>70</h></coordinates><panel_attributes>lt=&lt;.
+fg=RED</panel_attributes>
+    <additional_attributes>163.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>544</x>
+      <y>544</y>
+      <w>88</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
 &lt;&lt;include&gt;&gt;
-fg=RED</panel_attributes><additional_attributes>60;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>815</x><y>271</y><w>25</w><h>20</h></coordinates><panel_attributes>
-fg=RED</panel_attributes><additional_attributes>10;20;30;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>320</x><y>66</y><w>660</w><h>395</h></coordinates><panel_attributes>Jeu Monstre &amp; Donjon</panel_attributes><additional_attributes></additional_attributes></element></diagram>
+fg=RED</panel_attributes>
+    <additional_attributes>52.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>920</x>
+      <y>464</y>
+      <w>40</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>
+fg=RED</panel_attributes>
+    <additional_attributes>10.0;20.0;30.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>128</x>
+      <y>136</y>
+      <w>1056</w>
+      <h>632</h>
+    </coordinates>
+    <panel_attributes>Jeu Monstre &amp; Donjon</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>400</x>
+      <y>576</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Ressusciter
+fg=BLUE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>392</x>
+      <y>544</y>
+      <w>88</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>
+fg=BLUE</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>392</x>
+      <y>496</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Gestion position
+fg=BLUE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>392</x>
+      <y>528</y>
+      <w>80</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>
+fg=BLUE</panel_attributes>
+    <additional_attributes>10.0;30.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>320</x>
+      <y>376</y>
+      <w>368</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+&lt;&lt;extends&gt;&gt;
+bg=BLUE
+fg=BLUE</panel_attributes>
+    <additional_attributes>10.0;140.0;280.0;140.0;440.0;10.0</additional_attributes>
+  </element>
+</diagram>

@@ -96,7 +96,7 @@ public class BoundaryMaitreDonjon {
 	        	        	 System.out.print("Choix position verticale (ex: 13) :");
 	        	        	 int pieceChoisiVerti = Clavier.entrerClavierInt();
 	        	        	 
-	        	        	 System.out.println("+------Choix de pièce a modifier------+");
+	        	        	 System.out.println("+------Choix de piece a modifier------+");
 		        	         System.out.println("|1 --> Monstre Facile                 | ");
 		        	         System.out.println("|2 --> Monstre Intermediaire          | ");
 		        	         System.out.println("|3 --> Monstre Difficile              | ");
@@ -110,7 +110,13 @@ public class BoundaryMaitreDonjon {
 		        			 System.out.println("+-------------------------------------+");
 		        			 System.out.print("Votre choix: ");
 		        			 int typePieceChoisi = Clavier.entrerClavierInt();
-		        			 System.out.println(controleurMaitreDonjon.changerPieceouPosition(pieceChoisiHori, pieceChoisiVerti, typePieceChoisi, controleurDonjon));
+		        			 if (typePieceChoisi >=1 && typePieceChoisi <=9) {
+		        				 System.out.println(controleurMaitreDonjon.changerPieceouPosition(pieceChoisiHori, pieceChoisiVerti, typePieceChoisi, controleurDonjon));
+		        			 }
+		        			 else {
+		        				 System.out.println("Annulation modification pièce");
+		        			 }
+		        			 
 	        	        	 break;
 	        	        	 
 	        	         case 2:
