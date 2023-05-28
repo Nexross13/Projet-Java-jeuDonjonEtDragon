@@ -72,10 +72,4 @@ public class ControleurDonjon {
             }
         return possible;
     }
-
-    
-    public String EtageSup(){ // Passage à l'étage suppérieur, création de l'étage, difficulté augmentée
-        donjon.setEtage(donjon.getEtage()+1);
-        return donjon.creerLabyrinthe();
-    }
 }

@@ -21,7 +21,7 @@ public class BoundaryForge {
 	
 	public void actionEntrer(Donjon donjon, Forgeron forgeron){ // Action du personnage avec le forgeron
 		while(true) {
-				System.out.println("-----------Choix-----------");
+			System.out.println("-----------Choix-----------");
 	        System.out.println("0 - Quitter la salle");
 	        System.out.println("1 - Ameliorer un equipement");
 	        System.out.println("2 - Reparer un equipement");

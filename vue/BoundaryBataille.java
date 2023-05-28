@@ -59,7 +59,7 @@ public class BoundaryBataille {
             	boundaryTresor.tresor(controleurPerso); // Le joueur récupère le trésor laissé par le monstre
                 bataille.getPersonnage().getDonjon().getLabyrintheActuel()[bataille.getPersonnage().getDonjon().getPositionJoueur()].setEstFinie(true); // Le combat est terminé, le monstre est mort, la pèce passe en neutre
                 try {
-                    Thread.sleep(3000); // Pause le programme pendant 3 secondes
+                    Thread.sleep(1000); // Pause le programme pendant 1 secondes
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -69,7 +69,7 @@ public class BoundaryBataille {
                 bataille.getPersonnage().gagnerPO(bataille.getMonstre()); // Le personnage gagne des pièces d'or en fonction du monstre
                 bataille.getPersonnage().getDonjon().getLabyrintheActuel()[bataille.getPersonnage().getDonjon().getPositionJoueur()].setEstFinie(true); // Permet de rendre la piece en type NEUTRE quand le bataille est gagnée
                 try {
-                    Thread.sleep(3000); // Pause le programme pendant 3 secondes
+                    Thread.sleep(1000); // Pause le programme pendant 1 secondes
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

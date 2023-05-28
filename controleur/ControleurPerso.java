@@ -268,11 +268,10 @@ public class ControleurPerso {
             
             case SORTIE: // Peut sortie qu'en possession de la clé (en battant le BOSS)
                 if (personnage.getCleSortie()) {
-                    System.out.println("On passe a l'etage sup");
-                    
-                    personnage.getDonjon().creerLabyrinthe();
+                    System.out.println("On passe a l'etage sup");                    
+                    personnage.getDonjon().etageSup();
                 } else {
-                    System.out.println("Trouve le BOSS d'abord");
+                    System.out.println("Trouve le BOSS pour passer a l'étage supperieur");
                 }
                 break;
 

@@ -25,7 +25,7 @@ public class BoundaryJeu {
 	}
 	
 	public void nouvellePartie(File repertoire,String[] liste, String chemin) { // Création d'une partie, création du personnage
-		System.out.print("Entrer le nom du Heros (aucun espace): ");
+		System.out.print("Entrer le nom du Heros: ");
 		String nomPersonnage = Clavier.entrerClavierString();
 		System.out.println("Bienvenue dans le donjon " + nomPersonnage);
 		try {

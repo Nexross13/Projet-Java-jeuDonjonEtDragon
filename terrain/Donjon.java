@@ -32,14 +32,16 @@ public class Donjon implements Serializable{
         Cardinalite.OUEST, null, null/*170 */, null, null, null, null, null, null, null, null, null, null/*180 */, Cardinalite.EST,
         Cardinalite.SUD_OUEST, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD/*190*/, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD, Cardinalite.SUD_EST};
     private int positionJoueur;
-    private int anciennePosition = -1; 
-    private int etage = 0;
+    private int anciennePosition; 
+    private int etage;
     private Personnage joueur;
 
     // Constructeur
     public Donjon(Personnage joueur){
         creerLabyrinthe();
         this.joueur = joueur;
+        this.etage= 0;
+        this.anciennePosition = -1;
     }
 
     // Getteur
@@ -152,6 +154,12 @@ public class Donjon implements Serializable{
     
     	labyrintheActuel[positionJoueur].setMarchant(marchant); //Enregistre le marchant avec ses produit vendu
         return "";
+    }
+    
+
+    public String etageSup(){ // Passage à l'étage suppérieur, création de l'étage, difficulté augmentée
+        etage++;
+        return creerLabyrinthe();
     }
 
     

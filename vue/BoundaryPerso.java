@@ -21,7 +21,7 @@ public class BoundaryPerso {
 	
 	public void afficherStatsPersonnage() { // Affichage des statistiques du personnage Nom, Force, PV actuel et Max, Point d'armure et pièce d'or
         controleur.majStatJoueur();
-        System.out.println("Stats de "+controleur.p().getNom()+": DMG: "+controleur.p().getForce()+" | PV: "+controleur.p().getPvActuel()+"/"+controleur.p().getPvMax()+" | PA: "+controleur.p().getProtection() + " | PO: "+ controleur.p().getNbrPO());
+        System.out.println("Stats de "+controleur.p().getNom()+": DMG: "+controleur.p().getForce()+" | PV: "+controleur.p().getPvActuel()+"/"+controleur.p().getPvMax()+" | PA: "+controleur.p().getProtection() + " | PO: "+ controleur.p().getNbrPO()+" | Etage: "+controleur.p().getDonjon().getEtage());
     }
 	
 	public void afficherDeplacement(BoundaryDonjon boundaryDonjon, ControleurDonjon controleurDonjon, ControleurTresor controleurTresor){
