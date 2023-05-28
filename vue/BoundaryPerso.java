@@ -36,7 +36,7 @@ public class BoundaryPerso {
 		String cardinalite = Clavier.entrerClavierString();
 		if(!controleur.deplacer(cardinalite, controleurDonjon, this, controleurTresor)){
 			try {
-				System.out.println("Vous ne pouvez pas vous déplacer ici car il y a un mur");
+				System.out.println("Vous ne pouvez pas vous deplacer ici car il y a un mur");
 				Thread.sleep(2000);
 			} catch (Exception e) {
 			}
@@ -49,16 +49,16 @@ public class BoundaryPerso {
 	}
 	
 	public void phrasePiece(ControleurDonjon controleurDonjon){
-		System.out.print("Vous entrez dans une pièce");
+		System.out.print("Vous entrez dans une piece");
 
 		try {
-			Thread.sleep(200); // Pause le programme pendant 1 seconde
+			Thread.sleep(200); // Pause le programme pendant un laps de temps
 			System.out.print(" .");
-			Thread.sleep(200); 
-			System.out.print(".");
-			Thread.sleep(200); 
-			System.out.print(".");
-			Thread.sleep(500); 
+			for (int i =0 ; i<10; i++) {
+				Thread.sleep(75); 
+				System.out.print(".");
+			}
+			
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -106,7 +106,7 @@ public class BoundaryPerso {
 	}
 	
 	public void boirePotion() {
-		if (controleur.p().getInventaire().getPotions().size() !=0 || controleur.p().getPvActuel() != controleur.p().getPvMax()) {
+		if (controleur.p().getInventaire().getPotions().size() !=0 && controleur.p().getPvActuel() != controleur.p().getPvMax()) {
 			System.out.println("Quelle potion souhaitez vous boire?");
             System.out.println("0--> Annuler Boire Potion");
 	        for (int j=0; j < controleur.p().getInventaire().getPotions().size() ; j++ ) {
@@ -135,7 +135,12 @@ public class BoundaryPerso {
 			
 		}
 		else {
-			System.out.println("Impossible d'utiliser de Potion");
+			if (controleur.p().getPvActuel() == controleur.p().getPvMax()) {
+				System.out.println("Vous n'etes pas blesse");
+			}
+			else {
+				System.out.println("Vous n'avez pas de potion");
+			}			
 		}
 	}
 	
@@ -157,7 +162,7 @@ public class BoundaryPerso {
 				
 			}
 			else { // Si l'utilisateur possède déjà une paire de botte, on lui demande s'il veut la remplacer
-				System.out.println("Remplacer "+armure.getNomArmure()+" (PV:"+armure.getTempPV()+" PA:"+armure.getTempPA()+") ==> "+controleur.p().getInventaire().getArmures(position).getNomArmure()+" (PV:"+controleur.p().getInventaire().getArmures(position).getPV()+" PA:"+controleur.p().getInventaire().getArmures(position).getPA()+")? Oui(O) ou Non(N)"); // On demande à l'utilisateur s'il veut remplacer la nouvelle paire de botte par une autre
+				System.out.println("Remplacer "+controleur.p().getInventaire().getArmures(position).getNomArmure()+" (PV:"+controleur.p().getInventaire().getArmures(position).getPV()+" PA:"+controleur.p().getInventaire().getArmures(position).getPA()+" Dura: "+controleur.p().getInventaire().getArmures(position).getDurabilite()+"/"+controleur.p().getInventaire().getArmures(position).getDurabiliteMax()+") ? Oui(O) ou Non(N)"); // On demande à l'utilisateur s'il veut remplacer la nouvelle paire de botte par une autre
 				String choix = Clavier.entrerClavierString();
 				
 				if(choix.equalsIgnoreCase("Oui") || choix.equalsIgnoreCase("O")) {
@@ -182,7 +187,7 @@ public class BoundaryPerso {
 				}		
 			}
 			else {
-				System.out.println("Remplacer "+armure.getNomArmure()+" (PV:"+armure.getTempPV()+" PA:"+armure.getTempPA()+") ==> "+controleur.p().getInventaire().getArmures(position).getNomArmure()+" (PV:"+controleur.p().getInventaire().getArmures(position).getPV()+" PA:"+controleur.p().getInventaire().getArmures(position).getPA()+")? Oui(O) ou Non(N)");
+				System.out.println("Remplacer "+controleur.p().getInventaire().getArmures(position).getNomArmure()+" (PV:"+controleur.p().getInventaire().getArmures(position).getPV()+" PA:"+controleur.p().getInventaire().getArmures(position).getPA()+" Dura: "+controleur.p().getInventaire().getArmures(position).getDurabilite()+"/"+controleur.p().getInventaire().getArmures(position).getDurabiliteMax()+") ? Oui(O) ou Non(N)");
 				String choix = Clavier.entrerClavierString();
 				
 				if(choix.equalsIgnoreCase("Oui") || choix.equalsIgnoreCase("O")) {
@@ -207,7 +212,7 @@ public class BoundaryPerso {
 				}	
 			}
 			else {
-				System.out.println("Remplacer "+armure.getNomArmure()+" (PV:"+armure.getTempPV()+" PA:"+armure.getTempPA()+") ==> "+controleur.p().getInventaire().getArmures(position).getNomArmure()+" (PV:"+controleur.p().getInventaire().getArmures(position).getPV()+" PA:"+controleur.p().getInventaire().getArmures(position).getPA()+")? Oui(O) ou Non(N)");
+				System.out.println("Remplacer "+controleur.p().getInventaire().getArmures(position).getNomArmure()+" (PV:"+controleur.p().getInventaire().getArmures(position).getPV()+" PA:"+controleur.p().getInventaire().getArmures(position).getPA()+" Dura: "+controleur.p().getInventaire().getArmures(position).getDurabilite()+"/"+controleur.p().getInventaire().getArmures(position).getDurabiliteMax()+") ? Oui(O) ou Non(N)");
 				String choix = Clavier.entrerClavierString();
 				
 				if(choix.equalsIgnoreCase("Oui") || choix.equalsIgnoreCase("O")) {
@@ -232,7 +237,7 @@ public class BoundaryPerso {
 				}	
 			}
 			else {
-				System.out.println("Remplacer "+armure.getNomArmure()+" (PV:"+armure.getTempPV()+" PA:"+armure.getTempPA()+") ==> "+controleur.p().getInventaire().getArmures(position).getNomArmure()+" (PV:"+controleur.p().getInventaire().getArmures(position).getPV()+" PA:"+controleur.p().getInventaire().getArmures(position).getPA()+")? Oui(O) ou Non(N)");
+				System.out.println("Remplacer "+controleur.p().getInventaire().getArmures(position).getNomArmure()+" (PV:"+controleur.p().getInventaire().getArmures(position).getPV()+" PA:"+controleur.p().getInventaire().getArmures(position).getPA()+" Dura: "+controleur.p().getInventaire().getArmures(position).getDurabilite()+"/"+controleur.p().getInventaire().getArmures(position).getDurabiliteMax()+") ? Oui(O) ou Non(N)");
 				String choix = Clavier.entrerClavierString();
 				
 				if(choix.equalsIgnoreCase("Oui") || choix.equalsIgnoreCase("O")) {
@@ -266,14 +271,13 @@ public class BoundaryPerso {
 			
 		}
 		else {
-			System.out.println("Remplacer "+arme.getNomArme()+" (DMG:"+arme.getDMGTemp()+") ==> "+controleur.p().getInventaire().getArme().getNomArme()+" (DMG:"+controleur.p().getInventaire().getArme().getDMG()+")? Oui(O) ou Non(N)"); // On demande à l'utilisateur s'il veut remplacer la nouvelle Epée par une autre
+			System.out.println("Remplacer "+controleur.p().getInventaire().getArme().getNomArme()+" (DMG:"+controleur.p().getInventaire().getArme().getDMG()+" Dura: "+controleur.p().getInventaire().getArme().getDurabilite()+"/"+controleur.p().getInventaire().getArme().getDurabiliteMax()+") ? Oui(O) ou Non(N)"); // On demande à l'utilisateur s'il veut remplacer la nouvelle Epée par une autre
 		
 			String choix = Clavier.entrerClavierString();		
 			if(choix.equalsIgnoreCase("Oui") || choix.equalsIgnoreCase("O")) {
 				
 				System.out.println("Remplacement effectue");
 				controleur.p().getInventaire().ajouterArme(arme); // On remplace l'anciennce potion par la nouvelle		
-				
 			}
 		}
 	    return"";

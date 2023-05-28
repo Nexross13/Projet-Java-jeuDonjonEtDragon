@@ -5,9 +5,9 @@ import java.io.Serializable;
 public class MonstreIntermediaire extends Monstre implements Serializable{
 
     // Attribut
-    private int[] poBorne = {12,17};
-    private int[] pvBorne = {130,600};
-    private int[] forceBorne = {50,300};
+    private int[] poBorne = {25,75};
+    private int[] pvBorne = {130,270};
+    private int[] forceBorne = {50,100};
     private TypeMonstre type = TypeMonstre.INTERMEDIAIRE;
 
     //Constructeur

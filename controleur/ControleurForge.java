@@ -21,24 +21,38 @@ public class ControleurForge {
 	public String reparerArmure(TypeArmure armure){
         int cout = armure.getPrix() - (armure.getDurabilite() * armure.getPrix()) / armure.getDurabiliteMax();
         cout =(int)(cout * 0.75);
-        //System.out.println("Réparation d'une armure");
+        String nomArmure = armure.getNomArmure();
         if(verifPO(cout)){
             donjon.getJoueur().achatItem(cout);
             armure.setDurabilite(armure.getDurabiliteMax());
-            return "Armure réparée";
+            if (nomArmure.contains("Botte")) {
+            	donjon.getJoueur().getInventaire().setSauvegardeArmure(3, 2, armure.getDurabiliteMax());
+            }
+            else if(nomArmure.contains("Jambiere")){
+            	donjon.getJoueur().getInventaire().setSauvegardeArmure(2, 2, armure.getDurabiliteMax());
+            }
+            else if(nomArmure.contains("Plastron")){
+            	donjon.getJoueur().getInventaire().setSauvegardeArmure(1, 2, armure.getDurabiliteMax());
+            }            
+            else {
+            	donjon.getJoueur().getInventaire().setSauvegardeArmure(0, 2, armure.getDurabiliteMax());
+            }
+            
+            return "Armure reparee";
         } else {
             return "Pas assez de sous";
         }
     }
 
     public String reparerArme(TypeArme arme){
-        //System.out.println("Réparation d'une arme");
+        
         int cout = arme.getPrix() - (arme.getDurabilite() * arme.getPrix()) / arme.getDurabiliteMax();
         cout =(int)(cout * 0.75);
         if(verifPO(cout)){
             donjon.getJoueur().achatItem(cout);
             arme.setDurabilite(arme.getDurabiliteMax());
-            return "Arme réparée";
+            donjon.getJoueur().getInventaire().setSauvegardeArme(1,arme.getDurabiliteMax());
+            return "Arme reparee";
         } else {
             return "Pas assez de sous";
         }
@@ -46,10 +60,31 @@ public class ControleurForge {
 
     public String ameliorerArmure(TypeArmure armure){
         int cout = armure.getPrix() * 2;
-        //System.out.println("Amélioration d'une armure");
+        String nomArmure = armure.getNomArmure();
         if(verifPO(cout)){
             donjon.getJoueur().achatItem(cout);
-            return "Armure améliorée";
+            
+            if (nomArmure.contains("Botte")) {
+            	TypeArmure newArmure =  TypeArmure.BOTTE_LEGENDAIRE.randomStats(donjon.getEtage());
+            	donjon.getJoueur().getInventaire().ajouterArmure(newArmure, 3);
+                return "Armure amelioree, Botte Legendaire obtenue";
+            }
+            else if(nomArmure.contains("Jambiere")){
+            	TypeArmure newArmure =  TypeArmure.JAMBIERE_LEGENDAIRE.randomStats(donjon.getEtage());
+            	donjon.getJoueur().getInventaire().ajouterArmure(newArmure, 2);
+                return "Armure amelioree, Jambiere Legendaire obtenue";
+            }
+            else if(nomArmure.contains("Plastron")){
+            	TypeArmure newArmure =  TypeArmure.PLASTRON_LEGENDAIRE.randomStats(donjon.getEtage());
+            	donjon.getJoueur().getInventaire().ajouterArmure(newArmure, 1);
+                return "Armure amelioree, Plastron Legendaire obtenu";
+            }            
+            else {
+            	TypeArmure newArmure =  TypeArmure.CASQUE_LEGENDAIRE.randomStats(donjon.getEtage());
+            	donjon.getJoueur().getInventaire().ajouterArmure(newArmure, 0);
+                return "Armure amelioree, Casque Legendaire obtenu";
+            }
+            
         } else {
             return "Pas assez de sous";
         }
@@ -57,13 +92,12 @@ public class ControleurForge {
 	
 	public String ameliorerArme(TypeArme arme){
         int cout = arme.getPrix() * 2;
-        //System.out.println("Amélioration d'une armure");
+        
         if(verifPO(cout)){
             donjon.getJoueur().achatItem(cout);
-            TypeArme newArme =  TypeArme.EPEE_LEGENDAIRE;
-            boundaryPerso.sEquiperArme(null);
-            boundaryPerso.sEquiperArme(newArme);
-            return "Arme améliorée";
+            TypeArme newArme =  TypeArme.EPEE_LEGENDAIRE.randomDMG(donjon.getEtage());
+            donjon.getJoueur().getInventaire().ajouterArme(newArme);
+            return "Arme amelioree, Epee Legendaire obtenue";
         } else {
             return "Pas assez de sous";
         }

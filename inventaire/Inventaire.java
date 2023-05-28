@@ -38,8 +38,16 @@ public class Inventaire implements Serializable{
 		return sauvegardeStatsArmure;
 	}
 	
+	public void setSauvegardeArmure(int posi1, int posi2, int valeur){
+		sauvegardeStatsArmure[posi1][posi2] = valeur;
+	}
+	
 	public int[] getSauvegardeArme(){
 		return sauvegardeStatsArme;
+	}
+	
+	public void setSauvegardeArme(int posi, int valeur){
+		sauvegardeStatsArme[posi] = valeur;
 	}
 	
 	// Autres méthodes

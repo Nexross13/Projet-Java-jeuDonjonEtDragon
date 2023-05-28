@@ -78,9 +78,9 @@ public class BoundaryMaitreDonjon {
 	        			 System.out.println("+-Gestion de la partie de "+controleurPerso.p().getNom()+"-+");
 	        	         System.out.println("|1 --> Modifier une piece            |");
 	        	         System.out.println("|2 --> Modifier Stat Joueur          |");	
-	        	         System.out.println("|3 --> Changer position joueur	  	  |");
+	        	         System.out.println("|3 --> Changer position joueur       |");
 	        	         System.out.println("|4 --> Ouvrir Inventaire joueur      |");	
-	        	         System.out.println("|5 --> Ressusciter le joueur	  	  |");	        	         
+	        	         System.out.println("|5 --> Ressusciter le joueur         |");	        	         
 	        	         System.out.println("|6 --> Sauvegarder les modifications |");
 	        	         System.out.println("|7 --> Quitter la gestion            |");
 	        			 System.out.println("+------------------------------------+");
@@ -116,11 +116,11 @@ public class BoundaryMaitreDonjon {
 	        	         case 2:
 	        	        	 boundaryPerso.afficherStatsPersonnage();
 	        	        	 System.out.println("+-Choix des Statistiques Joueur a modifier-+");
-	        	        	 System.out.println("|1 --> Attaque								| ");
-	        	        	 System.out.println("|2 --> PV (actuel/max)						| ");   
-	        	        	 System.out.println("|3 --> Point d'Armure						| ");  
-	        	        	 System.out.println("|4 --> Piece d'Or							| "); 
-		        	         System.out.println("|5 --> Annuler								| ");		        	     
+	        	        	 System.out.println("|1 --> Attaque                             | ");
+	        	        	 System.out.println("|2 --> PV (actuel/max)                     | ");   
+	        	        	 System.out.println("|3 --> Point d'Armure                      | ");  
+	        	        	 System.out.println("|4 --> Piece d'Or                          | "); 
+		        	         System.out.println("|5 --> Annuler                             | ");		        	     
 		        			 System.out.println("+------------------------------------------+");
 		        			 System.out.print("Votre choix: ");
 		        			 int choixPerso = Clavier.entrerClavierInt();

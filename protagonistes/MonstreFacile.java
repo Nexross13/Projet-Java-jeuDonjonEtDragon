@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class MonstreFacile extends Monstre implements Serializable{
 
     // Attribut
-    private int[] poBorne = {5,10};
+    private int[] poBorne = {15,25};
     private int[] pvBorne = {40,130};
     private int[] forceBorne = {10,30};
     private TypeMonstre type = TypeMonstre.FACILE;

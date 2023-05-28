@@ -13,7 +13,7 @@ public enum TypeArme {
 	private String nomArme;
 	private int prix;
 	private int durabiliteMax;
-	private int durabilite = durabiliteMax;
+	private int durabilite;
 	
 	TypeArme(int dmgMin, int dmgMax , int dmg, int tempDmg, String nomArme, int prix, int durabiliteMax){
 		this.dmgMax = dmgMax;

@@ -20,6 +20,7 @@ public class BoundaryMarchant {
 	
 	public void actionEntrer(Donjon donjon, Marchant marchant){ // Action du personnage au marchant
         while (marchant.getNbProduitRestant() !=0) { // Tant que le marchant à qqch à vendre
+        	System.out.println("Dans votre sac, PO : "+donjon.getJoueur().getNbrPO());
             System.out.println("-----------Choix-----------");
             System.out.println("0 - Quitter la salle");
             controleur.Produit();

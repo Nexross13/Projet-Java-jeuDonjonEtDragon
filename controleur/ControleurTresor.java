@@ -45,14 +45,14 @@ public class ControleurTresor {
 				// Définit le taux de rarete d'une arme (Commum, rare, légendaire)
 				int chance = (int) (Math.random() * 100);
 		
-				if (chance < chanceCommun) { 				// 77% Epée Commun => trésor / 20 % => Marchant
+				if (chance < chanceCommun) { 				// 75% Epée Commun => trésor / 20 % => Marchant
 					return TypeArme.EPEE_COMMUN;
 					}
 				
 				else if (chance < chanceRare) {			// 20% Epée Rare => trésor / 47 % => Marchant
 					return TypeArme.EPEE_RARE;	
 				}		
-				else {							// 3% Epée Commun => trésor / 33 % => Marchant
+				else {							// 5% Epée Commun => trésor / 33 % => Marchant
 					return TypeArme.EPEE_LEGENDAIRE;
 				}	
 			}

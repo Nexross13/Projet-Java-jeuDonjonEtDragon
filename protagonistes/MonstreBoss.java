@@ -9,7 +9,7 @@ public class MonstreBoss extends Monstre implements Serializable{
 
     //Constructeur
     public MonstreBoss(int etage){
-        super(1500,500,150);
+        super(1500,250,150); // 1500 PV, 250 force, 150 PO
         etage++;
         this.pvMax = pvMax*etage;
         this.force = force*etage;

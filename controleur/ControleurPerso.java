@@ -98,7 +98,8 @@ public class ControleurPerso {
 			if (personnage.getInventaire().getSauvegardeArmure()[i][0] != 0) {
 				
 				personnage.getInventaire().getArmures(i).setPV(personnage.getInventaire().getSauvegardeArmure()[i][0]);
-				personnage.getInventaire().getArmures(i).setPA(personnage.getInventaire().getSauvegardeArmure()[i][1]);		
+				personnage.getInventaire().getArmures(i).setPA(personnage.getInventaire().getSauvegardeArmure()[i][1]);	
+				personnage.getInventaire().getArmures(i).setDurabilite(personnage.getInventaire().getSauvegardeArmure()[i][2]);	
 			}
 		}
     }

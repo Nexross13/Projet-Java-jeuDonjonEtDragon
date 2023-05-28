@@ -50,12 +50,12 @@ public class BoundaryTresor {
 				boundaryPerso.sEquiperArmure(armureTresor);
 			}
 			else if (chanceTypeTresor < 75)	{		// 20% obtenir Trésor de type arme
-				TypeArme armeTresor = controleur.armeAleatoire(77,97).randomDMG(controleurPerso.p().getDonjon().getEtage());	// Création de l'arme			
+				TypeArme armeTresor = controleur.armeAleatoire(75,95).randomDMG(controleurPerso.p().getDonjon().getEtage());	// Création de l'arme			
 				System.out.println("Tresor "+(i+1)+": "+armeTresor.getNomArme()+" (DMG: " + armeTresor.getDMGTemp()+")");				
 				boundaryPerso.sEquiperArme(armeTresor); // On équipe le joueur avec l'arme s'il peut
 			}
 			else { // 25% obtenir Trésor vide
-				System.out.println("Tresor: poussière");
+				System.out.println("Tresor: poussiere");
 			}
 		}
 	}

@@ -20,34 +20,40 @@ public class BoundaryForge {
 	}
 	
 	public void actionEntrer(Donjon donjon, Forgeron forgeron){ // Action du personnage avec le forgeron
-        System.out.println("-----------Choix-----------");
-        System.out.println("0 - Quitter la salle");
-        System.out.println("1 - Améliorer un equipement");
-        System.out.println("2 - Réparer un equipement");
-        String choix = Clavier.entrerClavierString();
-        String type;
-        switch (choix) {
-            case "0":
-                System.out.println("Vous quittez la forge");
-                return;
+		while(true) {
+				System.out.println("-----------Choix-----------");
+	        System.out.println("0 - Quitter la salle");
+	        System.out.println("1 - Ameliorer un equipement");
+	        System.out.println("2 - Reparer un equipement");
+	        String choix = Clavier.entrerClavierString();
+	        String type;
+	        switch (choix) {
+	            case "0":
+	                System.out.println("Vous quittez la forge");
+	                return;
+	        
+	            case "1":
+	                type = "ameliorer";
+	                System.out.println("Quel type d'equipement vous voulez ameliorer au rang superieur ?");
+	                choixEquipement(type, donjon, forgeron);
+	                break;
+	                
+	            case "2":
+	                type = "reparer";
+	                System.out.println("Quel type d'equipement vous voulez reparer ?");
+	                choixEquipement(type, donjon, forgeron);
+	                break;
+	                
+	            default:
+	            	break;
+	        }
+		}
         
-            case "1":
-                type = "améliorer";
-                System.out.println("Quel type d'équipement vous voulez améliorer au rang supérieur ?");
-                choixEquipement(type, donjon, forgeron);
-                break;
-                
-            case "2":
-                type = "réparer";
-                System.out.println("Quel type d'équipement vous voulez réparer ?");
-                choixEquipement(type, donjon, forgeron);
-                break;
-        }
     }
 
-    public void choixEquipement(String type, Donjon donjon, Forgeron forgeron){ // Le personnage à choisi l'équipement à réparer ou  à améliorer
+    public void choixEquipement(String type, Donjon donjon, Forgeron forgeron){ // Le personnage à choisi l'équipement à réparer ou à améliorer
         System.out.println("-----------Choix-----------");
-        System.out.println("0 - Retour en arrière");
+        System.out.println("0 - Retour en arriere");
         System.out.println("1 - "+type+" une arme");
         System.out.println("2 - "+type+" une armure");
         String choix = Clavier.entrerClavierString();
@@ -57,16 +63,19 @@ public class BoundaryForge {
                 break;
             
             case "1":
-                TypeArme arme = donjon.getJoueur().getInventaire().getArme();
-                if (arme != null) {
-                    if (type == "améliorer") {
-                    	controleur.ameliorerArme(donjon.getJoueur().getInventaire().getArme());
+                
+                if (donjon.getJoueur().getInventaire().getArme() != null) {
+                    if (type == "ameliorer") {
+                    	System.out.println(controleur.ameliorerArme(donjon.getJoueur().getInventaire().getArme()));
                     } else {
-                    	controleur.reparerArme(donjon.getJoueur().getInventaire().getArme());
+                    	System.out.println(controleur.reparerArme(donjon.getJoueur().getInventaire().getArme()));
                     }
-                    break;
                 }
-            
+                else {
+                	   System.out.println("Vous n'avez pas d'arme a "+type);
+                }             
+                break;
+                 
             case "2":
                 System.out.println("Quelle armure vous voulez " + type + " ?");
                 TypeArmure[] tabArmure = donjon.getJoueur().getInventaire().getArmuresStock();
@@ -78,12 +87,22 @@ public class BoundaryForge {
                     }
                 }
                 int choixInt = Clavier.entrerClavierInt();
-                if (type == "améliorer") {
-                	controleur.ameliorerArmure(tabArmure[choixInt]);
-                } else {
-                	controleur.reparerArmure(tabArmure[choixInt]);
-                }
+                if (choixInt >=0 && choixInt <=3) {
+                	if (tabArmure[choixInt] != null) {
+                		if (type == "ameliorer") {
+                			System.out.println(controleur.ameliorerArmure(tabArmure[choixInt])); 
+		                } else {
+		                	System.out.println( controleur.reparerArmure(tabArmure[choixInt]));
+		                }
+                	}
+                	else {
+                		System.out.println("Vous n'avez pas d'armure a "+type);
+                	}                	
+                }                
                 break;
+                
+            default:
+            	break;
         }
     }
 }

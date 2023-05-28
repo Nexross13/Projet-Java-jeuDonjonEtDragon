@@ -22,7 +22,7 @@ public class BoundaryBataille {
             System.out.println("Attention !!!, vous combattez un "+bataille.getMonstre().getType());
         }
         else{
-            System.out.println("Vous êtes face à un monstre "+bataille.getMonstre().getType());
+            System.out.println("Vous etes face a un monstre "+bataille.getMonstre().getType());
         }
         // Le combat commence au tour 1
         while(bataille.getPersonnage().getPvActuel() != 0 && bataille.getMonstre().getPvActuel() != 0 && bataille.getPersonnageContinuer()){
@@ -30,8 +30,8 @@ public class BoundaryBataille {
             if (bataille.getTour() % 2 != 0){ // Le personnnage joue tous les tours impairs
 
                 System.out.println("------------------------------------------");
-                System.out.println("Stats Monstre:    Dégat: "+bataille.getMonstre().getForce()+" | PV: "+bataille.getMonstre().getPvActuel()+"/"+bataille.getMonstre().getPvMax());
-                System.out.println("Stats Personnage: Dégat: "+bataille.getPersonnage().getForce()+" | PV: "+bataille.getPersonnage().getPvActuel()+"/"+bataille.getPersonnage().getPvMax()+" |  PA:"+bataille.getPersonnage().getProtection());
+                System.out.println("Stats Monstre:    Degat: "+bataille.getMonstre().getForce()+" | PV: "+bataille.getMonstre().getPvActuel()+"/"+bataille.getMonstre().getPvMax());
+                System.out.println("Stats Personnage: Degat: "+bataille.getPersonnage().getForce()+" | PV: "+bataille.getPersonnage().getPvActuel()+"/"+bataille.getPersonnage().getPvMax()+" |  PA:"+bataille.getPersonnage().getProtection());
                 System.out.println("------------------------------------------");
                 
                 // Choix Action Joueur

@@ -115,9 +115,9 @@ public class Personnage extends EtreVivant{
         String texte = monstre.subirAttaque(force);
         TypeArme arme = getInventaire().getArme();
         if (arme != null) { // En cas de possession d'arme, perd de la durabilité en attaquant
-            arme.setDurabilite(arme.getDurabilite() - 2);
-
-            if (arme.getDurabilite() == 0) {
+            arme.setDurabilite(arme.getDurabilite() - 1); 
+            inventaire.setSauvegardeArme(1, arme.getDurabilite()); // Sauvegarde de la durabilité de l'arme dans le tableau de sauvegarde
+            if (arme.getDurabilite() <= 0) {
             inventaire.DetruireArme();
             }
         }
@@ -132,6 +132,7 @@ public class Personnage extends EtreVivant{
             TypeArmure armure = getInventaire().getArmuresStock()[i];
             if (armure != null) {
                 armure.setDurabilite(armure.getDurabilite() - 1);
+                inventaire.setSauvegardeArmure(i, 2, armure.getDurabilite());
                 if (armure.getDurabilite() <= 0) {
                 	text = text + inventaire.DetruireArmure(i)+'\n';
                 }
