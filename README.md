@@ -4,4 +4,4 @@ Projet de L3 IRT sur la création d'un jeu de type Donjon et Dragons. Ce program
 
 ## Premier lancement
 
-Pour lancer le programe,  il suffit d'aller dans le dossier vu et de lancer le fichier Jouer.java
+Pour lancer le programme,  il suffit d'aller dans le dossier vu et de lancer le fichier Jouer.java
